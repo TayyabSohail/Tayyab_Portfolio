@@ -29,43 +29,46 @@ export const GippityAITimeline = () => {
 
   const data = [
     {
-      title: "Power",
+      title: "What I Do",
       content: (
         <div className="space-y-4">
           <h1 className="text-3xl font-bold text-black dark:text-white">
-            Gippity AI powers the entire universe
+            Engineer Scalable Digital Products
           </h1>
           <p className="text-lg text-neutral-700 dark:text-neutral-300">
-            With over 100,000 motivy active bot users, Gippity AI is the most
-            popular AI platform for developers.
+            I build full-stack applications using modern tools like MERN,
+            Next.js, and TypeScript optimized for performance, usability, and
+            real-world impact.
           </p>
         </div>
       ),
     },
     {
-      title: "Rules",
+      title: "Expertise",
       content: (
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-black dark:text-white">
-            No shirt, no shoes, no weapons.
+            AI-Integrated, Cloud-Ready Solutions
           </h2>
           <p className="text-lg text-neutral-700 dark:text-neutral-300">
-            If someone yells "stop!", goes limp, or taps out, the fight is over.
+            From responsive UIs to robust backend systems, I specialize in
+            creating intelligent, cloud-native applications backed by clean
+            architecture and scalable code.{" "}
           </p>
         </div>
       ),
     },
     {
-      title: "Signup",
+      title: "Mindset",
       content: (
         <div className="space-y-4">
           <h1 className="text-3xl font-bold text-black dark:text-white">
-            Signup for blazing-fast cutting-edge state of the art Gippity AI
-            wrapper today!
+            Always Learning, Always Building
           </h1>
           <p className="text-lg text-neutral-700 dark:text-neutral-300">
-            With over 100,000 motivy active bot users, Gippity AI is the most
-            popular AI platform for developers.
+            Driven by curiosity and a love for technology, I constantly explore
+            new tools and AI workflows to stay ahead and push boundaries with
+            every project.
           </p>
         </div>
       ),

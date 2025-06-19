@@ -1,7 +1,9 @@
 "use client";
 import { HeroSection } from "@/components/ui/hero-section";
 import { HeadlineSection } from "@/components/ui/headline-section";
-import { GippityAITimeline } from "@/components/ui/gippity-timeline"; // Import your Wobble Cards component
+import { GippityAITimeline } from "@/components/ui/gippity-timeline";
+import { ProjectsSection } from "@/components/ui/projects-section";
+import { TechStackSection } from "@/components/ui/tech-stack-marquee";
 
 export default function Home() {
   return (
@@ -21,12 +23,17 @@ export default function Home() {
         <GippityAITimeline />
       </section>
 
-      {/*
-        Add more sections as needed
-        <section id="projects" className="py-20 scroll-mt-20">
+      {
+        <section id="projects" className="scroll-mt-5">
           <ProjectsSection />
         </section>
-      */}
+      }
+
+      {
+        <section id="services" className="scroll-mt-5">
+          <TechStackSection />
+        </section>
+      }
     </div>
   );
 }

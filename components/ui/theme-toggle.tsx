@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { IconSun, IconMoon } from "@tabler/icons-react";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
     // Check for saved theme preference or use system preference
@@ -13,12 +13,12 @@ export function ThemeToggle() {
       | "light"
       | "dark"
       | null;
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+    const systemTheme = window.matchMedia("(prefers-color-scheme: light)")
       .matches
       ? "dark"
       : "light";
 
-    const initialTheme = storedTheme || systemTheme;
+    const initialTheme = storedTheme || "light";
     setTheme(initialTheme);
     applyTheme(initialTheme);
   }, []);

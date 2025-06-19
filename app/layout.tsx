@@ -71,28 +71,28 @@ export default function RootLayout({
     {
       title: "GitHub",
       icon: <IconBrandGithub className="h-full w-full" />,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/TayyabSohail",
     },
     {
       title: "LinkedIn",
       icon: <IconBrandLinkedin className="h-full w-full" />,
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://www.linkedin.com/in/muhammad-tayyab-sohail/",
     },
 
     {
       title: "WhatsApp",
       icon: <IconBrandWhatsapp className="h-full w-full" />,
-      href: "https://wa.me/yourphonenumber",
+      href: "https://wa.me/923338199915",
     },
     {
       title: "Email",
       icon: <IconMail className="h-full w-full" />,
-      href: "mailto:your.email@example.com",
+      href: "mailto:m.tayyabsohail614@gmail.com",
     },
     {
       title: "Instagram",
       icon: <IconBrandInstagram className="h-full w-full" />,
-      href: "https://instagram.com/yourusername",
+      href: "https://www.instagram.com/muhammad_tayyab_sohail_/",
     },
   ];
 
