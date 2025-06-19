@@ -12,14 +12,12 @@ export default function Home() {
       </section>
 
       {/* Headline Section */}
-      <section>
-        <HeadlineSection />
-      </section>
 
       {/* About Section with Wobble Cards */}
-      <section id="about" className="py-20 scroll-mt-20">
+      <section id="about" className="scroll-mt-5">
         {" "}
         {/* scroll-mt-20 accounts for navbar height */}
+        <HeadlineSection />
         <GippityAITimeline />
       </section>
 

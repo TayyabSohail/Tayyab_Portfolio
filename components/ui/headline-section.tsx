@@ -2,7 +2,7 @@
 
 export function HeadlineSection() {
   return (
-    <section className="w-full py-12 md:py-24">
+    <section className="w-full py-12 md:py-8">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">

@@ -4,7 +4,6 @@ import {
   NavBody,
   NavItems,
   MobileNav,
-  NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
@@ -40,12 +39,11 @@ export function NavbarDemo() {
         {/* Desktop Navigation */}
         <NavBody>
           <div className="flex items-center justify-between w-full">
-            <div className="flex-1 pl-50">
+            <div className="flex-1">
               <NavItems items={navItems} />
             </div>
             <div className="flex items-center gap-4">
               <div className="relative z-50">{/* <ThemeToggle /> */}</div>
-              <NavbarButton variant="primary">Download Resume</NavbarButton>
             </div>
           </div>
         </NavBody>
@@ -76,15 +74,6 @@ export function NavbarDemo() {
             <div className="flex items-center justify-between px-4 py-2">
               {/* <ThemeToggle /> */}
               <span className="text-sm">Toggle Theme</span>
-            </div>
-            <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Download Resume
-              </NavbarButton>
             </div>
           </MobileNavMenu>
         </MobileNav>

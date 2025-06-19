@@ -1,6 +1,8 @@
 "use client";
 import { FlipWords } from "./flip-words";
 import Image from "next/image";
+import { NavbarButton } from "@/components/ui/navbar";
+import { TypewriterEffectSmooth } from "./typewriter-effect"; // Import the component
 
 export function HeroSection() {
   const words = [
@@ -8,6 +10,23 @@ export function HeroSection() {
     "Software Development",
     "Cloud-Based Platforms",
     "Full-Stack Applications",
+  ];
+
+  const nameWords = [
+    {
+      text: "Hi,",
+      className:
+        "text-neutral-600 dark:text-neutral-400 text-4xl md:text-5xl font-bold",
+    },
+    {
+      text: "I'm",
+      className:
+        "text-neutral-600 dark:text-neutral-400 text-4xl md:text-5xl font-bold",
+    },
+    {
+      text: "Tayyab Sohail",
+      className: "text-white dark:text-white text-4xl md:text-5xl font-bold",
+    },
   ];
 
   return (
@@ -23,8 +42,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Right side - Image and name */}
-        <div className="w-full md:w-1/2 flex flex-col items-center">
+        {/* Right side - Image, name, and resume button */}
+        <div className="w-full md:w-1/2 flex flex-col items-center gap-6">
           <div className="relative w-64 h-64 rounded-full overflow-hidden mb-4">
             <Image
               src="/images/MTayyabSohail.jpeg"
@@ -33,10 +52,17 @@ export function HeroSection() {
               className="object-cover"
             />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-neutral-600 dark:text-neutral-400 text-center">
-            Hi, I’m Tayyab
-          </h2>
+
+          {/* Replaced static text with TypewriterEffectSmooth */}
+          <TypewriterEffectSmooth
+            words={nameWords}
+            className="text-center"
+            cursorClassName="h-8 md:h-10" // Adjust cursor size
+          />
         </div>
+      </div>
+      <div className="mt-8 flex justify-center">
+        <NavbarButton variant="primary">Download Resume</NavbarButton>
       </div>
     </section>
   );
