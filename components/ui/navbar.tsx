@@ -1,7 +1,6 @@
 "use client";
 import { cn } from "../../lib/utils";
-import { IconMenu2, IconX } from "@tabler/icons-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
@@ -34,13 +33,6 @@ interface MobileNavProps {
 interface MobileNavHeaderProps {
   children: React.ReactNode;
   className?: string;
-}
-
-interface MobileNavMenuProps {
-  children: React.ReactNode;
-  className?: string;
-  isOpen: boolean;
-  onClose: () => void;
 }
 
 export const Navbar = ({ children, className }: NavbarProps) => {
@@ -182,44 +174,6 @@ export const MobileNavHeader = ({
     >
       {children}
     </div>
-  );
-};
-
-export const MobileNavMenu = ({
-  children,
-  className,
-  isOpen,
-}: MobileNavMenuProps) => {
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 bg-black/90 px-4 py-8 backdrop-blur-md",
-            className
-          )}
-        >
-          {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
-
-export const MobileNavToggle = ({
-  isOpen,
-  onClick,
-}: {
-  isOpen: boolean;
-  onClick: () => void;
-}) => {
-  return isOpen ? (
-    <IconX className="text-white" onClick={onClick} />
-  ) : (
-    <IconMenu2 className="text-white" onClick={onClick} />
   );
 };
 
