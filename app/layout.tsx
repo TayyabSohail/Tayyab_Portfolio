@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NavbarDemo } from "@/components/ui/navbar-demo";
 import { FloatingDock } from "@/components/ui/floating-dock";
+import { GridBackground } from "@/components/ui/grid-background";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -107,6 +108,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100`}
       >
+        <GridBackground />
         <NavbarDemo />
         {children}
 

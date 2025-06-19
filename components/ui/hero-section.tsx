@@ -11,7 +11,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section id="hero" className="container mx-auto px-4 py-24 scroll-mt-20">
+    <section id="hero" className="container mx-auto px-4 py-56 scroll-mt-30">
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left side - Flip words */}
         <div className="w-full md:w-1/2">

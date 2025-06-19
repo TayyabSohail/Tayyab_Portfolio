@@ -16,19 +16,19 @@ export function NavbarDemo() {
   const navItems = [
     {
       name: "Home",
-      link: "#Home",
+      link: "#home",
     },
     {
       name: "About Me",
-      link: "#About",
+      link: "#about",
     },
     {
       name: "My Projects",
-      link: "#Projects",
+      link: "#projects",
     },
     {
       name: "Services",
-      link: "#Services",
+      link: "#services",
     },
   ];
 
@@ -40,14 +40,12 @@ export function NavbarDemo() {
         {/* Desktop Navigation */}
         <NavBody>
           <div className="flex items-center justify-between w-full">
-            <div className="flex-1">
+            <div className="flex-1 pl-50">
               <NavItems items={navItems} />
             </div>
             <div className="flex items-center gap-4">
-              <div className="relative z-50">
-                <ThemeToggle />
-              </div>
-              <NavbarButton variant="primary">Book a call</NavbarButton>
+              <div className="relative z-50">{/* <ThemeToggle /> */}</div>
+              <NavbarButton variant="primary">Download Resume</NavbarButton>
             </div>
           </div>
         </NavBody>
@@ -76,7 +74,7 @@ export function NavbarDemo() {
               </a>
             ))}
             <div className="flex items-center justify-between px-4 py-2">
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
               <span className="text-sm">Toggle Theme</span>
             </div>
             <div className="flex w-full flex-col gap-4">
@@ -85,7 +83,7 @@ export function NavbarDemo() {
                 variant="primary"
                 className="w-full"
               >
-                Book a call
+                Download Resume
               </NavbarButton>
             </div>
           </MobileNavMenu>
