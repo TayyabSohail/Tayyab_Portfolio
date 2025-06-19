@@ -3,7 +3,7 @@ import { cn } from "../../lib/utils";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScroll, useMotionValueEvent } from "framer-motion";
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -14,8 +14,8 @@ interface NavBodyProps {
   children: React.ReactNode;
   className?: string;
   visible?: boolean;
+  isMobile?: boolean;
 }
-
 interface NavItemsProps {
   items: {
     name: string;
@@ -46,12 +46,19 @@ interface MobileNavMenuProps {
 export const Navbar = ({ children, className }: NavbarProps) => {
   const { scrollY } = useScroll();
   const [visible, setVisible] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    // Only apply the scroll effect on desktop
-    if (window.innerWidth >= 1024) {
-      setVisible(latest > 100);
-    }
+    setVisible(latest > 100);
   });
 
   return (
@@ -59,58 +66,52 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible: window.innerWidth >= 1024 ? visible : false }
+              child as React.ReactElement<{
+                visible?: boolean;
+                isMobile?: boolean;
+              }>,
+              { visible, isMobile }
             )
           : child
       )}
     </motion.div>
   );
 };
-
-export const NavBody = ({ children, className, visible }: NavBodyProps) => {
+export const NavBody = ({
+  children,
+  className,
+  visible,
+  isMobile,
+}: NavBodyProps) => {
   return (
     <motion.div
       animate={{
         backgroundColor: visible ? "rgba(30, 30, 30, 0.8)" : "black",
         backdropFilter: visible ? "blur(10px)" : "none",
-        boxShadow: visible ? "0 4px 6px rgba(0, 0, 0, 0.1)" : "none",
-        width: visible ? "60%" : "100%",
-        padding: visible ? "0.5rem 2rem" : "1rem 2rem",
+        padding: isMobile
+          ? visible
+            ? "0.5rem 1rem"
+            : "1rem"
+          : visible
+          ? "0.5rem 2rem"
+          : "1rem 2rem",
+        width: isMobile ? (visible ? "90%" : "100%") : visible ? "60%" : "100%",
       }}
       transition={{
         type: "spring",
         stiffness: 300,
         damping: 30,
-        mass: 0.5,
       }}
       className={cn(
-        "relative z-[60] mx-auto flex max-w-7xl items-center justify-between rounded-xl px-4 py-2 transition-all duration-300",
-        !visible && window.innerWidth >= 1024 && "border-b border-white/20",
+        "relative z-[60] mx-auto flex max-w-7xl items-center justify-between rounded-xl transition-all duration-300",
+        !visible && "border-b border-white/20",
         className
       )}
     >
-      <div className="flex flex-1 items-center gap-4">
-        {React.Children.toArray(children)[0]}
-      </div>
-
-      <div className="flex items-center gap-4">
-        {React.Children.toArray(children)[1]}
-
-        <motion.div
-          animate={{
-            opacity: visible ? 1 : 1,
-            scale: visible ? 1 : 1,
-          }}
-          transition={{ type: "spring", stiffness: 400 }}
-        >
-          {React.Children.toArray(children)[2]}
-        </motion.div>
-      </div>
+      {children}
     </motion.div>
   );
 };
-
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
@@ -118,7 +119,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "relative flex flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2", // Removed absolute positioning
+        "relative flex flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
         className
       )}
     >
@@ -142,17 +143,29 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     </motion.div>
   );
 };
+
 export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
-  // Always show full mobile nav without any resize effects
   return (
-    <div
+    <motion.div
+      animate={{
+        backdropFilter: visible ? "blur(10px)" : "none",
+        boxShadow: visible ? "0 4px 6px rgba(0, 0, 0, 0.1)" : "none",
+        width: visible ? "90%" : "100%",
+        padding: visible ? "0.5rem 1rem" : "1rem",
+        borderRadius: visible ? "12px" : "0px",
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 200,
+        damping: 50,
+      }}
       className={cn(
-        "relative z-50 mx-auto flex w-full flex-col items-center justify-between bg-transparent px-4 py-2 lg:hidden",
+        "relative z-50 mx-auto flex w-full flex-col items-center justify-between bg-black/80 px-4 py-2 lg:hidden",
         className
       )}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
@@ -176,17 +189,16 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 bg-white px-4 py-8 dark:bg-neutral-950",
+            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 bg-black/90 px-4 py-8 backdrop-blur-md",
             className
           )}
         >
@@ -196,6 +208,7 @@ export const MobileNavMenu = ({
     </AnimatePresence>
   );
 };
+
 export const MobileNavToggle = ({
   isOpen,
   onClick,
@@ -204,9 +217,9 @@ export const MobileNavToggle = ({
   onClick: () => void;
 }) => {
   return isOpen ? (
-    <IconX className="text-black dark:text-white" onClick={onClick} />
+    <IconX className="text-white" onClick={onClick} />
   ) : (
-    <IconMenu2 className="text-black dark:text-white" onClick={onClick} />
+    <IconMenu2 className="text-white" onClick={onClick} />
   );
 };
 

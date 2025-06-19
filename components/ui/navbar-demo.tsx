@@ -9,41 +9,28 @@ import {
   MobileNavMenu,
 } from "@/components/ui/navbar";
 import { useState } from "react";
-import { ThemeToggle } from "./theme-toggle";
 
 export function NavbarDemo() {
   const navItems = [
-    {
-      name: "Home",
-      link: "#home",
-    },
-    {
-      name: "About Me",
-      link: "#about",
-    },
-    {
-      name: "My Projects",
-      link: "#projects",
-    },
-    {
-      name: "Services",
-      link: "#services",
-    },
+    { name: "Home", link: "#home" },
+    { name: "About Me", link: "#about" },
+    { name: "My Projects", link: "#projects" },
+    { name: "Services", link: "#services" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative w-full border-b border-neutral-200 dark:border-neutral-800">
+    <div className="relative w-full">
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
-          <div className="flex items-center justify-between w-full">
+          <div className="flex w-full items-center justify-between">
             <div className="flex-1">
               <NavItems items={navItems} />
             </div>
             <div className="flex items-center gap-4">
-              <div className="relative z-50">{/* <ThemeToggle /> */}</div>
+              {/* Additional buttons/icons can go here */}
             </div>
           </div>
         </NavBody>
@@ -66,9 +53,9 @@ export function NavbarDemo() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="block px-4 py-3 text-lg text-white hover:bg-white/10 rounded-md"
               >
-                <span className="block">{item.name}</span>
+                {item.name}
               </a>
             ))}
           </MobileNavMenu>

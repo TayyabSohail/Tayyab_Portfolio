@@ -62,9 +62,13 @@ export function HeroSection() {
         </div>
       </div>
       <div className="mt-8 flex justify-center">
-        <a href="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf" download>
-          <NavbarButton variant="primary">Download Resume</NavbarButton>
-        </a>
+        <NavbarButton
+          href="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf"
+          download
+          variant="primary"
+        >
+          Download Resume
+        </NavbarButton>
       </div>
     </section>
   );
