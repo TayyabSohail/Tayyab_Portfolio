@@ -8,6 +8,7 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
+    // Check for saved theme preference or use system preference
     const storedTheme = localStorage.getItem("theme") as
       | "light"
       | "dark"
@@ -19,14 +20,28 @@ export function ThemeToggle() {
 
     const initialTheme = storedTheme || systemTheme;
     setTheme(initialTheme);
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    applyTheme(initialTheme);
   }, []);
+
+  const applyTheme = (theme: "light" | "dark") => {
+    // Update root classes
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+      root.style.setProperty("--background", "#0a0a0a");
+      root.style.setProperty("--foreground", "#ededed");
+    } else {
+      root.classList.remove("dark");
+      root.style.setProperty("--background", "#ffffff");
+      root.style.setProperty("--foreground", "#171717");
+    }
+  };
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    applyTheme(newTheme);
   };
 
   return (

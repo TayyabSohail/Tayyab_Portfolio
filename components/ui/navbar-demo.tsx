@@ -23,8 +23,8 @@ export function NavbarDemo() {
       link: "#About",
     },
     {
-      name: "My Work",
-      link: "#Work",
+      name: "My Projects",
+      link: "#Projects",
     },
     {
       name: "Services",
@@ -35,14 +35,20 @@ export function NavbarDemo() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full border-b border-neutral-200 dark:border-neutral-800">
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
-          <NavItems items={navItems} />
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <NavbarButton variant="primary">Book a call</NavbarButton>
+          <div className="flex items-center justify-between w-full">
+            <div className="flex-1">
+              <NavItems items={navItems} />
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="relative z-50">
+                <ThemeToggle />
+              </div>
+              <NavbarButton variant="primary">Book a call</NavbarButton>
+            </div>
           </div>
         </NavBody>
 
