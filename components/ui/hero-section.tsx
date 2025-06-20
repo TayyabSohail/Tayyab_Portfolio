@@ -34,7 +34,7 @@ export function HeroSection() {
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left side - Flip words */}
         <div className="w-full md:w-1/2">
-          <div className="text-5xl md:text-6xl font-bold text-neutral-700 dark:text-neutral-300 space-y-4 leading-tight">
+          <div className="text-5xl pl-6 md:text-6xl font-bold text-neutral-700 dark:text-neutral-300 space-y-4 leading-tight">
             <div>I specialize in</div>
             <div className="min-h-[72px]">
               <FlipWords words={words} />

@@ -1,8 +1,16 @@
 "use client";
 import { cn } from "../../lib/utils";
-import { motion } from "framer-motion";
-import { useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  useAnimationFrame,
+  useMotionTemplate,
+  useMotionValue,
+  useTransform,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import React, { useState, useEffect } from "react";
+import { useRef } from "react";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -195,24 +203,143 @@ export const NavbarButton = ({
   | React.ComponentPropsWithoutRef<"button">
 )) => {
   const baseStyles =
-    "px-8 py-4 rounded-md bg-white button bg-white text-black text-md font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
-
+    "px-6 py-3 rounded-md text-md font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center w-fit";
   const variantStyles = {
+    primary: "text-black",
+    secondary: "bg-transparent dark:text-white",
+    dark: "text-white",
+    gradient: "text-white",
+  };
+
+  const variantBorders = {
+    primary: "bg-[radial-gradient(#0ea5e9_40%,transparent_60%)]",
+    secondary: "bg-[radial-gradient(#ffffff_40%,transparent_60%)]",
+    dark: "bg-[radial-gradient(#4b5563_40%,transparent_60%)]",
+    gradient: "bg-[radial-gradient(#3b82f6_40%,transparent_60%)]",
+  };
+
+  const variantBackgrounds = {
+    primary: "bg-white",
+    secondary: "bg-transparent",
+    dark: "bg-black",
+    gradient: "bg-gradient-to-b from-blue-500 to-blue-700",
+  };
+
+  const variantShadows = {
     primary:
       "shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
-    secondary: "bg-transparent shadow-none dark:text-white",
-    dark: "bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
-    gradient:
-      "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
+    secondary: "shadow-none",
+    dark: "shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
+    gradient: "shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
   };
 
   return (
     <Tag
       href={href || undefined}
-      className={cn(baseStyles, variantStyles[variant], className)}
+      className={cn(
+        "relative h-14 w-fit overflow-hidden bg-transparent p-0.5",
+        className
+      )}
       {...props}
     >
-      {children}
+      <div
+        className="absolute inset-0"
+        style={{
+          borderRadius: "0.5rem",
+          overflow: "hidden",
+        }}
+      >
+        <MovingBorder duration={3000} rx="0.5rem" ry="0.5rem">
+          <div
+            className={cn("h-10 w-10 opacity-[0.8]", variantBorders[variant])}
+          />
+        </MovingBorder>
+      </div>
+
+      <div
+        className={cn(
+          baseStyles,
+          variantStyles[variant],
+          variantShadows[variant],
+          "relative flex h-full w-full items-center justify-center border border-slate-800 antialiased",
+          variantBackgrounds[variant]
+        )}
+        style={{
+          borderRadius: "0.5rem",
+        }}
+      >
+        {children}
+      </div>
     </Tag>
+  );
+};
+
+const MovingBorder = ({
+  children,
+  duration = 3000,
+  rx = "0",
+  ry = "0",
+  ...otherProps
+}: {
+  children: React.ReactNode;
+  duration?: number;
+  rx?: string;
+  ry?: string;
+  [key: string]: any;
+}) => {
+  const pathRef = useRef<any>();
+  const progress = useMotionValue<number>(0);
+
+  useAnimationFrame((time) => {
+    const length = pathRef.current?.getTotalLength();
+    if (length) {
+      const pxPerMillisecond = length / duration;
+      progress.set((time * pxPerMillisecond) % length);
+    }
+  });
+
+  const x = useTransform(
+    progress,
+    (val) => pathRef.current?.getPointAtLength(val).x
+  );
+  const y = useTransform(
+    progress,
+    (val) => pathRef.current?.getPointAtLength(val).y
+  );
+
+  const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
+
+  return (
+    <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        className="absolute h-full w-full"
+        style={{
+          borderRadius: `${rx} ${ry}`, // Apply rounded corners to path
+        }}
+        {...otherProps}
+      >
+        <rect
+          fill="none"
+          width="100%"
+          height="100%"
+          rx={rx}
+          ry={ry}
+          ref={pathRef}
+        />
+      </svg>
+      <motion.div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          display: "inline-block",
+          transform,
+        }}
+      >
+        {children}
+      </motion.div>
+    </>
   );
 };

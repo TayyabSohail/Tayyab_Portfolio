@@ -61,9 +61,12 @@ export function ProjectsSection() {
       className="relative py-8 sm:py-12 md:py-16 overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6">
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-8 sm:mb-10 md:mb-14 text-neutral-800 dark:text-neutral-200">
-          My Projects
-        </h2>
+        <div className="w-full flex justify-center">
+          <h2 className="relative pt-16 text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-8 sm:mb-10 md:mb-14 text-neutral-800 dark:text-neutral-200 inline-block">
+            My Projects
+            <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></span>
+          </h2>
+        </div>
 
         <div ref={ref} className="relative">
           {/* Tracing beam */}
@@ -128,10 +131,10 @@ export function ProjectsSection() {
                   md:py-2
                 `}
                   >
-                    <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-neutral-800 dark:text-neutral-200">
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-neutral-800 dark:text-neutral-200">
                       {project.title}
                     </h3>
-                    <p className="text-sm sm:text-base md:text-[15px] mb-3 sm:mb-4 text-neutral-600 dark:text-neutral-400">
+                    <p className="text-base sm:text-lg md:text-[17px] mb-4 sm:mb-5 text-neutral-600 dark:text-neutral-400">
                       {project.description}
                     </p>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">

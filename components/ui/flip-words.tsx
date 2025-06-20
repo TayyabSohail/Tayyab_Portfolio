@@ -22,10 +22,12 @@ export const FlipWords = ({
   }, [currentWord, words]);
 
   useEffect(() => {
-    if (!isAnimating)
-      setTimeout(() => {
+    if (!isAnimating) {
+      const timeout = setTimeout(() => {
         startAnimation();
       }, duration);
+      return () => clearTimeout(timeout);
+    }
   }, [isAnimating, duration, startAnimation]);
 
   return (
@@ -35,19 +37,9 @@ export const FlipWords = ({
       }}
     >
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 10,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 10,
-        }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 100, damping: 10 }}
         exit={{
           opacity: 0,
           y: -40,
@@ -56,10 +48,7 @@ export const FlipWords = ({
           scale: 2,
           position: "absolute",
         }}
-        className={cn(
-          "z-10 inline-block relative text-left text-neutral-900 dark:text-neutral-100 px-2",
-          className
-        )}
+        className={cn("z-10 inline-block relative text-left px-2", className)}
         key={currentWord}
       >
         {currentWord.split(" ").map((word, wordIndex) => (
@@ -82,7 +71,7 @@ export const FlipWords = ({
                   delay: wordIndex * 0.3 + letterIndex * 0.05,
                   duration: 0.2,
                 }}
-                className="inline-block"
+                className="inline-block bg-gradient-to-b from-blue-500 to-purple-600 bg-clip-text text-transparent"
               >
                 {letter}
               </motion.span>
