@@ -4,8 +4,8 @@ import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
 export function NavbarDemo() {
   const navItems = [
     { name: "Home", link: "#home" },
-    { name: "About Me", link: "#about" },
-    { name: "My Projects", link: "#projects" },
+    { name: "About", link: "#about" },
+    { name: "Projects", link: "#projects" },
     { name: "Services", link: "#services" },
   ];
 
