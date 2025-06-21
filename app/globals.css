@@ -25,3 +25,34 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Add this to your CSS file or style section */
+@media (min-width: 768px) {
+  .floating-dock-desktop {
+    height: calc(var(--spacing) * 16);
+    max-width: var(--container-2xl);
+    align-items: safe flex-end;
+    justify-content: center;
+    gap: calc(var(--spacing) * 8);
+    background-color: var(--color-black);
+    padding-inline: calc(var(--spacing) * 4);
+    padding-bottom: calc(var(--spacing) * 3);
+    --tw-backdrop-blur: blur(var(--blur-sm));
+    backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
+    display: flex;
+  }
+  
+  /* Hide mobile version on desktop */
+  .floating-dock-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Hide desktop version on mobile */
+  .floating-dock-desktop {
+    display: none;
+  }
+  
+  /* Keep mobile styles as they are */
+}

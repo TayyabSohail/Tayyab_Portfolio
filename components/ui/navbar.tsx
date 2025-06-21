@@ -77,6 +77,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     </motion.div>
   );
 };
+
 export const NavBody = ({
   children,
   className,
@@ -103,8 +104,7 @@ export const NavBody = ({
         damping: 30,
       }}
       className={cn(
-        "relative z-[60] mx-auto flex max-w-7xl items-center justify-between rounded-xl transition-all duration-300",
-        !visible && "border-b border-white/20",
+        "relative z-[60] mx-auto flex max-w-7xl items-center justify-between rounded-xl transition-all duration-300 border-b border-white/20",
         className
       )}
     >
@@ -112,6 +112,7 @@ export const NavBody = ({
     </motion.div>
   );
 };
+
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
@@ -119,7 +120,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "relative flex flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
+        "relative flex flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-neutral-300 transition duration-200 lg:flex lg:space-x-2",
         className
       )}
     >
@@ -127,14 +128,14 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
+          className="relative px-4 py-2 text-neutral-300"
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="absolute inset-0 h-full w-full rounded-full bg-neutral-800"
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -316,7 +317,7 @@ const MovingBorder = ({
         preserveAspectRatio="none"
         className="absolute h-full w-full"
         style={{
-          borderRadius: `${rx} ${ry}`, // Apply rounded corners to path
+          borderRadius: `${rx} ${ry}`,
         }}
         {...otherProps}
       >

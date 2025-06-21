@@ -63,9 +63,9 @@ const FloatingDockMobile = ({
                 <a
                   href={item.href}
                   key={item.title}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 border border-neutral-700"
                 >
-                  <div className="h-4 w-4">{item.icon}</div>
+                  <div className="h-4 w-4 text-neutral-200">{item.icon}</div>
                 </a>
               </motion.div>
             ))}
@@ -74,14 +74,15 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 rounded-full bg-gray-50 px-4 py-2 dark:bg-neutral-800"
+        className="flex items-center gap-2 rounded-full bg-neutral-800 px-4 py-2 border border-neutral-700"
       >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
-        <span className="text-sm">Contact Me</span>
+        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-300" />
+        <span className="text-sm text-neutral-300">Contact Me</span>
       </button>
     </div>
   );
 };
+
 const FloatingDockDesktop = ({
   items,
   className,
@@ -94,10 +95,23 @@ const FloatingDockDesktop = ({
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className={cn(
-        "hidden h-16 items-end-safe gap-8 rounded-2xl bg-gray-50 px-4 pb-3 md:flex dark:bg-neutral-900",
-        className
-      )}
+      className={cn("hidden md:flex items-end justify-center", className)}
+      style={{
+        width: "auto", // Reduced width by using auto
+        maxWidth: "var(--container-sm)", // Using smaller container size (24rem)
+        height: "calc(var(--spacing) * 16)",
+        borderRadius: "var(--radius-xl)",
+        alignItems: "safe flex-end",
+        justifyContent: "center",
+        gap: "calc(var(--spacing) * 6)",
+        backgroundColor: "var(--color-black)",
+        backdropFilter: "blur(var(--blur-sm))",
+        paddingInline: "calc(var(--spacing) * 3)",
+        paddingBottom: "calc(var(--spacing) * 3)",
+        // Removed border styles
+        border: "0px solid",
+        borderColor: "transparent",
+      }}
     >
       {items.map((item) => (
         <IconContainer mouseX={mouseX} key={item.title} {...item} />
@@ -105,7 +119,6 @@ const FloatingDockDesktop = ({
     </motion.div>
   );
 };
-
 function IconContainer({
   mouseX,
   title,
@@ -169,7 +182,7 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full bg-gray-200 dark:bg-neutral-800"
+        className="relative flex aspect-square items-center justify-center rounded-full bg-neutral-800 border border-neutral-700"
       >
         <AnimatePresence>
           {hovered && (
@@ -177,7 +190,7 @@ function IconContainer({
               initial={{ opacity: 0, y: 10, x: "-50%" }}
               animate={{ opacity: 1, y: 0, x: "-50%" }}
               exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="absolute -top-8 left-1/2 w-fit rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs whitespace-pre text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white"
+              className="absolute -top-8 left-1/2 w-fit rounded-md border border-neutral-700 bg-neutral-800 px-2 py-0.5 text-xs whitespace-pre text-neutral-200"
             >
               {title}
             </motion.div>
@@ -185,7 +198,7 @@ function IconContainer({
         </AnimatePresence>
         <motion.div
           style={{ width: widthIcon, height: heightIcon }}
-          className="flex items-center justify-center"
+          className="flex items-center justify-center text-neutral-200"
         >
           {icon}
         </motion.div>

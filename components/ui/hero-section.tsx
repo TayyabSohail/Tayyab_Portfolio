@@ -2,7 +2,7 @@
 import { FlipWords } from "./flip-words";
 import Image from "next/image";
 import { NavbarButton } from "@/components/ui/navbar";
-import { TypewriterEffectSmooth } from "./typewriter-effect"; // Import the component
+import { TypewriterEffectSmooth } from "./typewriter-effect";
 
 export function HeroSection() {
   const words = [
@@ -15,63 +15,71 @@ export function HeroSection() {
   const nameWords = [
     {
       text: "Hi,",
-      className:
-        "text-neutral-600 dark:text-neutral-400 text-4xl md:text-5xl font-bold",
+      className: "text-neutral-400 text-3xl sm:text-4xl lg:text-5xl font-bold",
     },
     {
       text: "I'm",
-      className:
-        "text-neutral-600 dark:text-neutral-400 text-4xl md:text-5xl font-bold",
+      className: "text-neutral-400 text-3xl sm:text-4xl lg:text-5xl font-bold",
     },
     {
       text: "Tayyab Sohail",
-      className: "text-white dark:text-white text-4xl md:text-5xl font-bold",
+      className: "text-white text-3xl sm:text-4xl lg:text-5xl font-bold",
     },
   ];
 
   return (
     <section
       id="hero"
-      className="container mx-auto px-4 py-18 md:py-56 scroll-mt-30"
+      className="container mx-auto px-4 py-12 sm:py-16 md:py-20 lg:py-28 scroll-mt-20"
     >
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* Left side - Flip words */}
-        <div className="w-full md:w-1/2">
-          <div className="text-5xl pl-6 md:text-6xl font-bold text-neutral-700 dark:text-neutral-300 space-y-4 leading-tight">
-            <div>I specialize in</div>
-            <div className="min-h-[72px]">
-              <FlipWords words={words} />
-            </div>
+      {/* Main content - centered on all screens */}
+      <div className="flex flex-col items-center justify-center gap-8 md:gap-12">
+        {/* Profile image with top padding for mobile */}
+        <div className="pt-4 sm:pt-0 flex justify-center">
+          <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-neutral-700 shadow-lg">
+            <Image
+              src="/images/MTayyabSohail.jpeg"
+              alt="Tayyab Sohail Profile"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
 
-        {/* Right side - Image, name, and resume button */}
-        <div className="w-full md:w-1/2 flex flex-col items-center gap-6">
-          <div className="relative w-64 h-64 rounded-full overflow-hidden mb-4">
-            <Image
-              src="/images/MTayyabSohail.jpeg"
-              alt="M Tayyab Sohail Profile Pic"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          {/* Replaced static text with TypewriterEffectSmooth */}
+        {/* Text content - centered */}
+        <div className="w-full flex flex-col items-center gap-4 md:gap-6">
+          {/* Name with typewriter effect */}
           <TypewriterEffectSmooth
             words={nameWords}
             className="text-center"
-            cursorClassName="h-8 md:h-10" // Adjust cursor size
+            cursorClassName="h-8 sm:h-10 lg:h-12"
           />
+
+          {/* Specialization text */}
+          <div className="text-center w-full">
+            <div className="text-2xl sm:text-3xl lg:text-4xl text-neutral-300 mb-3">
+              I specialize in
+            </div>
+            <div className="h-16 sm:h-20 lg:h-24 flex items-center justify-center">
+              <FlipWords
+                words={words}
+                duration={3000}
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-400 text-center"
+              />
+            </div>
+          </div>
+
+          <div className=" flex justify-center">
+            <NavbarButton
+              href="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf"
+              download
+              variant="primary"
+            >
+              Download Resume
+            </NavbarButton>
+          </div>
         </div>
-      </div>
-      <div className="mt-8 flex justify-center">
-        <NavbarButton
-          href="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf"
-          download
-          variant="primary"
-        >
-          Download Resume
-        </NavbarButton>
       </div>
     </section>
   );
