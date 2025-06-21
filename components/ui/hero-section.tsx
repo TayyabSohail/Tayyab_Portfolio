@@ -15,15 +15,15 @@ export function HeroSection() {
   const nameWords = [
     {
       text: "Hi,",
-      className: "text-neutral-400 text-3xl sm:text-4xl lg:text-5xl font-bold",
+      className: "text-neutral-400 text-3xl sm:text-5xl lg:text-5xl font-bold",
     },
     {
       text: "I'm",
-      className: "text-neutral-400 text-3xl sm:text-4xl lg:text-5xl font-bold",
+      className: "text-neutral-400 text-3xl sm:text-5xl lg:text-5xl font-bold",
     },
     {
       text: "Tayyab Sohail",
-      className: "text-white text-3xl sm:text-4xl lg:text-5xl font-bold",
+      className: "text-white text-3xl sm:text-5xl lg:text-5xl font-bold",
     },
   ];
 
@@ -58,14 +58,14 @@ export function HeroSection() {
 
           {/* Specialization text */}
           <div className="text-center w-full">
-            <div className="text-2xl sm:text-3xl lg:text-4xl text-neutral-300 mb-3">
+            <div className="text-2xl sm:text-3xl lg:text-5xl text-neutral-300 mb-3">
               I specialize in
             </div>
             <div className="h-16 sm:h-20 lg:h-24 flex items-center justify-center">
               <FlipWords
                 words={words}
                 duration={3000}
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-400 text-center"
+                className="text-2xl sm:text-3xl lg:text-5xl font-bold text-blue-400 text-center"
               />
             </div>
           </div>

@@ -109,7 +109,7 @@ const FloatingDockDesktop = ({
         paddingInline: "calc(var(--spacing) * 3)",
         paddingBottom: "calc(var(--spacing) * 3)",
         // Removed border styles
-        border: "0px solid",
+        border: "0px transparent rounded-4xl",
         borderColor: "transparent",
       }}
     >
