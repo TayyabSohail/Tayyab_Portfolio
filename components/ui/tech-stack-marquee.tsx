@@ -7,12 +7,10 @@ import {
   SiJavascript,
   SiTypescript,
   SiPython,
-  SiPostgresql,
   SiVite,
   SiTailwindcss,
   SiFlask,
   SiFirebase,
-  SiMysql,
   SiKubernetes,
   SiDocker,
   SiPrometheus,
@@ -21,9 +19,6 @@ import {
   SiKeras,
   SiScikitlearn,
   SiPytorch,
-  SiNumpy,
-  SiPandas,
-  SiScipy,
   SiNodedotjs,
   SiAmazon,
   SiSupabase,
@@ -31,7 +26,6 @@ import {
   SiMongodb,
   SiExpress,
   SiGithub,
-  SiRedis,
 } from "react-icons/si";
 
 const techCategories = [
@@ -57,11 +51,11 @@ const techCategories = [
     items: [
       { name: "Node.js", icon: <SiNodedotjs className="text-[#339933]" /> },
       {
-        name: "Next.js (API)",
+        name: "API Development",
         icon: <SiNextdotjs className="text-black dark:text-white" />,
       },
       {
-        name: "Express",
+        name: "Express.js",
         icon: <SiExpress className="text-black dark:text-white" />,
       },
       {
@@ -69,12 +63,14 @@ const techCategories = [
         icon: <SiFlask className="text-black dark:text-white" />,
       },
       { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
-      { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
-      { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" /> },
-      { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
-      { name: "Redis", icon: <SiRedis className="text-[#DC382D]" /> },
-      { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" /> },
-      { name: "Supabase", icon: <SiSupabase className="text-[#3ECF8E]" /> },
+      {
+        name: "NoSQL",
+        icon: <SiMongodb className="text-[#47A248]" />,
+      },
+      {
+        name: "SQL",
+        icon: <SiFirebase className="text-[#FFCA28]" />,
+      },
     ],
   },
   {
@@ -88,43 +84,48 @@ const techCategories = [
       { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
       { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" /> },
       {
-        name: "GitHub Actions",
+        name: "CI/CD",
         icon: <SiGithub className="text-black dark:text-white" />,
       },
-      { name: "Prometheus", icon: <SiPrometheus className="text-[#E6522C]" /> },
-      { name: "Grafana", icon: <SiGrafana className="text-[#F46800]" /> },
+      {
+        name: "Monitoring (Prometheus)",
+        icon: <SiPrometheus className="text-[#E6522C]" />,
+      },
+      {
+        name: "Visualization (Grafana)",
+        icon: <SiGrafana className="text-[#F46800]" />,
+      },
     ],
   },
   {
     title: "LLMs & Generative AI",
     items: [
-      { name: "Adaptive RAG", icon: <span className="text-2xl">🤖</span> },
-      { name: "LSTM / RNNs", icon: <span className="text-2xl">🧠</span> },
-      { name: "GANs / VAE", icon: <span className="text-2xl">🌀</span> },
-      { name: "CycleGAN", icon: <span className="text-2xl">🔁</span> },
-    ],
-  },
-  {
-    title: "ML/DL Frameworks",
-    items: [
-      { name: "TensorFlow", icon: <SiTensorflow className="text-[#FF6F00]" /> },
-      { name: "PyTorch", icon: <SiPytorch className="text-[#EE4C2C]" /> },
-      { name: "Keras", icon: <SiKeras className="text-[#D00000]" /> },
       {
-        name: "scikit-learn",
-        icon: <SiScikitlearn className="text-[#F7931E]" />,
+        name: "Prompt Engineering",
+        icon: <span className="text-2xl">🧠</span>,
       },
+      { name: "RAG Systems", icon: <span className="text-2xl">🔍</span> },
+      { name: "Text Generation", icon: <span className="text-2xl">✍️</span> },
+      { name: "Image Generation", icon: <span className="text-2xl">🖼️</span> },
     ],
   },
   {
-    title: "Data Science & Math",
+    title: "ML & Deep Learning",
     items: [
-      { name: "NumPy", icon: <SiNumpy className="text-[#4D77CF]" /> },
-      { name: "Pandas", icon: <SiPandas className="text-[#150458]" /> },
-      { name: "SciPy", icon: <SiScipy className="text-[#8CAAE6]" /> },
+      {
+        name: "Supervised Learning",
+        icon: <span className="text-2xl">📘</span>,
+      },
+      {
+        name: "Unsupervised Learning",
+        icon: <span className="text-2xl">📙</span>,
+      },
+      { name: "Deep Learning", icon: <span className="text-2xl">🧠</span> },
+      { name: "Model Deployment", icon: <span className="text-2xl">🚀</span> },
     ],
   },
 ];
+
 const TechCategory = ({
   category,
 }: {
@@ -141,14 +142,14 @@ const TechCategory = ({
       {category.title}
     </h3>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+    <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(160px,1fr))]">
       {category.items.map((tech) => (
         <div
           key={tech.name}
           className="flex items-center gap-3 p-4 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 rounded-xl shadow-md hover:shadow-2xl hover:scale-[1.04] transition-all duration-300"
         >
           <div className="text-3xl">{tech.icon}</div>
-          <span className="font-medium text-neutral-200 whitespace-nowrap">
+          <span className="font-medium text-neutral-200 text-sm leading-snug">
             {tech.name}
           </span>
         </div>
