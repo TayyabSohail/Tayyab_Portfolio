@@ -5,6 +5,7 @@ import Image from "next/image";
 import { NavbarButton } from "@/components/ui/navbar";
 import { TypewriterEffectSmooth } from "./typewriter-effect";
 import { FlipWords } from "./flip-words";
+import { FaLinkedin, FaGithub, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 export function HeroSection() {
   const sectionRef = useRef(null);
@@ -80,6 +81,42 @@ export function HeroSection() {
             >
               Download Resume
             </NavbarButton>
+          </div>
+          <div className="flex gap-3 justify-center">
+            <a
+              href="https://www.linkedin.com/in/muhammad-tayyab-sohail/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-neutral-800 hover:bg-blue-600 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin className="text-lg text-blue-400" />
+            </a>
+            <a
+              href="https://github.com/TayyabSohail"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-neutral-800 hover:bg-purple-600 transition-colors"
+              aria-label="GitHub"
+            >
+              <FaGithub className="text-lg text-white" />
+            </a>
+            <a
+              href="mailto:m.tayyabsohail614@gmail.com"
+              className="p-2 rounded-full bg-neutral-800 hover:bg-red-600 transition-colors"
+              aria-label="Email"
+            >
+              <FaEnvelope className="text-lg text-red-400" />
+            </a>
+            <a
+              href="https://wa.me/923338199915"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-neutral-800 hover:bg-green-600 transition-colors"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp className="text-lg text-green-400" />
+            </a>
           </div>
         </div>
       </div>
