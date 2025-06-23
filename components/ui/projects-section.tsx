@@ -45,6 +45,20 @@ const projects = [
     link: "https://github.com/TayyabSohail/Marriage-Event-Management-System-FULL-STACK-",
   },
 ];
+const certifications = [
+  {
+    title: "AWS Academy Cloud Web Application Builder",
+    link: "https://www.credly.com/badges/116d369d-7582-4683-b9f1-87121ad994af/print",
+  },
+  {
+    title: "AWS Academy Cloud Data Pipeline Builder",
+    link: "https://www.credly.com/earner/earned/badge/9c3853b9-f0d2-43c2-9f17-9b0d54c75d80",
+  },
+  {
+    title: "AWS Academy Cloud Foundations",
+    link: "http://credly.com/badges/081dcc5f-714e-4db6-a20b-4e7e0933fb8c",
+  },
+];
 
 export function ProjectsSection() {
   const ref = useRef(null);
@@ -161,6 +175,46 @@ export function ProjectsSection() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Certifications Section */}
+          <div className="pt-24">
+            <div className="w-full flex justify-center">
+              <h2 className="relative text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-12 text-neutral-200 inline-block">
+                Certifications
+                <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-2/3 h-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 rounded-full"></span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 sm:px-12 md:px-20">
+              {certifications.map((cert, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="relative bg-gradient-to-br from-[#1f2937] to-[#111827] border border-blue-600/30 rounded-xl p-6 shadow-lg hover:shadow-blue-600/30 transition duration-300"
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-14 h-14 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl shadow-md mb-4">
+                      🎓
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-semibold text-neutral-100 mb-2">
+                      {cert.title}
+                    </h3>
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-400 underline hover:text-blue-300 transition"
+                    >
+                      View Certificate →
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

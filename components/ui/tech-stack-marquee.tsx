@@ -24,6 +24,9 @@ import {
   SiNumpy,
   SiPandas,
   SiScipy,
+  SiNodedotjs,
+  SiAmazon,
+  SiSupabase,
   SiGooglecloud,
   SiMongodb,
   SiExpress,
@@ -52,24 +55,36 @@ const techCategories = [
   {
     title: "Backend & Databases",
     items: [
-      { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
+      { name: "Node.js", icon: <SiNodedotjs className="text-[#339933]" /> },
       {
-        name: "Flask",
-        icon: <SiFlask className="text-black dark:text-white" />,
+        name: "Next.js (API)",
+        icon: <SiNextdotjs className="text-black dark:text-white" />,
       },
       {
         name: "Express",
         icon: <SiExpress className="text-black dark:text-white" />,
       },
+      {
+        name: "Flask",
+        icon: <SiFlask className="text-black dark:text-white" />,
+      },
+      { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
+      { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
       { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" /> },
       { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
-      { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
       { name: "Redis", icon: <SiRedis className="text-[#DC382D]" /> },
+      { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" /> },
+      { name: "Supabase", icon: <SiSupabase className="text-[#3ECF8E]" /> },
     ],
   },
   {
-    title: "DevOps & Cloud",
+    title: "Cloud & DevOps",
     items: [
+      { name: "AWS", icon: <SiAmazon className="text-[#FF9900]" /> },
+      {
+        name: "Google Cloud",
+        icon: <SiGooglecloud className="text-[#4285F4]" />,
+      },
       { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
       { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" /> },
       {
@@ -78,15 +93,20 @@ const techCategories = [
       },
       { name: "Prometheus", icon: <SiPrometheus className="text-[#E6522C]" /> },
       { name: "Grafana", icon: <SiGrafana className="text-[#F46800]" /> },
-      {
-        name: "Google Cloud",
-        icon: <SiGooglecloud className="text-[#4285F4]" />,
-      },
-      { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" /> },
     ],
   },
   {
-    title: "AI/ML & Data Science",
+    title: "LLMs & Generative AI",
+    items: [
+      { name: "Adaptive RAG", icon: <span className="text-2xl">🤖</span> },
+      { name: "LSTM / RNNs", icon: <span className="text-2xl">🧠</span> },
+      { name: "GANs / VAE", icon: <span className="text-2xl">🌀</span> },
+      { name: "CycleGAN", icon: <span className="text-2xl">🔁</span> },
+      { name: "Siamese Networks", icon: <span className="text-2xl">🔗</span> },
+    ],
+  },
+  {
+    title: "ML/DL Frameworks",
     items: [
       { name: "TensorFlow", icon: <SiTensorflow className="text-[#FF6F00]" /> },
       { name: "PyTorch", icon: <SiPytorch className="text-[#EE4C2C]" /> },
@@ -95,13 +115,17 @@ const techCategories = [
         name: "scikit-learn",
         icon: <SiScikitlearn className="text-[#F7931E]" />,
       },
+    ],
+  },
+  {
+    title: "Data Science & Math",
+    items: [
       { name: "NumPy", icon: <SiNumpy className="text-[#4D77CF]" /> },
       { name: "Pandas", icon: <SiPandas className="text-[#150458]" /> },
       { name: "SciPy", icon: <SiScipy className="text-[#8CAAE6]" /> },
     ],
   },
 ];
-
 const TechCategory = ({
   category,
 }: {
