@@ -6,7 +6,7 @@ export function NavbarDemo() {
     { name: "Home", link: "#home" },
     { name: "About", link: "#about" },
     { name: "Projects", link: "#projects" },
-    { name: "Tech Stack", link: "#services" },
+    { name: "Stack", link: "#services" },
   ];
 
   return (

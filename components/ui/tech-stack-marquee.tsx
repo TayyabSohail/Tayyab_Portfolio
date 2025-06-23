@@ -102,7 +102,6 @@ const techCategories = [
       { name: "LSTM / RNNs", icon: <span className="text-2xl">🧠</span> },
       { name: "GANs / VAE", icon: <span className="text-2xl">🌀</span> },
       { name: "CycleGAN", icon: <span className="text-2xl">🔁</span> },
-      { name: "Siamese Networks", icon: <span className="text-2xl">🔗</span> },
     ],
   },
   {

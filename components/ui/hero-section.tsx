@@ -1,10 +1,15 @@
 "use client";
-import { FlipWords } from "./flip-words";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import { NavbarButton } from "@/components/ui/navbar";
 import { TypewriterEffectSmooth } from "./typewriter-effect";
+import { FlipWords } from "./flip-words";
 
 export function HeroSection() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { margin: "-100px", once: false });
+
   const words = [
     "Artificial Intelligence",
     "Software Development",
@@ -29,12 +34,11 @@ export function HeroSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="container mx-auto px-4 py-12 sm:py-16 md:py-20 lg:py-28 scroll-mt-20"
     >
-      {/* Main content - centered on all screens */}
       <div className="flex flex-col items-center justify-center gap-8 md:gap-12">
-        {/* Profile image with top padding for mobile */}
         <div className="pt-4 sm:pt-0 flex justify-center">
           <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-neutral-700 shadow-lg">
             <Image
@@ -47,16 +51,13 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Text content - centered */}
         <div className="w-full flex flex-col items-center gap-4 md:gap-6">
-          {/* Name with typewriter effect */}
           <TypewriterEffectSmooth
             words={nameWords}
             className="text-center"
             cursorClassName="h-8 sm:h-10 lg:h-12"
           />
 
-          {/* Specialization text */}
           <div className="text-center w-full">
             <div className="text-2xl sm:text-3xl lg:text-5xl text-neutral-300 mb-3">
               I specialize in
@@ -65,12 +66,13 @@ export function HeroSection() {
               <FlipWords
                 words={words}
                 duration={3000}
+                isActive={isInView}
                 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-blue-400 text-center"
               />
             </div>
           </div>
 
-          <div className=" flex justify-center">
+          <div className="flex justify-center">
             <NavbarButton
               href="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf"
               download
