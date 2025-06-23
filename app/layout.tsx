@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 import { NavbarDemo } from "@/components/ui/navbar-demo";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { GridBackground } from "@/components/ui/grid-background";
@@ -99,6 +100,19 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Google Analytics (gtag.js) - Using Next.js Script */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-7ERWVLWFKQ"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7ERWVLWFKQ');
+        `}
+        </Script>
         <meta name="theme-color" content="#ffffff" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
