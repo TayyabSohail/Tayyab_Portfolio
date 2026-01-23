@@ -26,6 +26,7 @@ import {
   SiSupabase,
   SiExpress,
 } from "react-icons/si";
+import { title } from "framer-motion/m";
 
 const techCategories = [
   {
@@ -74,7 +75,7 @@ const techCategories = [
     ],
   },
   {
-    title: "Payment Gateways and Analytics",
+    title: "Payment Gateways",
     items: [
       {
         name: "DHL",
@@ -82,7 +83,6 @@ const techCategories = [
       },
       { name: "Stripe", icon: <SiStripe className="text-[#008CDD]" /> },
       { name: "PayPal", icon: <SiPaypal className="text-[#003087]" /> },
-      { name: "Posthog", icon: <SiPosthog className="text-[#FF6B6B]" /> },
     ],
   },
   {
@@ -95,14 +95,6 @@ const techCategories = [
       },
       { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
       { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" /> },
-      {
-        name: "Monitoring (Prometheus)",
-        icon: <SiPrometheus className="text-[#E6522C]" />,
-      },
-      {
-        name: "Visualization (Grafana)",
-        icon: <SiGrafana className="text-[#F46800]" />,
-      },
     ],
   },
   {
@@ -116,6 +108,20 @@ const techCategories = [
       { name: "Text Generation", icon: <span className="text-2xl">✍️</span> },
       { name: "Image Generation", icon: <span className="text-2xl">🖼️</span> },
       { name: "Voice Agents", icon: <span className="text-2xl">🎙️</span> },
+    ],
+  },
+  {
+    title: "Analytics",
+    items: [
+      { name: "Posthog", icon: <SiPosthog className="text-[#FF6B6B]" /> },
+      {
+        name: "Monitoring (Prometheus)",
+        icon: <SiPrometheus className="text-[#E6522C]" />,
+      },
+      {
+        name: "Visualization (Grafana)",
+        icon: <SiGrafana className="text-[#F46800]" />,
+      },
     ],
   },
 ];

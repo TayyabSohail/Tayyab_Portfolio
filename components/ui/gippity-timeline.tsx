@@ -147,28 +147,6 @@ export const GippityAITimeline = () => {
         </div>
       ),
     },
-    {
-      title: "Mindset",
-      content: (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold bg-white bg-clip-text text-transparent">
-            Build. Learn. Ship. Repeat.
-          </h2>
-          <p className="text-lg text-neutral-300 dark:text-neutral-300">
-            Progress comes from shipping fast and staying curious. Whether I'm
-            learning a new{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              AI workflow
-            </span>{" "}
-            or optimizing a{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              backend architecture
-            </span>
-            , I'm always building one iteration at a time.
-          </p>
-        </div>
-      ),
-    },
   ];
 
   return (
