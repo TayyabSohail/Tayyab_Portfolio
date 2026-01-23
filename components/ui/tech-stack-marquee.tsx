@@ -15,17 +15,16 @@ import {
   SiDocker,
   SiPrometheus,
   SiGrafana,
-  SiTensorflow,
-  SiKeras,
-  SiScikitlearn,
-  SiPytorch,
   SiNodedotjs,
   SiAmazon,
-  SiSupabase,
+  SiStripe,
+  SiDhl,
+  SiPaypal,
+  SiPosthog,
   SiGooglecloud,
   SiMongodb,
+  SiSupabase,
   SiExpress,
-  SiGithub,
 } from "react-icons/si";
 
 const techCategories = [
@@ -46,6 +45,7 @@ const techCategories = [
       },
     ],
   },
+
   {
     title: "Backend & Databases",
     items: [
@@ -62,7 +62,6 @@ const techCategories = [
         name: "Flask",
         icon: <SiFlask className="text-black dark:text-white" />,
       },
-      { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
       {
         name: "NoSQL",
         icon: <SiMongodb className="text-[#47A248]" />,
@@ -71,6 +70,19 @@ const techCategories = [
         name: "SQL",
         icon: <SiFirebase className="text-[#FFCA28]" />,
       },
+      { name: "Supabase", icon: <SiSupabase className="text-[#38B2AC]" /> },
+    ],
+  },
+  {
+    title: "Payment Gateways and Analytics",
+    items: [
+      {
+        name: "DHL",
+        icon: <SiDhl className="h-6 w-6" />,
+      },
+      { name: "Stripe", icon: <SiStripe className="text-[#008CDD]" /> },
+      { name: "PayPal", icon: <SiPaypal className="text-[#003087]" /> },
+      { name: "Posthog", icon: <SiPosthog className="text-[#FF6B6B]" /> },
     ],
   },
   {
@@ -83,10 +95,6 @@ const techCategories = [
       },
       { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
       { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" /> },
-      {
-        name: "CI/CD",
-        icon: <SiGithub className="text-black dark:text-white" />,
-      },
       {
         name: "Monitoring (Prometheus)",
         icon: <SiPrometheus className="text-[#E6522C]" />,
@@ -107,21 +115,7 @@ const techCategories = [
       { name: "RAG Systems", icon: <span className="text-2xl">🔍</span> },
       { name: "Text Generation", icon: <span className="text-2xl">✍️</span> },
       { name: "Image Generation", icon: <span className="text-2xl">🖼️</span> },
-    ],
-  },
-  {
-    title: "ML & Deep Learning",
-    items: [
-      {
-        name: "Supervised Learning",
-        icon: <span className="text-2xl">📘</span>,
-      },
-      {
-        name: "Unsupervised Learning",
-        icon: <span className="text-2xl">📙</span>,
-      },
-      { name: "Deep Learning", icon: <span className="text-2xl">🧠</span> },
-      { name: "Model Deployment", icon: <span className="text-2xl">🚀</span> },
+      { name: "Voice Agents", icon: <span className="text-2xl">🎙️</span> },
     ],
   },
 ];
