@@ -75,14 +75,14 @@ const techCategories = [
     ],
   },
   {
-    title: "Payment Gateways",
+    title: "Payments & Services",
     items: [
+      { name: "Stripe", icon: <SiStripe className="text-[#008CDD]" /> },
+      { name: "PayPal", icon: <SiPaypal className="text-[#003087]" /> },
       {
         name: "DHL",
         icon: <SiDhl className="h-6 w-6" />,
       },
-      { name: "Stripe", icon: <SiStripe className="text-[#008CDD]" /> },
-      { name: "PayPal", icon: <SiPaypal className="text-[#003087]" /> },
     ],
   },
   {
