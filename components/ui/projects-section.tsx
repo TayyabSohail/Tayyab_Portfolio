@@ -237,7 +237,7 @@ export function ProjectsSection() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 bg-white text-black font-medium rounded-lg hover:bg-blue-500 transition text-sm"
+                      className="px-4 py-2 bg-white text-black font-medium rounded-lg hover:bg-gray-800 hover:text-white outline outline-white/10 transition text-sm"
                     >
                       View Live →
                     </a>

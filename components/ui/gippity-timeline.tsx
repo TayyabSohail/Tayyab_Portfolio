@@ -42,25 +42,17 @@ export const GippityAITimeline = () => {
             </span>{" "}
             applications using frameworks like{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              MERN
+              Next.js
             </span>
             ,{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              Next.js
+MERN             
             </span>
             , and{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
               TypeScript
             </span>
-            . My work bridges{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              frontend
-            </span>{" "}
-            fluidity with{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              backend
-            </span>{" "}
-            reliability built for performance and real-world impact.
+            , delivering responsive frontends paired with reliable backends. My focus is on performance, scalability, and solutions that have real-world impact.
           </p>
         </div>
       ),
@@ -70,34 +62,22 @@ export const GippityAITimeline = () => {
       content: (
         <div className="space-y-4">
           <h2 className="text-2xl font-bold bg-white bg-clip-text text-transparent">
-            Practical AI, Built for Humans
+            Practical AI & Generative Systems
           </h2>
           <p className="text-lg text-neutral-300 dark:text-neutral-300">
-            From{" "}
+            I develop AI-driven applications across text, image, and audio, including{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              RAG-based chatbots
-            </span>{" "}
-            to{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              GAN synthesis
-            </span>{" "}
-            and{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              LSTM analysis
-            </span>
-            , I bring{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              ML
-            </span>{" "}
-            to life with real-world apps. I work with{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              TensorFlow
+              RAG chatbots
             </span>
             ,{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              PyTorch
+              TTS/STT
             </span>
-            , and custom-tuned models to deliver human facing AI.
+            ,{" "}
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
+              GAN/LLM image generation
+            </span>
+            , and audio synthesis. I deliver AI solutions that are production-ready and user-facing, designed to integrate seamlessly into real-world applications.
           </p>
         </div>
       ),
@@ -107,7 +87,7 @@ export const GippityAITimeline = () => {
       content: (
         <div className="space-y-4">
           <h2 className="text-2xl font-bold bg-white bg-clip-text text-transparent">
-            Scale with Confidence
+            Scalable Cloud Systems
           </h2>
           <p className="text-lg text-neutral-300 dark:text-neutral-300">
             I build{" "}
@@ -120,34 +100,19 @@ export const GippityAITimeline = () => {
             </span>
             ,{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              GCP
+            Supabase
             </span>
             , and{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              Firebase
+            Firebase
             </span>
-            . With{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              Docker
-            </span>
-            ,{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              Kubernetes
-            </span>
-            ,{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              GitHub Actions
-            </span>
-            , and{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              MLflow
-            </span>
-            , I ensure systems are fast, reliable, and production ready.
+            , ensuring reliability, fast performance, and smooth deployment at scale. My focus is on building systems that are maintainable, observable, and production-ready.
           </p>
         </div>
       ),
     },
   ];
+  
 
   return (
     <div
