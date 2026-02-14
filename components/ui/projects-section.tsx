@@ -18,23 +18,23 @@ const projects = [
   // -------------------- SEOMaven --------------------
   {
     title: "SEOMaven",
-    shortDescription: "AI-driven platform for smarter SEO growth.",
+    shortDescription: "AI-Powered SEO & Content Platform",
     description:
-      "An all-in-one SEO & content platform integrating DataForSEO, OpenRouter AI, content generation, and rank tracking.",
-
+      "A unified SEO platform that combines real-time keyword insights, AI-driven content generation, and automated rank tracking to streamline workflows and accelerate content production.",
+    
     whatIDid: [
-      "Integrated DataForSEO for keyword/SERP intelligence and built an OpenRouter-powered AI content engine with template-based generation.",
-      "Implemented Trigger.dev pipelines for bulk content processing, caching, and multi-locale SEO automation (JSON-LD, metadata, structure).",
+      "Engineered real-time SEO insights with DataForSEO and built a scalable OpenRouter-powered AI engine for rapid, high-quality content generation.",
+      "Automated complex SEO workflows using Trigger.dev, handling bulk content processing, caching, and multi-locale SEO optimizations.",
     ],
-
+    
     impact: [
       "Delivered 3× faster content production with fully automated AI workflows.",
-      "Reduced keyword tracking cost by 50% through efficient batching and caching logic.",
+      "Reduced keyword tracking costs by 50% through optimized batching and caching strategies.",
     ],
-
+    
     techStack: [
       { icon: SiFigma, category: "UI/UX", tools: "Figma, Excalidraw", color: "#F24E1E" },
-      { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TailwindCSS, ShadCN", color: "#000000" },
+      { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TailwindCSS, ShadCN", color: "#FFFFFF" },
       { icon: SiSupabase, category: "Backend", tools: "Supabase, PostgreSQL, Trigger.dev", color: "#3ECF8E" },
       { icon: SiStripe, category: "Payment", tools: "Stripe", color: "#008CDD" },
       { icon: SiLinear, category: "Project Mgmt", tools: "Linear, Slack", color: "#5C6AC4" },
@@ -65,7 +65,7 @@ const projects = [
 
     techStack: [
       { icon: SiFigma, category: "UI/UX", tools: "Figma, Excalidraw", color: "#F24E1E" },
-      { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TailwindCSS, ShadCN", color: "#000000" },
+      { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TailwindCSS, ShadCN", color: "#FFFFFF" },
       { icon: SiSupabase, category: "Backend", tools: "Supabase, PostgreSQL", color: "#3ECF8E" },
       { icon: SiStripe, category: "Payment", tools: "Stripe", color: "#008CDD" },
       { icon: SiLinear, category: "Project Mgmt", tools: "Linear, Slack", color: "#5C6AC4" },
@@ -94,7 +94,7 @@ const projects = [
 
     techStack: [
       { icon: SiFigma, category: "UI/UX", tools: "Figma, Excalidraw", color: "#F24E1E" },
-      { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TS, TailwindCSS", color: "#000000" },
+      { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TS, TailwindCSS", color: "#FFFFFF" },
       { icon: SiSupabase, category: "Backend", tools: "Supabase", color: "#3ECF8E" },
       { icon: SiStripe, category: "Payment", tools: "Stripe", color: "#008CDD" },
       { icon: FaDhl, category: "Logistics", tools: "DHL API", color: "#FFCC00" },
@@ -104,6 +104,40 @@ const projects = [
     link: "https://anina.app/",
   },
 ];
+
+// Helper function to highlight numbers and key metrics
+const highlightNumbers = (text: string) => {
+  // Match numbers with units: 3×, 50%, 1,000+, <200ms, etc.
+  const regex = /(<\d+ms|\d+[×x]|\d{1,3}(?:,\d{3})+[+]|\d+%|\d+[+])/gi;
+  const parts: (string | React.ReactElement)[] = [];
+  let lastIndex = 0;
+  let match;
+  let key = 0;
+  
+  while ((match = regex.exec(text)) !== null) {
+    // Add text before the match
+    if (match.index > lastIndex) {
+      parts.push(<span key={`text-${key++}`}>{text.substring(lastIndex, match.index)}</span>);
+    }
+    // Add highlighted number
+    parts.push(
+      <span
+        key={`num-${key++}`}
+        className="font-bold text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400"
+      >
+        {match[0]}
+      </span>
+    );
+    lastIndex = regex.lastIndex;
+  }
+  
+  // Add remaining text
+  if (lastIndex < text.length) {
+    parts.push(<span key={`text-${key++}`}>{text.substring(lastIndex)}</span>);
+  }
+  
+  return parts.length > 0 ? <>{parts}</> : text;
+};
 
 export function ProjectsSection() {
   const ref = useRef(null);
@@ -164,17 +198,17 @@ export function ProjectsSection() {
                     <strong className="text-white">What I Did:</strong>
                     <ul className="list-disc list-inside text-neutral-300 mt-1 space-y-1">
                       {project.whatIDid.map((item, i) => (
-                        <li key={i}>{item}</li>
+                        <li key={i}>{highlightNumbers(item)}</li>
                       ))}
                     </ul>
                   </div>
-  
+
                   {/* Impact */}
                   <div className="mt-3 bg-transparent backdrop-blur-sm px-4 py-3 rounded-lg border border-white/10">
                     <strong className="text-white">Impact:</strong>
                     <ul className="list-disc list-inside text-neutral-300 mt-1 space-y-1">
                       {project.impact.map((item, i) => (
-                        <li key={i}>{item}</li>
+                        <li key={i}>{highlightNumbers(item)}</li>
                       ))}
                     </ul>
                   </div>

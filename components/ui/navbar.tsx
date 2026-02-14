@@ -94,9 +94,9 @@ export const NavBody = ({
             ? "0.5rem 1rem"
             : "1rem"
           : visible
-          ? "0.5rem 2rem"
-          : "1rem 2rem",
-        width: isMobile ? (visible ? "90%" : "100%") : visible ? "60%" : "100%",
+          ? "0.5rem 1.5rem"
+          : "1rem 1.5rem",
+        width: isMobile ? (visible ? "85%" : "100%") : visible ? "35%" : "100%",
       }}
       transition={{
         type: "spring",
@@ -104,7 +104,7 @@ export const NavBody = ({
         damping: 30,
       }}
       className={cn(
-        "relative z-[60] mx-auto flex max-w-7xl items-center justify-between rounded-xl transition-all duration-300 border-b border-white/20",
+        "relative z-[60] mx-auto flex max-w-3xl items-center justify-between rounded-xl transition-all duration-300 border-b border-white/20",
         className
       )}
     >
@@ -120,15 +120,15 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "relative flex flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-neutral-300 transition duration-200 lg:flex lg:space-x-2",
+        "relative flex flex-1 flex-row items-center justify-center space-x-4 text-sm font-medium text-neutral-300 transition duration-200 lg:flex lg:space-x-4",
         className
       )}
-    >
+      >
       {items.map((item, idx) => (
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-300"
+          className="relative px-5 py-2 text-neutral-300"
           key={`link-${idx}`}
           href={item.link}
         >
