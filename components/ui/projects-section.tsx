@@ -103,6 +103,31 @@ const projects = [
     image: "/images/anina.png",
     link: "https://anina.app/",
   },
+
+  // -------------------- New Web Order --------------------
+  {
+    title: "New Web Order",
+    shortDescription: "Company website with performance optimization.",
+    description:
+      "Built a modern company website using Next.js, Tailwind CSS, and TypeScript, focusing on performance optimization, SEO enhancement, and delivering a clean user experience.",
+    
+    whatIDid: [
+      "Developed a responsive company website using Next.js with TypeScript for type safety and Tailwind CSS for modern styling.",
+      "Implemented performance optimizations including code splitting, image optimization, and efficient rendering strategies.",
+    ],
+    
+    impact: [
+      "Boosted performance by 40% through strategic optimizations and best practices.",
+      "Delivered a clean, intuitive UX that improved user engagement and site usability.",
+    ],
+    
+    techStack: [
+      { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TailwindCSS, TypeScript", color: "#FFFFFF" },
+      { icon: SiTypescript, category: "Languages", tools: "TypeScript", color: "#3178C6" },
+    ],
+    image: "/images/nwo.png",
+    link: "https://www.newweborder.us/",
+  },
 ];
 
 // Helper function to highlight numbers and key metrics
