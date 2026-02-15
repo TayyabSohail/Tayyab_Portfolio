@@ -1,18 +1,15 @@
 "use client";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { NavbarButton } from "@/components/ui/navbar";
 import { TypewriterEffectSmooth } from "./typewriter-effect";
 import { FlipWords } from "./flip-words";
 import { FaLinkedin, FaGithub, FaEnvelope, FaWhatsapp } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
 
 export function HeroSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { margin: "-100px", once: false });
-
-  const [openResume, setOpenResume] = useState(false);
 
   const words = [
     "Artificial Intelligence",
@@ -37,9 +34,7 @@ export function HeroSection() {
   ];
 
   return (
-    <>
-      {/* HERO SECTION */}
-      <section
+    <section
         ref={sectionRef}
         id="hero"
         className="container mx-auto px-4 py-12 sm:py-16 md:py-20 lg:py-28 scroll-mt-20 overflow-hidden w-full max-w-full"
@@ -81,8 +76,9 @@ export function HeroSection() {
             {/* RESUME BUTTON */}
             <div className="flex justify-center w-full px-4">
               <NavbarButton
-                as="button"
-                onClick={() => setOpenResume(true)}
+                href="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 variant="primary"
                 className="w-full sm:w-auto max-w-full"
               >
@@ -130,48 +126,5 @@ export function HeroSection() {
           </div>
         </div>
       </section>
-
-      {/* FULLSCREEN RESUME MODAL */}
-      <AnimatePresence>
-        {openResume && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[999] flex items-center justify-center p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              className="relative bg-neutral-900 rounded-xl w-full max-w-4xl h-[90vh] shadow-2xl overflow-hidden"
-            >
-              {/* CLOSE BUTTON */}
-              <button
-                onClick={() => setOpenResume(false)}
-                className="absolute top-3 right-3 bg-neutral-700 hover:bg-neutral-600 text-white px-3 py-1 rounded-md text-sm"
-              >
-                Close
-              </button>
-
-              {/* PDF VIEWER */}
-              <iframe
-                src="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf"
-                className="w-full h-full"
-              />
-
-              {/* DOWNLOAD BUTTON */}
-              <a
-                href="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf"
-                download
-                className="absolute bottom-3 right-3 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md text-sm"
-              >
-                Download PDF
-              </a>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
   );
 }
