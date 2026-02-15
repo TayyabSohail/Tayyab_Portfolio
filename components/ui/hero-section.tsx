@@ -37,7 +37,7 @@ export function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="container mx-auto px-4 py-12 sm:py-16 md:py-20 lg:py-28 scroll-mt-20"
+      className="container mx-auto px-4 py-12 sm:py-16 md:py-20 lg:py-28 scroll-mt-20 overflow-hidden w-full max-w-full"
     >
       <div className="flex flex-col items-center justify-center gap-8 md:gap-12">
         <div className="pt-4 sm:pt-0 flex justify-center">
@@ -59,27 +59,30 @@ export function HeroSection() {
             cursorClassName="h-8 sm:h-10 lg:h-12"
           />
 
-          <div className="text-center w-full">
+          <div className="text-center w-full max-w-full overflow-hidden px-2">
             <div className="text-2xl sm:text-3xl lg:text-5xl text-neutral-300 mb-3">
               I specialize in
             </div>
-            <div className="h-16 sm:h-20 lg:h-24 flex items-center justify-center">
-              <FlipWords
-                words={words}
-                duration={3000}
-                isActive={isInView}
-                className="text-2xl sm:text-3xl lg:text-5xl font-bold text-blue-400 text-center"
-              />
+            <div className="h-16 sm:h-20 lg:h-24 flex items-center justify-center overflow-hidden relative w-full">
+              <div className="w-full max-w-full overflow-hidden">
+                <FlipWords
+                  words={words}
+                  duration={3000}
+                  isActive={isInView}
+                  className="text-2xl sm:text-3xl lg:text-5xl font-bold text-blue-400 text-center"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center w-full px-4">
             <NavbarButton
               href="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf"
               download
               variant="primary"
+              className="w-full sm:w-auto max-w-full"
             >
-              Download Resume
+              <span className="text-sm sm:text-base">Download Resume</span>
             </NavbarButton>
           </div>
           <div className="flex gap-3 justify-center">
