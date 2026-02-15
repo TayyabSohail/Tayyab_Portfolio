@@ -175,10 +175,12 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="relative py-20 bg-transparent text-neutral-100">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
-          My Projects
-        </h2>
-  
+        <div className="text-center mb-16">
+          <h2 className="relative inline-block text-4xl md:text-5xl font-bold bg-clip-text text-white">
+            My Projects
+            <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full h-1 bg-linear-to-r from-blue-500 to-purple-600 rounded-full"></span>
+          </h2>
+        </div>
         <div ref={ref} className="relative">
           <motion.div
             style={{ height: beamHeight }}
@@ -193,7 +195,7 @@ export function ProjectsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="flex flex-col md:flex-row gap-6 bg-transparent backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-lg"
+                className="flex flex-col md:flex-row gap-6 bg-transparent backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-lg items-center md:items-start"
               >
                 {/* Image Box */}
                 <div className="shrink-0 rounded-xl overflow-hidden w-44 h-44 md:w-64 md:h-64 border border-white/10">
@@ -208,9 +210,9 @@ export function ProjectsSection() {
   
                 {/* Content */}
                 <div className="flex-1 flex flex-col gap-3">
-                  <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
-  
-                  <p className="text-sm italic text-neutral-400">
+                  <h3 className="text-2xl font-semibold text-white text-center md:text-left">{project.title}</h3>
+
+                  <p className="text-sm italic text-neutral-400 text-center md:text-left">
                     {project.shortDescription}
                   </p>
   
