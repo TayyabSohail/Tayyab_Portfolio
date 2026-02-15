@@ -28,6 +28,19 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 
+// Custom Trigger.dev icon component
+const TriggerDevIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg
+    className={className}
+    style={style}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 const techCategories = [
   {
     title: "Frontend Development",
@@ -50,6 +63,7 @@ const techCategories = [
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
       { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+      { name: "Trigger.dev", icon: TriggerDevIcon, color: "#FF6B35" },
     ],
   },
   {
