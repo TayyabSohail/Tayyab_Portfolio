@@ -29,7 +29,7 @@ export const GippityAITimeline = () => {
 
   const data = [
     {
-      title: "What I Do",
+      title: "Full Stack Development",
       content: (
         <div className="space-y-4">
           <h2 className="text-2xl font-bold bg-white bg-clip-text text-transparent">
