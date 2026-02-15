@@ -23,8 +23,8 @@ const projects = [
       "A unified SEO platform that combines real-time keyword insights, AI-driven content generation, and automated rank tracking to streamline workflows and accelerate content production.",
     
     whatIDid: [
-      "Engineered real-time SEO insights with DataForSEO and built a scalable OpenRouter-powered AI engine for rapid, high-quality content generation.",
-      "Automated complex SEO workflows using Trigger.dev, handling bulk content processing, caching, and multi-locale SEO optimizations.",
+      "Built a scalable AI content engine powered by OpenRouter, enabling rapid, high-quality content generation.",
+      "Engineered automated workflows with Trigger.dev for bulk processing, caching, and multi-locale content management.",
     ],
     
     impact: [
