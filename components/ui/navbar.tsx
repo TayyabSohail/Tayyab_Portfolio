@@ -91,12 +91,12 @@ export const NavBody = ({
         backdropFilter: visible ? "blur(10px)" : "none",
         padding: isMobile
           ? visible
-            ? "0.5rem 1rem"
-            : "1rem"
+            ? "0.5rem 0.5rem"
+            : "0.75rem 0.5rem"
           : visible
           ? "0.5rem 1.5rem"
           : "1rem 1.5rem",
-        width: isMobile ? (visible ? "85%" : "100%") : visible ? "35%" : "100%",
+        width: isMobile ? (visible ? "95%" : "100%") : visible ? "35%" : "100%",
       }}
       transition={{
         type: "spring",
@@ -104,7 +104,7 @@ export const NavBody = ({
         damping: 30,
       }}
       className={cn(
-        "relative z-[60] mx-auto flex max-w-3xl items-center justify-between rounded-xl transition-all duration-300 border-b border-white/20",
+        "relative z-[60] mx-auto flex max-w-3xl items-center justify-between rounded-xl transition-all duration-300 border-b border-white/20 overflow-hidden",
         className
       )}
     >
@@ -120,7 +120,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "relative flex flex-1 flex-row items-center justify-center space-x-4 text-sm font-medium text-neutral-300 transition duration-200 lg:flex lg:space-x-4",
+        "relative flex flex-1 flex-row items-center justify-center space-x-1 sm:space-x-2 md:space-x-4 text-xs sm:text-sm font-medium text-neutral-300 transition duration-200 lg:flex lg:space-x-4",
         className
       )}
       >
@@ -128,7 +128,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-5 py-2 text-neutral-300"
+          className="relative px-2 sm:px-3 md:px-5 py-1.5 sm:py-2 text-neutral-300 whitespace-nowrap"
           key={`link-${idx}`}
           href={item.link}
         >

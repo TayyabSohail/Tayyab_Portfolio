@@ -15,10 +15,10 @@ export function NavbarDemo() {
         {/* Desktop Navigation */}
         <NavBody>
           <div className="flex w-full items-center justify-between">
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <NavItems
                 items={navItems}
-                className="text-sm md:text-base" // Added responsive text size
+                className="text-xs sm:text-sm md:text-base"
               />
             </div>
             <div className="flex items-center gap-4">
