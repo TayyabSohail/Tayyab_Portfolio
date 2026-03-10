@@ -23,7 +23,8 @@ const projects = [
       "A unified SEO platform that combines real-time keyword insights, AI-driven content generation, and automated rank tracking to streamline workflows and accelerate content production.",
     
     whatIDid: [
-      "Built a scalable AI content engine powered by OpenRouter, enabling rapid, high-quality content generation.",
+      "Developed a scalable AI-driven content engine using OpenRouter, enabling fast, high-quality content generation.",
+      "Integrated DataForSEO and Google Maps API for real-time keyword tracking and location-based insights.",
       "Engineered automated workflows with Trigger.dev for bulk processing, caching, and multi-locale content management.",
     ],
     
@@ -36,6 +37,7 @@ const projects = [
       { icon: SiFigma, category: "UI/UX", tools: "Figma, Excalidraw", color: "#F24E1E" },
       { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TailwindCSS, ShadCN", color: "#FFFFFF" },
       { icon: SiSupabase, category: "Backend", tools: "Supabase, PostgreSQL, Trigger.dev", color: "#3ECF8E" },
+      { icon: FaServer, category: "APIs", tools: "OpenRouter, Data for SEO, Google Maps API", color: "#60A5FA" },
       { icon: SiStripe, category: "Payment", tools: "Stripe", color: "#008CDD" },
       { icon: SiLinear, category: "Project Mgmt", tools: "Linear, Slack", color: "#5C6AC4" },
       { icon: SiPosthog, category: "Analytics", tools: "Posthog", color: "#FF6B6B" },

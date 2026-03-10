@@ -27,6 +27,7 @@ import {
   SiFigma,
   SiPostgresql,
 } from "react-icons/si";
+import { FaDatabase, FaMapMarkedAlt, FaRobot } from "react-icons/fa";
 
 // Custom Trigger.dev icon component
 const TriggerDevIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
@@ -80,7 +81,10 @@ const techCategories = [
     items: [
       { name: "Stripe", icon: SiStripe, color: "#008CDD" },
       { name: "PayPal", icon: SiPaypal, color: "#003087" },
+      { name: "OpenRouter", icon: FaRobot, color: "#A855F7" },
+      { name: "Data for SEO", icon: FaDatabase, color: "#22C55E" },
       { name: "DHL", icon: SiDhl, color: "#FFCC00" },
+      { name: "Google Maps API", icon: FaMapMarkedAlt, color: "#34A853" },
     ],
   },
   {

@@ -12,10 +12,10 @@ export function HeroSection() {
   const isInView = useInView(sectionRef, { margin: "-100px", once: false });
 
   const words = [
-    "Artificial Intelligence",
-    "Software Development",
-    "Cloud-Based Platforms",
     "Full-Stack Applications",
+    "Software Development",
+    "Artificial Intelligence",
+    "Cloud-Based Platforms",
   ];
 
   const nameWords = [
