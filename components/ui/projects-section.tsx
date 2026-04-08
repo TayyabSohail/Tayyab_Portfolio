@@ -11,8 +11,12 @@ import {
   SiPosthog,
   SiLinear,
   SiFigma,
+  SiMongodb,
+  SiExpress,
+  SiReact,
+  SiNodedotjs,
 } from "react-icons/si";
-import { FaDhl, FaServer, FaRobot } from "react-icons/fa";
+import { FaDhl, FaServer, FaRobot, FaDatabase } from "react-icons/fa";
 
 const projects = [
 
@@ -156,6 +160,34 @@ const projects = [
     ],
     image: "/images/AI-powered physiotherapy assistance logo.png",
   },
+  // -------------------- SnobBots --------------------
+  {
+    title: "SnobBots",
+    shortDescription: "Multi-tenant AI chatbot platform.",
+    description:
+      "A scalable MERN-based RAG platform designed for shops and resellers to embed AI support, manage multiple tenants, and sell bots in bulk.",
+
+    whatIDid: [
+      "Engineered a robust multi-tenant architecture using the MERN stack to support independent AI support agents for various shops and resellers.",
+      "Integrated RAG (Retrieval-Augmented Generation) to ensure context-aware and accurate AI responses for business-specific support queries.",
+      "Developed an automated deployment system that handles bulk bot provisioning and management.",
+    ],
+
+    impact: [
+      "Accelerated deployment time by 60% through automated orchestration and multi-tenant management.",
+      "Provided shops with a plug-and-play AI support solution, reducing operational overhead.",
+    ],
+
+    techStack: [
+      { icon: SiMongodb, category: "Database", tools: "MongoDB", color: "#47A248" },
+      { icon: SiExpress, category: "Backend", tools: "Express.js", color: "#FFFFFF" },
+      { icon: SiReact, category: "Frontend", tools: "React.js", color: "#61DAFB" },
+      { icon: SiNodedotjs, category: "Runtime", tools: "Node.js", color: "#339933" },
+      { icon: FaDatabase, category: "Vector DB", tools: "Pinecone", color: "#60A5FA" },
+      { icon: FaRobot, category: "AI/LLM", tools: "RAG & LLM", color: "#10A37F" },
+    ],
+    image: "/images/Futuristic SNOBBOTS AI network design.png",
+  },
 
 ];
 
@@ -227,7 +259,7 @@ export function ProjectsSection() {
                 className="flex flex-col md:flex-row gap-6 bg-transparent backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-lg items-center md:items-start"
               >
                 {/* Image Box */}
-                <div className="shrink-0 rounded-xl overflow-hidden w-44 h-44 md:w-64 md:h-64 border border-white/10">
+                <div className="shrink-0 rounded-xl overflow-hidden w-44 h-44 md:w-64 md:h-64 border border-white/20 bg-white/5 flex items-center justify-center">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -289,14 +321,20 @@ export function ProjectsSection() {
 
                   {/* View Live */}
                   <div className="mt-5">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-white text-black font-medium rounded-lg hover:bg-gray-800 hover:text-white outline outline-white/10 transition text-sm"
-                    >
-                      View Live →
-                    </a>
+                    {project.link ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-white text-black font-medium rounded-lg hover:bg-gray-800 hover:text-white outline outline-white/10 transition text-sm"
+                      >
+                        View Live →
+                      </a>
+                    ) : (
+                      <span className="text-sm text-neutral-500 italic">
+                        View live not available due to confidentiality and product not publicly available.
+                      </span>
+                    )}
                   </div>
                 </div>
               </motion.div>
