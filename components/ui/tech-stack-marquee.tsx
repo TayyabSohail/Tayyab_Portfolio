@@ -26,8 +26,10 @@ import {
   SiExpress,
   SiFigma,
   SiPostgresql,
+  SiVercel,
+  SiReplit,
 } from "react-icons/si";
-import { FaDatabase, FaMapMarkedAlt, FaRobot } from "react-icons/fa";
+import { FaDatabase, FaMapMarkedAlt, FaRobot, FaServer } from "react-icons/fa";
 
 // Custom Trigger.dev icon component
 const TriggerDevIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
@@ -70,12 +72,15 @@ const techCategories = [
     ],
   },
   {
-    title: "Cloud & DevOps",
+    title: "Cloud & Deployment",
     items: [
       { name: "AWS", icon: SiAmazon, color: "#FF9900" },
-      { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
+      { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
       { name: "Docker", icon: SiDocker, color: "#2496ED" },
+      { name: "Coolify", icon: FaServer, color: "#60A5FA" },
+      { name: "Replit", icon: SiReplit, color: "#F26207" },
       { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+      { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
     ],
   },
   {
