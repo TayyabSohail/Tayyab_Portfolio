@@ -38,7 +38,7 @@ const TriggerDevIcon = ({ className, style }: { className?: string; style?: Reac
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -65,6 +65,8 @@ const techCategories = [
       { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
       { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
       { name: "Trigger.dev", icon: TriggerDevIcon, color: "#FF6B35" },
+      { name: "Pinecone", icon: FaDatabase, color: "#60A5FA" },
+
     ],
   },
   {
@@ -100,12 +102,12 @@ const techCategories = [
 
 const TechCard = ({ tech }: { tech: { name: string; icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>; color: string } }) => {
   const Icon = tech.icon;
-  
+
   return (
     <div className="h-32 w-full flex flex-col items-center justify-center gap-3 p-4 bg-white/5 dark:bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-lg hover:border-white/30 hover:bg-white/10 transition-all duration-300 hover:scale-105 hover:shadow-xl">
       <div className="flex items-center justify-center w-12 h-12">
-        <Icon 
-          className="w-12 h-12" 
+        <Icon
+          className="w-12 h-12"
           style={{ color: tech.color }}
         />
       </div>
