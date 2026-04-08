@@ -28,24 +28,20 @@ export function HeadlineSection() {
             <span className="font-semibold text-white">
               Full Stack Developer
             </span>{" "}
-            based in{" "}
-            <span className="text-blue-400 font-medium">Rawalpindi</span>,
-            skilled in <span className="text-purple-400">MERN, Next.js</span>,
-            and the modern web. With a{" "}
+            skilled in <span className="text-purple-400">MERN, Next.js</span>, the modern web,
+            and <span className="text-purple-400">AI & cloud technologies</span>. With a{" "}
             <span className="text-white font-semibold">
               Bachelor’s in Computer Science
             </span>{" "}
-            from <span className="text-blue-400">FAST NUCES Islamabad</span>, I
-            bring{" "}
+            from <span className="text-blue-400">FAST NUCES Islamabad</span>, I bring{" "}
             <span className="font-semibold text-white">
-              1+ year of experience
+              2+ years of experience
             </span>{" "}
             across freelance and tech industries. I’m passionate about{" "}
             <span className="text-purple-400 font-medium">
               high-performance UIs
             </span>{" "}
-            and always exploring tools that help me build better, faster,
-            smarter.
+            and always exploring tools that help me build better, faster, smarter.
           </motion.h1>
         </div>
       </div>
