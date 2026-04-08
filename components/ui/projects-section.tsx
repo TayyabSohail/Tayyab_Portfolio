@@ -12,27 +12,28 @@ import {
   SiLinear,
   SiFigma,
 } from "react-icons/si";
-import { FaDhl, FaServer } from "react-icons/fa";
+import { FaDhl, FaServer, FaRobot } from "react-icons/fa";
 
 const projects = [
+
   // -------------------- SEOMaven --------------------
   {
     title: "SEOMaven",
     shortDescription: "AI-Powered SEO & Content Platform",
     description:
       "A unified SEO platform that combines real-time keyword insights, AI-driven content generation, and automated rank tracking to streamline workflows and accelerate content production.",
-    
+
     whatIDid: [
       "Developed a scalable AI-driven content engine using OpenRouter, enabling fast, high-quality content generation.",
       "Integrated DataForSEO and Google Maps API for real-time keyword tracking and location-based insights.",
       "Engineered automated workflows with Trigger.dev for bulk processing, caching, and multi-locale content management.",
     ],
-    
+
     impact: [
       "Delivered 3× faster content production with fully automated AI workflows.",
       "Reduced keyword tracking costs by 50% through optimized batching and caching strategies.",
     ],
-    
+
     techStack: [
       { icon: SiFigma, category: "UI/UX", tools: "Figma, Excalidraw", color: "#F24E1E" },
       { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TailwindCSS, ShadCN", color: "#FFFFFF" },
@@ -112,17 +113,17 @@ const projects = [
     shortDescription: "Company website with performance optimization.",
     description:
       "Built a modern company website using Next.js, Tailwind CSS, and TypeScript, focusing on performance optimization, SEO enhancement, and delivering a clean user experience.",
-    
+
     whatIDid: [
       "Developed a responsive company website using Next.js with TypeScript for type safety and Tailwind CSS for modern styling.",
       "Implemented performance optimizations including code splitting, image optimization, and efficient rendering strategies.",
     ],
-    
+
     impact: [
       "Boosted performance by 40% through strategic optimizations and best practices.",
       "Delivered a clean, intuitive UX that improved user engagement and site usability.",
     ],
-    
+
     techStack: [
       { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TailwindCSS, TypeScript", color: "#FFFFFF" },
       { icon: SiTypescript, category: "Languages", tools: "TypeScript", color: "#3178C6" },
@@ -130,6 +131,32 @@ const projects = [
     image: "/images/nwo.png",
     link: "https://www.newweborder.us/",
   },
+  // -------------------- AI-Driven Physiotherapy Application --------------------
+  {
+    title: "AI-Driven Physiotherapy",
+    shortDescription: "AI-powered platform for live posture correction.",
+    description:
+      "A sophisticated physiotherapy application that utilizes Generative AI for real-time posture correction and a RAG-powered LLM chatbot to provide intelligent, personalized patient support.",
+
+    whatIDid: [
+      "Built a live posture correction system using computer vision and Generative AI to provide real-time feedback with 95% accuracy.",
+      "Developed a RAG-powered LLM chatbot for patient inquiries, exercise guidance, and recovery tracking.",
+      "Implemented a high-performance frontend with Next.js and Tailwind CSS, ensuring smooth interactive sessions.",
+    ],
+
+    impact: [
+      "Achieved a 95% accuracy rate in real-time posture assessment, significantly enhancing patient recovery accuracy.",
+      "Reduced dependency on constant physical supervision through automated, real-time AI guidance.",
+    ],
+
+    techStack: [
+      { icon: SiNextdotjs, category: "Frontend", tools: "Next.js, TailwindCSS", color: "#FFFFFF" },
+      { icon: FaRobot, category: "AI/LLM", tools: "Generative AI, RAG", color: "#10A37F" },
+      { icon: SiTypescript, category: "Languages", tools: "TypeScript", color: "#3178C6" },
+    ],
+    image: "/images/AI-powered physiotherapy assistance logo.png",
+  },
+
 ];
 
 // Helper function to highlight numbers and key metrics
@@ -140,7 +167,7 @@ const highlightNumbers = (text: string) => {
   let lastIndex = 0;
   let match;
   let key = 0;
-  
+
   while ((match = regex.exec(text)) !== null) {
     // Add text before the match
     if (match.index > lastIndex) {
@@ -157,12 +184,12 @@ const highlightNumbers = (text: string) => {
     );
     lastIndex = regex.lastIndex;
   }
-  
+
   // Add remaining text
   if (lastIndex < text.length) {
     parts.push(<span key={`text-${key++}`}>{text.substring(lastIndex)}</span>);
   }
-  
+
   return parts.length > 0 ? <>{parts}</> : text;
 };
 
@@ -188,7 +215,7 @@ export function ProjectsSection() {
             style={{ height: beamHeight }}
             className="absolute left-4 top-0 w-[2px] bg-blue-500/50"
           />
-  
+
           <div className="space-y-16 pl-10">
             {projects.map((project, idx) => (
               <motion.div
@@ -209,7 +236,7 @@ export function ProjectsSection() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-  
+
                 {/* Content */}
                 <div className="flex-1 flex flex-col gap-3">
                   <h3 className="text-2xl font-semibold text-white text-center md:text-left">{project.title}</h3>
@@ -217,11 +244,11 @@ export function ProjectsSection() {
                   <p className="text-sm italic text-neutral-400 text-center md:text-left">
                     {project.shortDescription}
                   </p>
-  
+
                   <p className="text-sm text-neutral-300 leading-relaxed">
                     {project.description}
                   </p>
-  
+
                   {/* What I Did */}
                   <div className="mt-4 bg-transparent backdrop-blur-sm px-4 py-3 rounded-lg border border-white/10">
                     <strong className="text-white">What I Did:</strong>
@@ -241,7 +268,7 @@ export function ProjectsSection() {
                       ))}
                     </ul>
                   </div>
-  
+
                   {/* Tech Stack */}
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.techStack.map((t, i) => {
@@ -259,7 +286,7 @@ export function ProjectsSection() {
                       );
                     })}
                   </div>
-  
+
                   {/* View Live */}
                   <div className="mt-5">
                     <a
@@ -279,6 +306,6 @@ export function ProjectsSection() {
       </div>
     </section>
   );
-  
-  
+
+
 }
