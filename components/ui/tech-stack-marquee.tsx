@@ -28,6 +28,7 @@ import {
   SiPostgresql,
   SiVercel,
   SiReplit,
+  SiRender,
 } from "react-icons/si";
 import { FaDatabase, FaMapMarkedAlt, FaRobot, FaServer } from "react-icons/fa";
 
