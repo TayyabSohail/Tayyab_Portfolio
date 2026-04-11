@@ -79,6 +79,7 @@ const techCategories = [
       { name: "Docker", icon: SiDocker, color: "#2496ED" },
       { name: "Coolify", icon: FaServer, color: "#60A5FA" },
       { name: "Replit", icon: SiReplit, color: "#F26207" },
+      { name: "Render", icon: SiRender, color: "#FFFFFF" },
       { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
       { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
     ],
