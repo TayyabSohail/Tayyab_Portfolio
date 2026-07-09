@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "human-email": {
+      "source": "abbassays/skills",
+      "sourceType": "github",
+      "skillPath": "human-email/SKILL.md",
+      "computedHash": "5c53456a0ceb96713f7f977ce1e5d32fc2b6a740a0f955c7318b14e8b07309f7"
+    }
+  }
+}
