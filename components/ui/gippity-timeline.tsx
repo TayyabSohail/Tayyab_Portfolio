@@ -1,162 +1,86 @@
-"use client";
 import {
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-  motion,
-} from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+  IconLayoutGrid,
+  IconSparkles,
+  IconCloud,
+} from "@tabler/icons-react";
+import type { Icon } from "@tabler/icons-react";
+
+interface Capability {
+  icon: Icon;
+  index: string;
+  title: string;
+  headline: string;
+  body: string;
+}
+
+const CAPABILITIES: Capability[] = [
+  {
+    icon: IconLayoutGrid,
+    index: "01",
+    title: "Full Stack Development",
+    headline: "Production web applications",
+    body: "From responsive frontends to scalable backends, I build complete products with end-to-end type safety, secure APIs, and databases designed to grow with your business.",
+  },
+  {
+    icon: IconSparkles,
+    index: "02",
+    title: "AI Integration & Automation",
+    headline: "AI built for real workflows",
+    body: "I integrate LLMs, RAG, speech, and intelligent automations into existing products, using your own data so responses stay accurate and useful.",
+  },
+  {
+    icon: IconCloud,
+    index: "03",
+    title: "Cloud & Backend Infrastructure",
+    headline: "Reliable systems, simple deployments",
+    body: "I build and deploy cloud-native applications with secure authentication, scalable databases, automated workflows, and production-ready infrastructure.",
+  },
+];
 
 export const GippityAITimeline = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
-  }, [ref]);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 10%", "end 50%"],
-  });
-
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-
-  const data = [
-    {
-      title: "Full Stack Development",
-      content: (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold bg-white bg-clip-text text-transparent">
-            AI-Enhanced Full Stack Engineering
-          </h2>
-          <p className="text-lg text-neutral-300 dark:text-neutral-300">
-            I build{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              full-stack
-            </span>{" "}
-            applications using frameworks like{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              Next.js
-            </span>
-            ,{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-MERN             
-            </span>
-            , and{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              TypeScript
-            </span>
-            , delivering responsive frontends paired with reliable backends. My focus is on performance, scalability, and solutions that have real-world impact.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "AI & Generative Systems",
-      content: (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold bg-white bg-clip-text text-transparent">
-            Practical AI & Generative Systems
-          </h2>
-          <p className="text-lg text-neutral-300 dark:text-neutral-300">
-            I develop AI-driven applications across text, image, and audio, including{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              RAG chatbots
-            </span>
-            ,{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              TTS/STT
-            </span>
-            ,{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              GAN/LLM image generation
-            </span>
-            , and audio synthesis. I deliver AI solutions that are production-ready and user-facing, designed to integrate seamlessly into real-world applications.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "Cloud & DevOps",
-      content: (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold bg-white bg-clip-text text-transparent">
-            Scalable Cloud Systems
-          </h2>
-          <p className="text-lg text-neutral-300 dark:text-neutral-300">
-            I build{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              cloud-native
-            </span>{" "}
-            systems using{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-              AWS
-            </span>
-            ,{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-            Supabase
-            </span>
-            , and{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
-            Firebase
-            </span>
-            , ensuring reliability, fast performance, and smooth deployment at scale. My focus is on building systems that are maintainable, observable, and production-ready.
-          </p>
-        </div>
-      ),
-    },
-  ];
-  
-
   return (
-    <div
-      className="w-full bg-transparent font-sans md:px-10"
-      ref={containerRef}
-    >
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className="flex justify-start pt-8 md:pt-16 md:gap-10"
-          >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-black dark:bg-black flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-neutral-500 dark:bg-neutral-800 border border-neutral-500 dark:border-neutral-700 p-2" />
-              </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-4xl font-bold text-neutral-500 dark:text-neutral-500">
-                {item.title}
-              </h3>
-            </div>
+    <section className="w-full bg-transparent pb-20">
+      <div className="mx-auto w-full max-w-5xl px-6">
+        <h3 className="mb-12 text-center text-4xl font-bold tracking-tight text-white md:text-5xl">
+          What I Do
+        </h3>
 
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
-                {item.title}
-              </h3>
-              {item.content}
-            </div>
-          </div>
-        ))}
-        <div
-          style={{
-            height: height + "px",
-          }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-neutral-700 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
-        >
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
-          />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {CAPABILITIES.map(({ icon: Icon, ...item }) => (
+            <article
+              key={item.title}
+              className="group relative isolate flex flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/60 p-7 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-500/40"
+            >
+              {/* Accent wash + oversized index, both revealed on hover. */}
+              <div className="absolute inset-0 -z-10 bg-linear-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+              <span
+                aria-hidden="true"
+                className="absolute -right-2 -top-4 -z-10 font-mono text-7xl font-bold text-white/[0.04] transition duration-300 group-hover:text-emerald-400/10"
+              >
+                {item.index}
+              </span>
+
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 transition duration-300 group-hover:scale-110 group-hover:bg-emerald-500/20">
+                <Icon
+                  aria-hidden="true"
+                  className="h-6 w-6 text-emerald-400"
+                  stroke={1.75}
+                />
+              </span>
+
+              <h4 className="mt-6 text-xs font-semibold uppercase tracking-widest text-emerald-400">
+                <span className="font-mono">{item.index}.</span> {item.title}
+              </h4>
+              <p className="mt-2 text-xl font-bold tracking-tight text-white">
+                {item.headline}
+              </p>
+              <p className="mt-3 text-justify leading-relaxed text-neutral-400 hyphens-auto">
+                {item.body}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
