@@ -34,11 +34,18 @@ export function ProjectCard({
   const overflowCount = project.tech.length - visibleTech.length;
 
   return (
-    <article
+    // The whole card is one link, so every part of it (cover included) is
+    // clickable. A stretched-link overlay was unreliable here: positioned
+    // wrappers inside the card trapped it in their own stacking context.
+    <Link
+      href={`/case-studies/${project.slug}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${project.title}: ${project.tagline} (opens in a new tab)`}
       className={cn(
         "group relative isolate block overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-sm",
         "transition duration-300 hover:-translate-y-1.5 hover:border-emerald-500/40 hover:shadow-2xl hover:shadow-black/60",
-        "focus-within:-translate-y-1.5 focus-within:border-emerald-500/40",
+        "focus-visible:-translate-y-1.5 focus-visible:border-emerald-500/40 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden",
         className
       )}
     >
@@ -113,17 +120,7 @@ export function ProjectCard({
         )}
 
         <h3 className="text-2xl font-bold tracking-tight text-white">
-          {/* Stretched link makes the whole card clickable while keeping one
-              real anchor for keyboard and screen-reader users. */}
-          <Link
-            href={`/case-studies/${project.slug}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-sm outline-hidden after:absolute after:inset-0 after:z-20 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
-          >
-            {project.title}
-            <span className="sr-only"> (opens in a new tab)</span>
-          </Link>
+          {project.title}
         </h3>
 
         <p className="mt-2 flex items-center gap-2 text-base text-neutral-400 transition-colors duration-300 group-hover:text-neutral-200">
@@ -158,6 +155,6 @@ export function ProjectCard({
           )}
         </ul>
       </div>
-    </article>
+    </Link>
   );
 }
