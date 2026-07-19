@@ -1,4 +1,5 @@
 import { getTechMeta } from "@/lib/tech-icons";
+import { GithubStats } from "@/components/ui/github-stats";
 
 const STATS = [
   { value: "30+", label: "Projects delivered" },

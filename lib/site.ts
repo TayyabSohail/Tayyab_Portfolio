@@ -6,3 +6,5 @@
  */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://tayyabsohail.com";
+
+export const GITHUB_URL = "https://github.com/TayyabSohail";
