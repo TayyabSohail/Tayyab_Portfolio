@@ -3,7 +3,6 @@ import { getTechMeta } from "@/lib/tech-icons";
 const STATS = [
   { value: "30+", label: "Projects delivered" },
   { value: "2+", label: "Years building products" },
-  { value: "9", label: "Case studies published" },
 ];
 
 const FOCUS = [
@@ -37,7 +36,7 @@ export function HeadlineSection() {
           PostgreSQL and AWS. BS in Computer Science from FAST NUCES Islamabad.
         </p>
 
-        <dl className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <dl className="mx-auto mt-12 grid max-w-xl grid-cols-1 gap-4 sm:grid-cols-2">
           {STATS.map((stat) => (
             <div
               key={stat.label}

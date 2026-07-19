@@ -14,9 +14,9 @@ export function TechStack({ groups }: TechStackProps) {
   if (groups.length === 0) return null;
 
   return (
-    <section className="border-t border-neutral-800 bg-neutral-950">
-      <div className="mx-auto w-full max-w-5xl px-6 py-14">
-        <h2 className="mb-8 text-2xl font-bold tracking-tight text-white">
+    <section>
+      <div className="mx-auto w-full max-w-5xl border-t border-neutral-800 px-6 py-16 md:py-24">
+        <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
           Tech Stack
         </h2>
 
@@ -36,7 +36,7 @@ export function TechStack({ groups }: TechStackProps) {
                   return (
                     <li
                       key={tool}
-                      className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-950 px-2.5 py-1.5 text-sm text-neutral-200"
+                      className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-950/80 px-2.5 py-1.5 text-sm text-neutral-200"
                     >
                       <Icon
                         aria-hidden="true"

@@ -41,12 +41,20 @@ export function HeroSection() {
       >
         <div className="flex flex-col items-center justify-center gap-8 md:gap-12">
           <div className="pt-4 sm:pt-0 flex justify-center">
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-neutral-700 shadow-lg">
+            {/* The portrait is a cut-out on an opaque white background, so the
+                circle uses a light plate rather than a dark one. */}
+            <div className="relative h-48 w-48 overflow-hidden rounded-full border-4 border-emerald-500/30 bg-white shadow-lg shadow-emerald-500/10 sm:h-56 sm:w-56 md:h-64 md:w-64 lg:h-72 lg:w-72">
               <Image
-                src="/images/MTayyabSohail.jpeg"
-                alt="Tayyab Sohail Profile"
+                src="/images/Photograph-Tayyab-Sohail.png"
+                alt="Tayyab Sohail"
                 fill
-                className="object-cover"
+                sizes="(min-width: 1024px) 18rem, (min-width: 768px) 16rem, 12rem"
+                // The source is 955x1188 in a square frame, so object-cover
+                // renders it exactly frame-width and object-position has no
+                // horizontal overflow to work with. The head measures at x 46%
+                // of the source, so a small positive translate brings it to
+                // the centre of the circle.
+                className="translate-x-[4%] object-cover object-top"
                 priority
               />
             </div>
