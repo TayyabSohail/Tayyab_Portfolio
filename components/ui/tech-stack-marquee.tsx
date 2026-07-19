@@ -170,7 +170,7 @@ export function TechStackSection() {
         >
           <h2 className="relative inline-block text-4xl md:text-5xl font-bold bg-clip-text text-white">
             Tech Stack
-            <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full h-1 bg-linear-to-r from-blue-500 to-purple-600 rounded-full"></span>
+            <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full h-1 bg-linear-to-r from-emerald-500 to-emerald-300 rounded-full"></span>
           </h2>
 
           <p className="text-2xl text-neutral-400 mt-4 max-w-2xl mx-auto">
