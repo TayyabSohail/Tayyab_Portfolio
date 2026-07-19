@@ -19,11 +19,11 @@ export function ProjectHero({ project }: ProjectHeroProps) {
     <header className="border-b border-neutral-800">
       <div className="mx-auto w-full max-w-5xl px-6 pb-14 pt-28 md:pt-32">
         <Link
-          href="/#case-studies"
+          href="/#projects"
           className="inline-flex items-center gap-1.5 rounded-sm text-sm text-neutral-400 transition hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
         >
           <IconArrowLeft aria-hidden="true" className="h-4 w-4" />
-          All case studies
+          All projects
         </Link>
 
         <div className="mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">

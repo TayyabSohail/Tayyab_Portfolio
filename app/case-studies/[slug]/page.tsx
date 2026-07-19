@@ -189,7 +189,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
       {/* Prev / next */}
       <nav
-        aria-label="Case study navigation"
+        aria-label="Project navigation"
         className="mx-auto w-full max-w-5xl px-6"
       >
         <div className="grid grid-cols-1 gap-4 border-t border-neutral-800 pt-12 sm:grid-cols-2">
@@ -205,11 +205,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         <div className="mt-10 text-center">
           <Link
-            href="/#case-studies"
+            href="/#projects"
             className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-900/60 px-6 py-3 text-sm font-semibold text-neutral-200 backdrop-blur-sm transition hover:border-emerald-500/40 hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
           >
             <IconLayoutGrid aria-hidden="true" className="h-4 w-4" />
-            All case studies
+            All projects
           </Link>
         </div>
       </nav>

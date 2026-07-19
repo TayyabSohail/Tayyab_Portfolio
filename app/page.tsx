@@ -22,7 +22,7 @@ export default function Home() {
         <GippityAITimeline />
       </section>
 
-      {/* ProjectsSection renders its own <section id="case-studies">. */}
+      {/* ProjectsSection renders its own <section id="projects">. */}
       <ProjectsSection />
 
       {

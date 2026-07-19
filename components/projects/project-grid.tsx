@@ -25,7 +25,7 @@ export function ProjectGrid({
   if (projects.length === 0) {
     return (
       <p className="py-16 text-center text-neutral-400">
-        No case studies match that filter.
+        No projects match that filter.
       </p>
     );
   }

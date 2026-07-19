@@ -6,7 +6,7 @@ export function NavbarDemo() {
   const navItems = [
     { name: "Home", link: "/#home" },
     { name: "About", link: "/#about" },
-    { name: "Case Studies", link: "/#case-studies" },
+    { name: "Projects", link: "/#projects" },
     { name: "Stack", link: "/#stack" },
   ];
 
