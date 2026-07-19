@@ -3,8 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { NavbarDemo } from "@/components/ui/navbar-demo";
-import { FloatingDock } from "@/components/ui/floating-dock";
+import { SocialRail } from "@/components/ui/social-rail";
 import { GridBackground } from "@/components/ui/grid-background";
+import { SITE_URL } from "@/lib/site";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -24,6 +25,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Tayyab | Full Stack Developer",
   description:
     "Building modern web applications with React, Next.js, and Node.js",
@@ -126,14 +128,7 @@ export default function RootLayout({
         <NavbarDemo />
         {children}
 
-        {/* Floating Dock */}
-        <div className="fixed bottom-4 left-0 right-0 z-50 flex justify-center px-4">
-          <FloatingDock
-            items={socialItems}
-            desktopClassName="max-w-2xl w-full justify-center backdrop-blur-sm bg-white/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800"
-            mobileClassName="w-full max-w-xs mx-auto"
-          />
-        </div>
+        <SocialRail items={socialItems} />
 
         {/* Theme Initialization Script */}
         <script
