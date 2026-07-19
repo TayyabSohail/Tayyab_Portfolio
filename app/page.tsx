@@ -1,4 +1,3 @@
-"use client";
 import { HeroSection } from "@/components/ui/hero-section";
 import { HeadlineSection } from "@/components/ui/headline-section";
 import { GippityAITimeline } from "@/components/ui/gippity-timeline";
@@ -23,14 +22,11 @@ export default function Home() {
         <GippityAITimeline />
       </section>
 
-      {
-        <section id="projects" className="scroll-mt-5">
-          <ProjectsSection />
-        </section>
-      }
+      {/* ProjectsSection renders its own <section id="case-studies">. */}
+      <ProjectsSection />
 
       {
-        <section id="services" className="scroll-mt-5">
+        <section id="stack" className="scroll-mt-5">
           <TechStackSection />
         </section>
       }
