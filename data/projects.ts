@@ -7,12 +7,11 @@
  * all read from here — nothing else needs touching.
  */
 
-export type ProjectCategory =
-  | "SaaS"
-  | "Marketplace"
-  | "AI"
-  | "Website"
-  | "Internal Tool";
+/**
+ * Grouped by what the product does, not by its stack. Every group holds more
+ * than one project, so no filter chip is a dead end.
+ */
+export type ProjectCategory = "Marketplace" | "SaaS" | "AI" | "Website";
 
 export interface DesignNote {
   /** Short heading, e.g. "Colour" or "Typography". */
@@ -617,7 +616,7 @@ export const projects: Project[] = [
       { category: "Email", tools: ["Resend"] },
       { category: "Scheduling", tools: ["pg_cron"] },
     ],
-    category: "Internal Tool",
+    category: "SaaS",
     role: "Full Stack Developer",
     timeline: "2026",
     liveUrl: "https://hrm.bitsmiths.studio/",

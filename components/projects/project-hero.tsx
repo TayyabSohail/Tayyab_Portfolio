@@ -6,7 +6,6 @@ import {
   IconArrowLeft,
 } from "@tabler/icons-react";
 import type { Project } from "@/data/projects";
-import { TechStack } from "@/components/projects/tech-stack";
 import { cn } from "@/lib/utils";
 
 interface ProjectHeroProps {
@@ -17,7 +16,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
   const hasLinks = Boolean(project.liveUrl || project.githubUrl);
 
   return (
-    <header className="border-b border-neutral-800 bg-neutral-950">
+    <header className="border-b border-neutral-800">
       <div className="mx-auto w-full max-w-5xl px-6 pb-14 pt-28 md:pt-32">
         <Link
           href="/#case-studies"
@@ -106,7 +105,6 @@ export function ProjectHero({ project }: ProjectHeroProps) {
         </div>
       </div>
 
-      <TechStack groups={project.techStack} />
     </header>
   );
 }

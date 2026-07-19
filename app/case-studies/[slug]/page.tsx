@@ -15,6 +15,7 @@ import {
   type Project,
 } from "@/data/projects";
 import { ProjectHero } from "@/components/projects/project-hero";
+import { TechStack } from "@/components/projects/tech-stack";
 import { cn } from "@/lib/utils";
 
 interface PageProps {
@@ -84,23 +85,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </p>
         </section>
 
-        {/* Results up front — the outcome is the reason to keep reading. */}
-        <section className="border-b border-neutral-800 py-16 md:py-24">
-          <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
-            Results
-          </h2>
-          <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {project.outcomes.map((outcome) => (
-              <li
-                key={outcome}
-                className="rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-sm p-7 transition duration-300 hover:border-emerald-500/40"
-              >
-                <Metric text={outcome} />
-              </li>
-            ))}
-          </ul>
-        </section>
-
         {/* Problem → approach, side by side on desktop. */}
         <section className="border-b border-neutral-800 py-16 md:py-24">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -119,8 +103,37 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Challenges, placed before the build details so the hard parts are
-            read while the problem is still fresh. */}
+        {/* Architecture */}
+        <section className="border-b border-neutral-800 py-16 md:py-24">
+          <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+            How it&apos;s built
+          </h2>
+          <p className="max-w-3xl text-justify text-lg leading-relaxed text-neutral-300 hyphens-auto">
+            {project.architecture}
+          </p>
+
+          <h3 className="mt-14 mb-6 text-sm font-semibold uppercase tracking-widest text-emerald-400">
+            Key features
+          </h3>
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {project.keyFeatures.map((feature) => (
+              <li
+                key={feature}
+                className="flex items-center gap-3 rounded-xl border border-neutral-800 bg-neutral-900/60 px-5 py-4 text-base text-neutral-200 backdrop-blur-sm transition duration-300 hover:border-emerald-500/40"
+              >
+                <IconCheck
+                  aria-hidden="true"
+                  className="h-4 w-4 shrink-0 text-emerald-400"
+                  stroke={3}
+                />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Challenges, after the build details: the hard parts land better once
+            the reader knows what was being built. */}
         <section className="border-b border-neutral-800 py-16 md:py-24">
           <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
             Challenges &amp; Solutions
@@ -152,36 +165,27 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </ol>
         </section>
 
-        {/* Architecture */}
+        {/* Results last: the payoff, read after the work that produced it. */}
         <section className="py-16 md:py-24">
           <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
-            How it&apos;s built
+            Results
           </h2>
-          <p className="max-w-3xl text-justify text-lg leading-relaxed text-neutral-300 hyphens-auto">
-            {project.architecture}
-          </p>
-
-          <h3 className="mt-14 mb-6 text-sm font-semibold uppercase tracking-widest text-emerald-400">
-            Key features
-          </h3>
-          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {project.keyFeatures.map((feature) => (
+          <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {project.outcomes.map((outcome) => (
               <li
-                key={feature}
-                className="flex items-center gap-3 rounded-xl border border-neutral-800 bg-neutral-900/60 px-5 py-4 text-base text-neutral-200 backdrop-blur-sm transition duration-300 hover:border-emerald-500/40"
+                key={outcome}
+                className="rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-sm p-7 transition duration-300 hover:border-emerald-500/40"
               >
-                <IconCheck
-                  aria-hidden="true"
-                  className="h-4 w-4 shrink-0 text-emerald-400"
-                  stroke={3}
-                />
-                {feature}
+                <Metric text={outcome} />
               </li>
             ))}
           </ul>
         </section>
-
       </div>
+
+      {/* Stack last: the reader wants to know what the product does before
+          what it was built with. */}
+      <TechStack groups={project.techStack} />
 
       {/* Prev / next */}
       <nav
