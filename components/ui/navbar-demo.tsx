@@ -2,11 +2,12 @@
 import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
 
 export function NavbarDemo() {
+  // Root-relative so the hash targets still resolve from /projects routes.
   const navItems = [
-    { name: "Home", link: "#home" },
-    { name: "About", link: "#about" },
-    { name: "Projects", link: "#projects" },
-    { name: "Stack", link: "#services" },
+    { name: "Home", link: "/#home" },
+    { name: "About", link: "/#about" },
+    { name: "Case Studies", link: "/#case-studies" },
+    { name: "Stack", link: "/#stack" },
   ];
 
   return (

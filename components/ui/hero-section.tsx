@@ -53,6 +53,12 @@ export function HeroSection() {
           </div>
 
           <div className="w-full flex flex-col items-center gap-4 md:gap-6">
+            {/* The name is animated glyph-by-glyph below, which carries no
+                heading semantics — this gives the page its single <h1>. */}
+            <h1 className="sr-only">
+              Tayyab Sohail, Full Stack Developer
+            </h1>
+
             <TypewriterEffectSmooth
               words={nameWords}
               className="text-center"
@@ -68,7 +74,7 @@ export function HeroSection() {
                   words={words}
                   duration={3000}
                   isActive={isInView}
-                  className="text-2xl sm:text-3xl lg:text-5xl font-bold text-blue-400 text-center"
+                  className="text-2xl sm:text-3xl lg:text-5xl font-bold text-emerald-400 text-center"
                 />
               </div>
             </div>
@@ -101,7 +107,7 @@ export function HeroSection() {
                 href="https://github.com/TayyabSohail"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-neutral-800 hover:bg-purple-600 transition-colors"
+                className="p-2 rounded-full bg-neutral-800 hover:bg-neutral-600 transition-colors"
                 aria-label="GitHub"
               >
                 <FaGithub className="text-lg text-white" />

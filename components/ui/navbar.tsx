@@ -87,16 +87,22 @@ export const NavBody = ({
   return (
     <motion.div
       animate={{
-        backgroundColor: visible ? "rgba(30, 30, 30, 0.8)" : "black",
-        backdropFilter: visible ? "blur(10px)" : "none",
+        backgroundColor: visible
+          ? "rgba(10, 10, 10, 0.8)"
+          : "rgba(23, 23, 23, 0.5)",
+        backdropFilter: visible ? "blur(12px)" : "blur(8px)",
+        borderColor: visible
+          ? "rgba(255, 255, 255, 0.12)"
+          : "rgba(255, 255, 255, 0.08)",
+        boxShadow: visible
+          ? "0 8px 32px rgba(0, 0, 0, 0.5)"
+          : "0 2px 12px rgba(0, 0, 0, 0.25)",
         padding: isMobile
-          ? visible
-            ? "0.5rem 0.5rem"
-            : "0.75rem 0.5rem"
+          ? "0.5rem 0.75rem"
           : visible
-          ? "0.5rem 1.5rem"
-          : "1rem 1.5rem",
-        width: isMobile ? (visible ? "95%" : "100%") : visible ? "35%" : "100%",
+          ? "0.5rem 1rem"
+          : "0.85rem 1rem",
+        width: isMobile ? "94%" : visible ? "60%" : "92%",
       }}
       transition={{
         type: "spring",
@@ -104,7 +110,7 @@ export const NavBody = ({
         damping: 30,
       }}
       className={cn(
-        "relative z-[60] mx-auto flex max-w-3xl items-center justify-between rounded-xl transition-all duration-300 border-b border-white/20 overflow-hidden",
+        "relative z-[60] mx-auto mt-3 flex max-w-3xl items-center justify-between rounded-full border",
         className
       )}
     >
@@ -128,14 +134,14 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-2 sm:px-3 md:px-5 py-1.5 sm:py-2 text-neutral-300 whitespace-nowrap"
+          className="relative whitespace-nowrap rounded-full px-2 py-1.5 text-neutral-400 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:px-3 sm:py-2 md:px-4"
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-neutral-800"
+              className="absolute inset-0 h-full w-full rounded-full border border-emerald-500/25 bg-emerald-500/10"
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -223,7 +229,7 @@ export const NavbarButton = ({
     primary: "bg-white",
     secondary: "bg-transparent",
     dark: "bg-black",
-    gradient: "bg-gradient-to-b from-blue-500 to-blue-700",
+    gradient: "bg-gradient-to-b from-emerald-400 to-emerald-600",
   };
 
   const variantShadows = {
