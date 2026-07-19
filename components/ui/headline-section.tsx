@@ -21,22 +21,20 @@ export function HeadlineSection() {
   return (
     <section className="w-full bg-transparent py-16 md:py-24">
       <div className="mx-auto w-full max-w-5xl px-6 text-center">
-        <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+        <h2 className="relative inline-block text-4xl font-bold tracking-tight text-white md:text-5xl">
           About Me
+          <span className="absolute -bottom-2 left-1/2 h-1 w-full -translate-x-1/2 rounded-full bg-linear-to-r from-emerald-500 to-emerald-300" />
         </h2>
 
-        <p className="mx-auto mt-6 max-w-3xl text-xl font-semibold leading-tight tracking-tight text-neutral-200 md:text-2xl">
-          Full Stack Developer building production systems across the modern
-          web, AI and cloud.
+        <p className="mx-auto mt-8 max-w-3xl text-xl font-semibold leading-snug tracking-tight text-neutral-100 md:text-2xl">
+          Full Stack Developer shipping products that hold up in production.
         </p>
 
         <p className="mx-auto mt-6 max-w-2xl text-justify text-lg leading-relaxed text-neutral-400 [text-wrap:pretty] hyphens-auto">
-          I work end to end, building responsive frontends in Next.js and
-          TypeScript backed by reliable services on Supabase, PostgreSQL and
-          AWS. I hold a BS in Computer Science from FAST NUCES Islamabad, and
-          I&apos;ve shipped marketplaces, SaaS platforms and multi-tenant AI
-          systems with a bias toward performance and things that hold up in
-          production.
+          I build across the modern web, AI and cloud: marketplaces handling
+          real money, SaaS platforms cutting costs by half, and multi-tenant AI
+          systems. Frontends in Next.js and TypeScript, backed by Supabase,
+          PostgreSQL and AWS. BS in Computer Science from FAST NUCES Islamabad.
         </p>
 
         <dl className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">

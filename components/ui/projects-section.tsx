@@ -14,8 +14,9 @@ export function ProjectsSection() {
     >
       <div className="mx-auto w-full max-w-6xl px-6">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+          <h2 className="relative inline-block text-4xl font-bold tracking-tight text-white md:text-5xl">
             Case Studies
+            <span className="absolute -bottom-2 left-1/2 h-1 w-full -translate-x-1/2 rounded-full bg-linear-to-r from-emerald-500 to-emerald-300" />
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-400">
             Turning ideas into shipped products. Platforms I&apos;ve designed

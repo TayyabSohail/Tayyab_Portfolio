@@ -41,9 +41,12 @@ export const GippityAITimeline = () => {
   return (
     <section className="w-full bg-transparent pb-20">
       <div className="mx-auto w-full max-w-5xl px-6">
-        <h3 className="mb-12 text-center text-4xl font-bold tracking-tight text-white md:text-5xl">
-          What I Do
-        </h3>
+        <div className="mb-12 text-center">
+          <h3 className="relative inline-block text-4xl font-bold tracking-tight text-white md:text-5xl">
+            What I Do
+            <span className="absolute -bottom-2 left-1/2 h-1 w-full -translate-x-1/2 rounded-full bg-linear-to-r from-emerald-500 to-emerald-300" />
+          </h3>
+        </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {CAPABILITIES.map(({ icon: Icon, ...item }) => (

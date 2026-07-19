@@ -168,12 +168,12 @@ export function TechStackSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="relative inline-block text-4xl md:text-5xl font-bold bg-clip-text text-white">
+          <h2 className="relative inline-block text-4xl font-bold tracking-tight text-white md:text-5xl">
             Tech Stack
-            <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full h-1 bg-linear-to-r from-emerald-500 to-emerald-300 rounded-full"></span>
+            <span className="absolute -bottom-2 left-1/2 h-1 w-full -translate-x-1/2 rounded-full bg-linear-to-r from-emerald-500 to-emerald-300" />
           </h2>
 
-          <p className="text-2xl text-neutral-400 mt-4 max-w-2xl mx-auto">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-400">
             Tools, frameworks, and platforms I use to build high-performance
             apps.
           </p>
