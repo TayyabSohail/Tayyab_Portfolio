@@ -284,8 +284,10 @@ function AdjacentLink({
  * otherwise the sentence is shown as-is.
  */
 function Metric({ text }: { text: string }) {
+  // Leading figure: an optional currency symbol, digits, then an optional
+  // unit. The currency prefix keeps sums like "$12k saved" intact.
   const match = text.match(
-    /^(<?\d[\d,.]*\s?(?:×|x|%|ms|\+)?(?:\s?million|\s?M\+?|\s?k\+?)?)\s*(.*)$/i
+    /^(<?[$£€]?\d[\d,.]*\s?(?:×|x|%|ms|\+)?(?:\s?million|\s?M\+?|\s?k\+?)?)\s*(.*)$/i
   );
 
   if (!match) {

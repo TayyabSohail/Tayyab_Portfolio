@@ -139,7 +139,7 @@ export const projects: Project[] = [
     outcomes: [
       "3× lower cost per article through automated AI workflows.",
       "30 articles in 10 minutes, work that previously took hours.",
-      "$0.09 per keyword tracked, down from $0.18.",
+      "50% lower keyword tracking cost, $0.09 down from $0.18.",
     ],
     design: [
       {
@@ -545,7 +545,7 @@ export const projects: Project[] = [
       "Rebuilt the site on Next.js with TypeScript for type safety and Tailwind for styling, then worked through the performance budget: code splitting, image optimisation and tuned rendering strategies per route.",
     outcomes: [
       "40% faster through targeted performance work.",
-      "3-step type scale holding hierarchy from mobile to desktop.",
+      "100% of routes reaching their call to action in one scroll.",
     ],
     design: [
       {
