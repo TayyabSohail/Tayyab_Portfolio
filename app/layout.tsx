@@ -3,16 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { NavbarDemo } from "@/components/ui/navbar-demo";
-import { SocialRail } from "@/components/ui/social-rail";
 import { GridBackground } from "@/components/ui/grid-background";
 import { SITE_URL } from "@/lib/site";
-import {
-  IconBrandGithub,
-  IconBrandLinkedin,
-  IconBrandWhatsapp,
-  IconMail,
-  IconBrandInstagram,
-} from "@tabler/icons-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,36 +62,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Ordered by how directly each one reaches me: email and WhatsApp first,
-  // professional profiles next, Instagram last. The rail renders in this order.
-  const socialItems = [
-    {
-      title: "Email",
-      icon: <IconMail className="h-full w-full" />,
-      href: "mailto:m.tayyabsohail614@gmail.com",
-    },
-    {
-      title: "WhatsApp",
-      icon: <IconBrandWhatsapp className="h-full w-full" />,
-      href: "https://wa.me/923338199915",
-    },
-    {
-      title: "LinkedIn",
-      icon: <IconBrandLinkedin className="h-full w-full" />,
-      href: "https://www.linkedin.com/in/muhammad-tayyab-sohail/",
-    },
-    {
-      title: "GitHub",
-      icon: <IconBrandGithub className="h-full w-full" />,
-      href: "https://github.com/TayyabSohail",
-    },
-    {
-      title: "Instagram",
-      icon: <IconBrandInstagram className="h-full w-full" />,
-      href: "https://www.instagram.com/muhammad_tayyab_sohail_/",
-    },
-  ];
-
   return (
     <html lang="en" className="scroll-smooth">
       <head>
@@ -128,8 +90,6 @@ export default function RootLayout({
         <GridBackground />
         <NavbarDemo />
         {children}
-
-        <SocialRail items={socialItems} />
 
         {/* Theme Initialization Script */}
         <script
