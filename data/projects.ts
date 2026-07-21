@@ -8,10 +8,30 @@
  */
 
 /**
- * Grouped by what the product does, not by its stack. Every group holds more
- * than one project, so no filter chip is a dead end.
+ * What the product is, as opposed to what the work was. Shown as context on
+ * cards and case-study heroes; filtering is by `ProjectCapability` instead.
  */
 export type ProjectCategory = "Marketplace" | "SaaS" | "AI" | "Website";
+
+/**
+ * What the work *was*, as opposed to what the product is. These mirror the
+ * pitch on the homepage — full-stack, AI, cloud and automation — so a visitor
+ * who reads "I do cloud and AI automation" can filter straight to the proof.
+ * A project usually carries more than one.
+ */
+export type ProjectCapability =
+  | "Full-Stack"
+  | "AI"
+  | "Cloud & Automation"
+  | "Web";
+
+/** Fixed order for the capability chips, strongest suit first. */
+export const CAPABILITY_ORDER: ProjectCapability[] = [
+  "Full-Stack",
+  "AI",
+  "Cloud & Automation",
+  "Web",
+];
 
 export interface DesignNote {
   /** Short heading, e.g. "Colour" or "Typography". */
@@ -60,6 +80,11 @@ export interface Project {
   /** Grouped stack, rendered as the "Tech Stack" grid on the case study. */
   techStack: TechGroup[];
   category: ProjectCategory;
+  /**
+   * The kinds of work this project actually involved. Ordered by how much of
+   * the project it accounts for, since the card only has room for a few.
+   */
+  capabilities: ProjectCapability[];
   /** Kept for reference; deliberately not surfaced in the UI. */
   role?: string;
   /** Kept for reference; deliberately not surfaced in the UI. */
@@ -128,6 +153,7 @@ export const projects: Project[] = [
       { category: "Analytics", tools: ["PostHog"] },
     ],
     category: "SaaS",
+    capabilities: ["AI", "Cloud & Automation", "Full-Stack"],
     role: "Full Stack Developer",
     timeline: "2024 — 2025",
     liveUrl: "https://seomaven.ai",
@@ -214,6 +240,7 @@ export const projects: Project[] = [
       { category: "Analytics", tools: ["PostHog"] },
     ],
     category: "Marketplace",
+    capabilities: ["Full-Stack", "Cloud & Automation"],
     role: "Full Stack Developer",
     timeline: "2024",
     liveUrl: "https://unibid.ai",
@@ -296,6 +323,7 @@ export const projects: Project[] = [
       { category: "Analytics", tools: ["PostHog"] },
     ],
     category: "Marketplace",
+    capabilities: ["Full-Stack", "Cloud & Automation", "AI"],
     role: "Full Stack Developer",
     timeline: "2024 — 2025",
     liveUrl: "https://anina.app/",
@@ -387,6 +415,7 @@ export const projects: Project[] = [
       { category: "Build Tools", tools: ["Turbopack"] },
     ],
     category: "Marketplace",
+    capabilities: ["Full-Stack", "Cloud & Automation"],
     role: "Full Stack Developer",
     timeline: "May 2025 — Jul 2026",
     liveUrl: "https://www.vestafi.co/",
@@ -466,6 +495,7 @@ export const projects: Project[] = [
       { category: "CMS", tools: ["Directus"] },
     ],
     category: "Website",
+    capabilities: ["Web"],
     role: "Full Stack Developer",
     timeline: "2025",
     liveUrl: "https://bitsmiths.studio/",
@@ -536,6 +566,7 @@ export const projects: Project[] = [
       { category: "Styling", tools: ["TailwindCSS"] },
     ],
     category: "Website",
+    capabilities: ["Web"],
     role: "Frontend Developer",
     timeline: "2024",
     liveUrl: "https://www.newweborder.us/",
@@ -617,6 +648,7 @@ export const projects: Project[] = [
       { category: "Scheduling", tools: ["pg_cron"] },
     ],
     category: "SaaS",
+    capabilities: ["Cloud & Automation"],
     role: "Full Stack Developer",
     timeline: "2026",
     liveUrl: "https://hrm.bitsmiths.studio/",
@@ -704,6 +736,7 @@ export const projects: Project[] = [
       },
     ],
     category: "AI",
+    capabilities: ["AI"],
     role: "Full Stack Developer",
     timeline: "2024",
     liveUnavailableReason:
@@ -783,6 +816,7 @@ export const projects: Project[] = [
       { category: "AI", tools: ["RAG", "LLM"] },
     ],
     category: "AI",
+    capabilities: ["AI", "Cloud & Automation"],
     role: "Full Stack Developer",
     timeline: "2023 — 2024",
     liveUnavailableReason:
@@ -843,9 +877,13 @@ export function getFeaturedProjects(): Project[] {
   return projects.filter((project) => project.featured);
 }
 
-/** All categories present in the data, for the filter chips. */
-export function getCategories(): ProjectCategory[] {
-  return [...new Set(projects.map((project) => project.category))];
+/**
+ * All capabilities present in the data, in `CAPABILITY_ORDER` rather than in
+ * whichever order the projects happen to be listed.
+ */
+export function getCapabilities(): ProjectCapability[] {
+  const present = new Set(projects.flatMap((project) => project.capabilities));
+  return CAPABILITY_ORDER.filter((capability) => present.has(capability));
 }
 
 /**

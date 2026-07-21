@@ -1,4 +1,4 @@
-import { projects, getCategories } from "@/data/projects";
+import { projects, getCapabilities } from "@/data/projects";
 import { FilterableProjects } from "@/components/projects/project-filters";
 
 /**
@@ -19,12 +19,15 @@ export function ProjectsSection() {
             <span className="absolute -bottom-2 left-1/2 h-1 w-full -translate-x-1/2 rounded-full bg-linear-to-r from-emerald-500 to-emerald-300" />
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-400">
-            Turning ideas into shipped products. Platforms I&apos;ve designed
-            and built end to end.
+            Turning ideas into shipped products. Full-stack, AI and cloud
+            automation work, designed and built end to end.
           </p>
         </div>
 
-        <FilterableProjects projects={projects} categories={getCategories()} />
+        <FilterableProjects
+          projects={projects}
+          capabilities={getCapabilities()}
+        />
       </div>
     </section>
   );

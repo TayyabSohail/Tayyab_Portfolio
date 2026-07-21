@@ -8,6 +8,7 @@ export function NavbarDemo() {
     { name: "About", link: "/#about" },
     { name: "Projects", link: "/#projects" },
     { name: "Stack", link: "/#stack" },
+    { name: "Book a Call", link: "/#contact" },
   ];
 
   return (
