@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 /**
  * Web3Forms access key. Public by design — it only authorises submissions to
@@ -135,6 +135,73 @@ function WhatsAppOption() {
   );
 }
 
+/**
+ * Success toast. Anchored bottom-right on desktop but full-width along the
+ * bottom on mobile, where a floating corner card would crowd the thumb area.
+ *
+ * Deliberately not an aria-live region: the inline status line under the button
+ * already announces the same result, and doubling it would make a screen reader
+ * read the confirmation twice. This is the visual half of that pair, hence
+ * aria-hidden.
+ */
+function SuccessToast({ onDismiss }: { onDismiss: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16, scale: 0.97 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 16, scale: 0.97 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      aria-hidden="true"
+      className="fixed inset-x-4 bottom-4 z-50 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-auto sm:max-w-sm"
+    >
+      <div className="flex items-start gap-3 rounded-xl border border-emerald-500/30 bg-white/95 px-4 py-3.5 shadow-lg shadow-emerald-500/10 backdrop-blur-sm dark:bg-neutral-900/95">
+        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-3 w-3 text-emerald-500"
+            aria-hidden="true"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </span>
+
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-medium text-neutral-900 dark:text-white">
+            Message sent
+          </span>
+          <span className="mt-0.5 block text-xs text-neutral-600 dark:text-neutral-400">
+            Thanks — I’ll reply within a day.
+          </span>
+        </span>
+
+        <button
+          type="button"
+          onClick={onDismiss}
+          aria-label="Dismiss notification"
+          className="-mt-1 -mr-1 shrink-0 rounded-lg p-1.5 text-neutral-400 transition hover:bg-neutral-500/10 hover:text-neutral-600 dark:hover:text-neutral-300"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="h-3.5 w-3.5"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
 function ArrowIcon() {
   return (
     <svg
@@ -156,6 +223,16 @@ export function ContactSection() {
   const [tab, setTab] = useState<Tab>("email");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [toastVisible, setToastVisible] = useState(false);
+
+  /* Auto-dismiss the toast, but only while it is actually on screen — keyed on
+     toastVisible so dismissing by hand clears the timer instead of leaving it
+     to fire against an already-hidden toast. */
+  useEffect(() => {
+    if (!toastVisible) return;
+    const id = setTimeout(() => setToastVisible(false), 6000);
+    return () => clearTimeout(id);
+  }, [toastVisible]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -163,9 +240,7 @@ export function ContactSection() {
 
     if (!ACCESS_KEY) {
       setStatus("error");
-      setError(
-        "The form isn’t configured yet. Email me directly and I’ll get back to you.",
-      );
+      setError("The form isn’t set up right now — email me and I’ll reply.");
       return;
     }
 
@@ -186,6 +261,7 @@ export function ContactSection() {
 
       form.reset();
       setStatus("success");
+      setToastVisible(true);
     } catch (err) {
       setStatus("error");
       setError(
@@ -461,13 +537,20 @@ export function ContactSection() {
                   <p aria-live="polite" className="min-h-5 text-center text-sm">
                     {status === "success" && (
                       <span className="text-emerald-600 dark:text-emerald-400">
-                        Thanks — your message is on its way. I’ll reply within a
-                        day.
+                        Thanks. I’ll reply within a day.
                       </span>
                     )}
                     {status === "error" && (
                       <span className="text-red-600 dark:text-red-400">
-                        {error}
+                        {error}{" "}
+                        {/* Any failure here is a dead end unless the address is
+                          right there to click, so always offer the mailto. */}
+                        <a
+                          href={`mailto:${EMAIL}`}
+                          className="font-medium underline underline-offset-2 hover:text-red-700 dark:hover:text-red-300"
+                        >
+                          {EMAIL}
+                        </a>
                       </span>
                     )}
                   </p>
@@ -552,6 +635,15 @@ export function ContactSection() {
           </div>
         </div>
       </motion.div>
+
+      {/* Mounted outside the animated card on purpose: that wrapper is
+        transformed by motion, which would make it the containing block for
+        position:fixed and pin the toast to the card instead of the viewport. */}
+      <AnimatePresence>
+        {toastVisible && (
+          <SuccessToast onDismiss={() => setToastVisible(false)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
