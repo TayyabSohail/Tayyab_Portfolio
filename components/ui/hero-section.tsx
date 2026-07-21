@@ -100,8 +100,25 @@ export function HeroSection() {
               </NavbarButton>
             </div>
 
-            {/* SOCIAL ICONS */}
+            {/* SOCIAL ICONS — same priority order as the SocialRail in
+                app/layout.tsx: email and WhatsApp first, profiles after. */}
             <div className="flex gap-3 justify-center mt-2">
+              <a
+                href="mailto:m.tayyabsohail614@gmail.com"
+                className="p-2 rounded-full bg-neutral-800 hover:bg-red-600 transition-colors"
+                aria-label="Email"
+              >
+                <FaEnvelope className="text-lg text-red-400" />
+              </a>
+              <a
+                href="https://wa.me/923338199915"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-neutral-800 hover:bg-green-600 transition-colors"
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp className="text-lg text-green-400" />
+              </a>
               <a
                 href="https://www.linkedin.com/in/muhammad-tayyab-sohail/"
                 target="_blank"
@@ -119,22 +136,6 @@ export function HeroSection() {
                 aria-label="GitHub"
               >
                 <FaGithub className="text-lg text-white" />
-              </a>
-              <a
-                href="mailto:m.tayyabsohail614@gmail.com"
-                className="p-2 rounded-full bg-neutral-800 hover:bg-red-600 transition-colors"
-                aria-label="Email"
-              >
-                <FaEnvelope className="text-lg text-red-400" />
-              </a>
-              <a
-                href="https://wa.me/923338199915"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-neutral-800 hover:bg-green-600 transition-colors"
-                aria-label="WhatsApp"
-              >
-                <FaWhatsapp className="text-lg text-green-400" />
               </a>
             </div>
           </div>

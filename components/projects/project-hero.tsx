@@ -28,10 +28,20 @@ export function ProjectHero({ project }: ProjectHeroProps) {
 
         <div className="mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <div>
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="rounded-md border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
                 {project.category}
               </span>
+              {/* The kinds of work involved, in a lighter treatment than the
+                  product type so the two read as separate dimensions. */}
+              {project.capabilities.map((capability) => (
+                <span
+                  key={capability}
+                  className="rounded-md border border-neutral-700 bg-neutral-900/60 px-3 py-1 text-xs font-medium text-neutral-300"
+                >
+                  {capability}
+                </span>
+              ))}
             </div>
 
             <h1 className="mt-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
