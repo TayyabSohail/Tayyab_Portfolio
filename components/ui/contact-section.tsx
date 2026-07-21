@@ -154,8 +154,8 @@ function SuccessToast({ onDismiss }: { onDismiss: () => void }) {
       aria-hidden="true"
       className="fixed inset-x-4 bottom-4 z-50 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-auto sm:max-w-sm"
     >
-      <div className="flex items-start gap-3 rounded-xl border border-emerald-500/30 bg-white/95 px-4 py-3.5 shadow-lg shadow-emerald-500/10 backdrop-blur-sm dark:bg-neutral-900/95">
-        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15">
+      <div className="flex items-center gap-3 rounded-xl border border-emerald-500/30 bg-white/95 px-4 py-3 shadow-lg shadow-emerald-500/10 backdrop-blur-sm dark:bg-neutral-900/95">
+        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -170,13 +170,10 @@ function SuccessToast({ onDismiss }: { onDismiss: () => void }) {
           </svg>
         </span>
 
-        <span className="min-w-0 flex-1">
-          <span className="block text-sm font-medium text-neutral-900 dark:text-white">
-            Message sent
-          </span>
-          <span className="mt-0.5 block text-xs text-neutral-600 dark:text-neutral-400">
-            Thanks — I’ll reply within a day.
-          </span>
+        {/* Single line only — the reply-time promise lives on the inline
+          status row under the button, so repeating it here just doubles it. */}
+        <span className="min-w-0 flex-1 self-center text-sm font-medium text-neutral-900 dark:text-white">
+          Message sent
         </span>
 
         <button
