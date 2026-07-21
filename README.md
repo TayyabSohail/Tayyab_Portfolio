@@ -49,10 +49,18 @@ are server components unless interactivity requires otherwise:
 
 | Component | Client? | Purpose |
 | --- | --- | --- |
-| `ProjectCard` | no | Full-bleed cover, title, tagline and tech icons |
+| `ProjectCard` | no | Full-bleed cover, title, tagline, capability badges and tech icons |
 | `ProjectGrid` | no | Responsive 1 → 2 → 3 column grid |
 | `ProjectHero` | no | Case study hero with cover, meta strip and stack |
-| `FilterableProjects` | yes | Category filter chips over the grid |
+| `FilterableProjects` | yes | Capability filter chips over the grid |
+
+Projects are tagged on two axes. `capabilities` is what the work *was*
+(Full-Stack, AI, Cloud & Automation, Web) and mirrors the pitch on the
+homepage, so the filter chips answer "show me the cloud automation work".
+`category` is what the product *is* (SaaS, Marketplace, Website, AI) and is
+shown as context on cards and case-study heroes, but is not filterable. A
+project carries one category and one or more capabilities, listed most
+significant first since the card only has room for a few.
 
 The homepage section and `/projects` render the **same** `ProjectGrid`, so the
 two surfaces stay identical by construction.
