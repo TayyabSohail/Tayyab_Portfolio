@@ -30,6 +30,11 @@ interface NavItemsProps {
   }[];
   className?: string;
   onItemClick?: () => void;
+  /** Rendered as the last item in the row, with the filled highlight. */
+  cta?: {
+    name: string;
+    link: string;
+  };
 }
 
 interface MobileNavProps {
@@ -98,11 +103,11 @@ export const NavBody = ({
           ? "0 8px 32px rgba(0, 0, 0, 0.5)"
           : "0 2px 12px rgba(0, 0, 0, 0.25)",
         padding: isMobile
-          ? "0.5rem 0.75rem"
+          ? "0.5rem 0.9rem"
           : visible
           ? "0.5rem 1rem"
           : "0.85rem 1rem",
-        width: isMobile ? "94%" : visible ? "60%" : "92%",
+        width: isMobile ? "60%" : visible ? "60%" : "92%",
       }}
       transition={{
         type: "spring",
@@ -110,7 +115,10 @@ export const NavBody = ({
         damping: 30,
       }}
       className={cn(
-        "relative z-[60] mx-auto mt-3 flex max-w-3xl items-center justify-between rounded-full border",
+        // The bar takes its animated width (70% on mobile) and the pill row
+        // spreads inside it; min-w-fit only kicks in if the content genuinely
+        // cannot fit, so the bar grows rather than clipping.
+        "relative z-[60] mx-auto mt-3 flex min-w-fit max-w-[calc(100%-1rem)] items-center justify-between rounded-full border md:min-w-0 md:max-w-3xl",
         className
       )}
     >
@@ -119,22 +127,29 @@ export const NavBody = ({
   );
 };
 
-export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
+export const NavItems = ({
+  items,
+  className,
+  onItemClick,
+  cta,
+}: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "relative flex flex-1 flex-row items-center justify-center space-x-1 sm:space-x-2 md:space-x-4 text-xs sm:text-sm font-medium text-neutral-300 transition duration-200 lg:flex lg:space-x-4",
+        // justify-between fills the bar's width; gap acts as the minimum
+        // spacing so the pills never touch when the bar is at its narrowest.
+        "relative flex w-full flex-1 flex-row items-center justify-between gap-1.5 text-[11px] font-medium text-neutral-300 transition duration-200 sm:gap-2 sm:text-sm md:justify-center md:gap-3",
         className
       )}
-      >
+    >
       {items.map((item, idx) => (
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative whitespace-nowrap rounded-full px-2 py-1.5 text-neutral-400 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:px-3 sm:py-2 md:px-4"
+          className="relative whitespace-nowrap rounded-full px-2 py-2 text-neutral-400 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:px-3.5 sm:py-2"
           key={`link-${idx}`}
           href={item.link}
         >
@@ -147,6 +162,15 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           <span className="relative z-20">{item.name}</span>
         </a>
       ))}
+      {cta && (
+        <a
+          onClick={onItemClick}
+          href={cta.link}
+          className="relative whitespace-nowrap rounded-full bg-emerald-500 px-3 py-2 font-medium text-neutral-950 shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-400 hover:shadow-emerald-500/30 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden sm:px-4 sm:py-2 sm:font-semibold"
+        >
+          {cta.name}
+        </a>
+      )}
     </motion.div>
   );
 };
