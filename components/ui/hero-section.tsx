@@ -90,7 +90,7 @@ export function HeroSection() {
             {/* RESUME BUTTON */}
             <div className="flex justify-center w-full px-4">
               <NavbarButton
-                href="/resume/Resume_M.TayyabSohail_FullStackDeveloper.pdf"
+                href="/resume/Resume_M.TayyabSohail.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="primary"
