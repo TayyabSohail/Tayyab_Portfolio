@@ -180,7 +180,7 @@ function SuccessToast({ onDismiss }: { onDismiss: () => void }) {
           type="button"
           onClick={onDismiss}
           aria-label="Dismiss notification"
-          className="-mt-1 -mr-1 shrink-0 rounded-lg p-1.5 text-neutral-400 transition hover:bg-neutral-500/10 hover:text-neutral-600 dark:hover:text-neutral-300"
+          className="-mr-1 shrink-0 rounded-lg p-1.5 text-neutral-400 transition hover:bg-neutral-500/10 hover:text-neutral-600 dark:hover:text-neutral-300"
         >
           <svg
             viewBox="0 0 24 24"
