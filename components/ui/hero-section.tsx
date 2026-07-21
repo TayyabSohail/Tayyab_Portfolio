@@ -100,8 +100,8 @@ export function HeroSection() {
               </NavbarButton>
             </div>
 
-            {/* SOCIAL ICONS — same priority order as the SocialRail in
-                app/layout.tsx: email and WhatsApp first, profiles after. */}
+            {/* SOCIAL ICONS — ordered by how directly each one reaches me:
+                email and WhatsApp first, professional profiles after. */}
             <div className="flex gap-3 justify-center mt-2">
               <a
                 href="mailto:m.tayyabsohail614@gmail.com"
