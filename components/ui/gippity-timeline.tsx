@@ -48,7 +48,9 @@ export const GippityAITimeline = () => {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        {/* Below md the grid collapses to one column, so cap and centre it —
+            otherwise a single card stretches edge to edge on narrow screens. */}
+        <div className="mx-auto grid max-w-sm grid-cols-1 gap-4 md:max-w-none md:grid-cols-3">
           {CAPABILITIES.map(({ icon: Icon, ...item }) => (
             <article
               key={item.title}

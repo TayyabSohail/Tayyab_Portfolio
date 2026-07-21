@@ -20,9 +20,12 @@ export function ProjectHero({ project }: ProjectHeroProps) {
       <div className="mx-auto w-full max-w-5xl px-6 pb-14 pt-28 md:pt-32">
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-1.5 rounded-sm text-sm text-neutral-400 transition hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
+          className="group inline-flex items-center gap-2 rounded-full border border-neutral-700/70 bg-neutral-900/50 px-3.5 py-1.5 text-sm font-medium tracking-wide text-white backdrop-blur-sm transition hover:border-emerald-500/50 hover:text-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
         >
-          <IconArrowLeft aria-hidden="true" className="h-4 w-4" />
+          <IconArrowLeft
+            aria-hidden="true"
+            className="h-4 w-4 transition-transform group-hover:-translate-x-1"
+          />
           All projects
         </Link>
 

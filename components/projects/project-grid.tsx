@@ -34,7 +34,13 @@ export function ProjectGrid({
     // CSS columns give true masonry flow: cards fill the shortest gap rather
     // than aligning into rows.
     <div
-      className={cn("columns-1 gap-6 sm:columns-2 lg:columns-3", className)}
+      className={cn(
+        // Below sm the grid collapses to one column, so cap and centre it —
+        // otherwise a single card stretches edge to edge on narrow screens.
+        "mx-auto max-w-sm columns-1 gap-6",
+        "sm:max-w-none sm:columns-2 lg:columns-3",
+        className,
+      )}
     >
       {projects.map((project, index) => (
         <ProjectCard
