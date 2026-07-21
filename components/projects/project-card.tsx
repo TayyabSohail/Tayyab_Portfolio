@@ -131,7 +131,24 @@ export function ProjectCard({
           />
         </p>
 
-        <ul className="mt-6 flex flex-wrap items-center gap-1.5 border-t border-neutral-800 pt-5">
+        {/* Capability badges sit above the divider, distinct from the tech
+            chips below it: what the work was, not what it was built with. */}
+        <ul className="mt-4 flex flex-wrap items-center gap-1.5">
+          {project.capabilities.map((capability) => (
+            <li
+              key={capability}
+              className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-300/90 transition group-hover:border-emerald-500/40 group-hover:text-emerald-300"
+            >
+              <span
+                aria-hidden="true"
+                className="h-1 w-1 rounded-full bg-emerald-400"
+              />
+              {capability}
+            </li>
+          ))}
+        </ul>
+
+        <ul className="mt-5 flex flex-wrap items-center gap-1.5 border-t border-neutral-800 pt-5">
           {visibleTech.map((tech) => {
             const { icon: Icon, color } = getTechMeta(tech);
             return (

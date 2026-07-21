@@ -70,27 +70,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Ordered by how directly each one reaches me: email and WhatsApp first,
+  // professional profiles next, Instagram last. The rail renders in this order.
   const socialItems = [
     {
-      title: "GitHub",
-      icon: <IconBrandGithub className="h-full w-full" />,
-      href: "https://github.com/TayyabSohail",
+      title: "Email",
+      icon: <IconMail className="h-full w-full" />,
+      href: "mailto:m.tayyabsohail614@gmail.com",
     },
-    {
-      title: "LinkedIn",
-      icon: <IconBrandLinkedin className="h-full w-full" />,
-      href: "https://www.linkedin.com/in/muhammad-tayyab-sohail/",
-    },
-
     {
       title: "WhatsApp",
       icon: <IconBrandWhatsapp className="h-full w-full" />,
       href: "https://wa.me/923338199915",
     },
     {
-      title: "Email",
-      icon: <IconMail className="h-full w-full" />,
-      href: "mailto:m.tayyabsohail614@gmail.com",
+      title: "LinkedIn",
+      icon: <IconBrandLinkedin className="h-full w-full" />,
+      href: "https://www.linkedin.com/in/muhammad-tayyab-sohail/",
+    },
+    {
+      title: "GitHub",
+      icon: <IconBrandGithub className="h-full w-full" />,
+      href: "https://github.com/TayyabSohail",
     },
     {
       title: "Instagram",

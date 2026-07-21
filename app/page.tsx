@@ -3,6 +3,7 @@ import { HeadlineSection } from "@/components/ui/headline-section";
 import { GippityAITimeline } from "@/components/ui/gippity-timeline";
 import { ProjectsSection } from "@/components/ui/projects-section";
 import { TechStackSection } from "@/components/ui/tech-stack-marquee";
+import { ContactSection } from "@/components/ui/contact-section";
 
 export default function Home() {
   return (
@@ -30,6 +31,10 @@ export default function Home() {
           <TechStackSection />
         </section>
       }
+
+      <section id="contact" className="scroll-mt-5">
+        <ContactSection />
+      </section>
     </div>
   );
 }

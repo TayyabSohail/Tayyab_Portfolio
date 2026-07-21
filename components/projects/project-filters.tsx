@@ -1,35 +1,41 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Project, ProjectCategory } from "@/data/projects";
+import type { Project, ProjectCapability } from "@/data/projects";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { cn } from "@/lib/utils";
 
 interface FilterableProjectsProps {
   projects: Project[];
-  categories: ProjectCategory[];
+  capabilities: ProjectCapability[];
 }
 
-type Filter = ProjectCategory | "All";
+type Filter<T> = T | "All";
 
 /**
  * Client wrapper around the grid so filtering stays interactive while the
  * cards themselves remain server-rendered markup passed through as children
  * would not allow — the grid is cheap enough to re-render on the client.
+ *
+ * Filtering is by capability — the kind of work, matching the pitch on the
+ * homepage. Product type stays on the cards as context but is not a filter.
  */
 export function FilterableProjects({
   projects,
-  categories,
+  capabilities,
 }: FilterableProjectsProps) {
-  const [active, setActive] = useState<Filter>("All");
+  const [active, setActive] = useState<Filter<ProjectCapability>>("All");
 
-  const filters: Filter[] = useMemo(() => ["All", ...categories], [categories]);
+  const filters: Filter<ProjectCapability>[] = useMemo(
+    () => ["All", ...capabilities],
+    [capabilities]
+  );
 
   const visible = useMemo(
     () =>
       active === "All"
         ? projects
-        : projects.filter((project) => project.category === active),
+        : projects.filter((project) => project.capabilities.includes(active)),
     [active, projects]
   );
 
@@ -37,7 +43,7 @@ export function FilterableProjects({
     <>
       <div
         role="group"
-        aria-label="Filter projects by category"
+        aria-label="Filter projects by capability"
         className="mb-10 flex flex-wrap justify-center gap-2"
       >
         {filters.map((filter) => {
@@ -63,6 +69,14 @@ export function FilterableProjects({
       </div>
 
       <ProjectGrid projects={visible} priorityCount={3} />
+
+      {/* Announced without stealing focus, so the result count reaches a
+          screen reader after a chip is pressed. */}
+      <p aria-live="polite" className="sr-only">
+        {active === "All"
+          ? `Showing all ${visible.length} projects.`
+          : `${visible.length} projects match ${active}.`}
+      </p>
     </>
   );
 }
