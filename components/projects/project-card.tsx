@@ -43,7 +43,7 @@ export function ProjectCard({
       rel="noopener noreferrer"
       aria-label={`${project.title}: ${project.tagline} (opens in a new tab)`}
       className={cn(
-        "group relative isolate block overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-sm",
+        "group relative isolate block overflow-hidden rounded-2xl border border-emerald-500/25 bg-neutral-900/60 backdrop-blur-sm lg:border-neutral-800",
         "transition duration-300 hover:-translate-y-1.5 hover:border-emerald-500/40 hover:shadow-2xl hover:shadow-black/60",
         "focus-visible:-translate-y-1.5 focus-visible:border-emerald-500/40 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden",
         className
@@ -123,12 +123,8 @@ export function ProjectCard({
           {project.title}
         </h3>
 
-        <p className="mt-2 flex items-center gap-2 text-base text-neutral-400 transition-colors duration-300 group-hover:text-neutral-200">
+        <p className="mt-2 text-base text-neutral-400 transition-colors duration-300 group-hover:text-neutral-200">
           {project.tagline}
-          <IconArrowUpRight
-            aria-hidden="true"
-            className="h-4 w-4 shrink-0 -translate-x-2 text-emerald-400 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-          />
         </p>
 
         {/* Capability badges sit above the divider, distinct from the tech
@@ -171,6 +167,17 @@ export function ProjectCard({
             </li>
           )}
         </ul>
+
+        {/* Visual button — the whole card is already the link, so this is a
+            styled span (a nested <a> would be invalid). It carries the
+            clickable affordance on touch, where hover cues never fire. */}
+        <span className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-400 to-emerald-500 px-4 py-2.5 text-sm font-semibold text-neutral-950 shadow-lg shadow-emerald-500/20 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-emerald-500/30">
+          Learn more
+          <IconArrowUpRight
+            aria-hidden="true"
+            className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        </span>
       </div>
     </Link>
   );
