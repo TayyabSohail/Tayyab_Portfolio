@@ -172,10 +172,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </h2>
           <ul className="grid grid-cols-1 gap-px border border-white/10 bg-[#020605] md:grid-cols-3">
             {project.outcomes.map((outcome) => (
-              <li
-                key={outcome}
-                className="nx-panel nx-panel-interactive p-7"
-              >
+              <li key={outcome} className="nx-panel nx-panel-interactive p-7">
                 <Metric text={outcome} />
               </li>
             ))}
@@ -209,7 +206,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             className="nx-btn nx-btn-secondary inline-flex items-center gap-2 px-6 py-3 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
           >
             <IconLayoutGrid aria-hidden="true" className="h-4 w-4" />
-            All projects
+            View All projects
           </a>
         </div>
       </nav>
@@ -235,7 +232,7 @@ function AdjacentLink({
       className={cn(
         "nx-panel nx-panel-interactive group flex items-center gap-4 p-4 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden",
         isNext && "flex-row-reverse text-right",
-        className
+        className,
       )}
     >
       <div className="relative h-16 w-20 shrink-0 overflow-hidden border border-white/10 bg-neutral-950">
@@ -249,8 +246,8 @@ function AdjacentLink({
             project.coverFrame === "native"
               ? "object-contain p-1.5"
               : project.coverFit === "cover"
-              ? "object-cover"
-              : "object-contain p-1.5"
+                ? "object-cover"
+                : "object-contain p-1.5",
           )}
         />
       </div>
@@ -259,7 +256,7 @@ function AdjacentLink({
         <span
           className={cn(
             "inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-neutral-400",
-            isNext && "flex-row-reverse"
+            isNext && "flex-row-reverse",
           )}
         >
           {isNext ? (
@@ -289,13 +286,11 @@ function Metric({ text }: { text: string }) {
   // Leading figure: an optional currency symbol, digits, then an optional
   // unit. The currency prefix keeps sums like "$12k saved" intact.
   const match = text.match(
-    /^(<?[$£€]?\d[\d,.]*\s?(?:×|x|%|ms|\+)?(?:\s?million|\s?M\+?|\s?k\+?)?)\s*(.*)$/i
+    /^(<?[$£€]?\d[\d,.]*\s?(?:×|x|%|ms|\+)?(?:\s?million|\s?M\+?|\s?k\+?)?)\s*(.*)$/i,
   );
 
   if (!match) {
-    return (
-      <p className="text-base leading-relaxed text-neutral-200">{text}</p>
-    );
+    return <p className="text-base leading-relaxed text-neutral-200">{text}</p>;
   }
 
   const [, figure, rest] = match;
