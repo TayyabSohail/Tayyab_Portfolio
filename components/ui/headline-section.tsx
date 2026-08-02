@@ -34,58 +34,43 @@ export function HeadlineSection() {
           <div>
             <p className="nx-kicker">About</p>
             <h2 className="mt-5 text-4xl font-bold tracking-[-0.045em] text-white md:text-5xl lg:text-6xl">
-              Building beyond the brief.
+              Engineering the whole system.
             </h2>
           </div>
 
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.045),rgba(10,10,10,0.98)_52%,rgba(16,185,129,0.025))] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-8 lg:p-10">
-            <div
+          <div className="relative pt-1 md:pl-7 lg:pl-10">
+            <span
               aria-hidden="true"
-              className="nx-grid-surface pointer-events-none absolute inset-0 opacity-20 [mask-image:linear-gradient(to_bottom_right,black,transparent_72%)]"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-emerald-400/[0.06] blur-3xl"
+              className="absolute top-1 bottom-0 left-0 hidden w-px bg-linear-to-b from-emerald-400/80 via-white/10 to-transparent md:block"
             />
 
-            <div className="relative">
-              <div className="flex items-center gap-3">
-                <span
-                  aria-hidden="true"
-                  className="h-2 w-2 rounded-full bg-emerald-400/80"
-                />
-                <p className="font-mono text-[0.68rem] font-bold tracking-[0.2em] text-neutral-400 uppercase sm:text-xs">
-                  Production engineering
-                </p>
-              </div>
+            <p className="font-mono text-[0.68rem] font-semibold tracking-[0.18em] text-emerald-300/80 uppercase sm:text-xs">
+              Product engineering &middot; Applied AI &middot; Cloud architecture
+            </p>
 
-              <p className="mt-7 max-w-3xl text-3xl font-black leading-[1.06] tracking-[-0.05em] text-white sm:text-4xl lg:text-[2.75rem]">
-                Full Stack Developer building systems that perform when the
-                <span className="text-emerald-200/85"> stakes are real.</span>
+            <p className="mt-6 max-w-3xl text-3xl font-black leading-[1.08] tracking-[-0.045em] text-white sm:text-4xl lg:text-[2.7rem]">
+              I turn complex ideas into complete, production-ready systems.
+            </p>
+
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-300 sm:text-lg">
+              My work spans product interfaces, backend architecture, AI agents,
+              workflow automation, and cloud infrastructure. I connect every
+              layer into software that is useful, reliable, and ready to grow.
+            </p>
+
+            <div className="mt-9 grid gap-3 border-t border-white/10 pt-5 sm:grid-cols-[9rem_1fr] sm:items-baseline">
+              <p className="font-mono text-[0.65rem] font-semibold tracking-[0.16em] text-neutral-500 uppercase">
+                Foundation
               </p>
-
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-300 sm:text-lg">
-                I engineer modern web platforms, AI systems, and resilient cloud
-                infrastructure. From marketplaces that move real money to
-                multitenant products that power real teams.
-              </p>
-
-              <div className="mt-8 inline-flex max-w-full items-center gap-3 rounded-full border border-white/[0.08] bg-white/[0.035] py-2.5 pr-5 pl-3 backdrop-blur-sm">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.07] text-xs font-bold text-neutral-300">
-                  CS
+              <p className="text-sm text-neutral-300 sm:text-base">
+                <span className="font-semibold text-neutral-200">
+                  Computer Science graduate
                 </span>
-                <p className="text-sm sm:text-base">
-                  <span className="font-semibold text-neutral-200">
-                    Computer Science graduate
-                  </span>
-                  <span className="mx-2 text-neutral-600" aria-hidden="true">
-                    &bull;
-                  </span>
-                  <span className="font-normal text-neutral-500">
-                    FAST NUCES Islamabad
-                  </span>
-                </p>
-              </div>
+                <span className="mx-2 text-neutral-700" aria-hidden="true">
+                  /
+                </span>
+                <span className="text-neutral-500">FAST NUCES Islamabad</span>
+              </p>
             </div>
           </div>
         </div>
