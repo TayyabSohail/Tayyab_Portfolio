@@ -134,6 +134,66 @@ export const NavItems = ({
   cta,
 }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [activeLink, setActiveLink] = useState<string | null>(null);
+
+  useEffect(() => {
+    const sectionLinks = [...items, ...(cta ? [cta] : [])]
+      .map((item) => {
+        const url = new URL(item.link, window.location.origin);
+        return {
+          link: item.link,
+          pathname: url.pathname,
+          id: url.hash.slice(1),
+        };
+      })
+      .filter(({ pathname, id }) => pathname === window.location.pathname && id);
+
+    if (sectionLinks.length === 0) {
+      setActiveLink(null);
+      return;
+    }
+
+    let frameId = 0;
+
+    const updateActiveSection = () => {
+      frameId = 0;
+      const activationLine = Math.min(160, window.innerHeight * 0.3);
+      const atPageBottom =
+        window.scrollY + window.innerHeight >=
+        document.documentElement.scrollHeight - 2;
+
+      let current = sectionLinks[0];
+
+      for (const sectionLink of sectionLinks) {
+        const section = document.getElementById(sectionLink.id);
+        if (section && section.getBoundingClientRect().top <= activationLine) {
+          current = sectionLink;
+        }
+      }
+
+      if (atPageBottom) {
+        current = sectionLinks[sectionLinks.length - 1];
+      }
+
+      setActiveLink(current.link);
+    };
+
+    const scheduleUpdate = () => {
+      if (!frameId) {
+        frameId = window.requestAnimationFrame(updateActiveSection);
+      }
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
+  }, [items, cta]);
 
   return (
     <motion.div
@@ -145,28 +205,48 @@ export const NavItems = ({
         className
       )}
     >
-      {items.map((item, idx) => (
-        <a
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative whitespace-nowrap px-1.5 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.05em] text-neutral-300 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:px-3.5 sm:text-[11px] sm:tracking-[0.08em]"
-          key={`link-${idx}`}
-          href={item.link}
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full border-b border-emerald-400 bg-emerald-500/[0.06]"
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </a>
-      ))}
+      {items.map((item, idx) => {
+        const isActive = activeLink === item.link;
+
+        return (
+          <a
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+            aria-current={isActive ? "location" : undefined}
+            className={cn(
+              "relative whitespace-nowrap px-1.5 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.05em] transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:px-3.5 sm:text-[11px] sm:tracking-[0.08em]",
+              isActive ? "text-emerald-300" : "text-neutral-300"
+            )}
+            key={`link-${idx}`}
+            href={item.link}
+          >
+            {isActive && (
+              <motion.div
+                layoutId="active-nav-item"
+                className="absolute inset-0 h-full w-full border-b-2 border-emerald-400 bg-emerald-500/[0.1]"
+                transition={{ type: "spring", stiffness: 380, damping: 32 }}
+              />
+            )}
+            {hovered === idx && !isActive && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 h-full w-full border-b border-emerald-400 bg-emerald-500/[0.06]"
+              />
+            )}
+            <span className="relative z-20">{item.name}</span>
+          </a>
+        );
+      })}
       {cta && (
         <a
           onClick={onItemClick}
           href={cta.link}
-          className="nx-btn nx-btn-primary relative whitespace-nowrap px-2 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.04em] focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden sm:px-4 sm:text-[11px] sm:tracking-[0.08em]"
+          aria-current={activeLink === cta.link ? "location" : undefined}
+          className={cn(
+            "nx-btn nx-btn-primary relative whitespace-nowrap px-2 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.04em] focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden sm:px-4 sm:text-[11px] sm:tracking-[0.08em]",
+            activeLink === cta.link &&
+              "ring-2 ring-emerald-300 ring-offset-2 ring-offset-neutral-950"
+          )}
         >
           {cta.name}
         </a>

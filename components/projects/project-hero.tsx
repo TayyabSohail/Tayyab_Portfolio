@@ -80,9 +80,13 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                 </a>
               )}
               {!hasLinks && project.liveUnavailableReason && (
-                <p className="text-sm text-neutral-300">
+                <button
+                  type="button"
+                  disabled
+                  className="inline-flex cursor-not-allowed items-center border border-white/20 bg-white/[0.03] px-5 py-2.5 text-sm font-semibold text-neutral-500"
+                >
                   {project.liveUnavailableReason}
-                </p>
+                </button>
               )}
             </div>
           </div>
