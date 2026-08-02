@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 const traces = [
   { d: "M-40 118H205V76H390V188H625", delay: "-1s", duration: "11s" },
   { d: "M-40 274H148V222H338V342H625", delay: "-7s", duration: "15s" },
@@ -11,6 +13,17 @@ const traces = [
   { d: "M880 -40V130H926V315", delay: "-8s", duration: "16s" },
   { d: "M720 940V745H674V495", delay: "-6s", duration: "15s" },
   { d: "M880 940V730H926V495", delay: "-12s", duration: "17s" },
+];
+
+const dataStreams = [
+  { x: "6%", height: "18vh", delay: "-3s", duration: "13s", opacity: 0.52 },
+  { x: "14%", height: "10vh", delay: "-9s", duration: "18s", opacity: 0.34 },
+  { x: "24%", height: "15vh", delay: "-15s", duration: "21s", opacity: 0.28 },
+  { x: "36%", height: "8vh", delay: "-6s", duration: "17s", opacity: 0.2 },
+  { x: "64%", height: "9vh", delay: "-12s", duration: "20s", opacity: 0.2 },
+  { x: "76%", height: "16vh", delay: "-4s", duration: "16s", opacity: 0.3 },
+  { x: "86%", height: "11vh", delay: "-17s", duration: "22s", opacity: 0.36 },
+  { x: "94%", height: "20vh", delay: "-8s", duration: "15s", opacity: 0.48 },
 ];
 
 const codeModules = [
@@ -50,6 +63,25 @@ export function GridBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-50 overflow-hidden bg-[#020605]"
     >
+      {/* Low-energy data packets fall on staggered rails behind the schematic. */}
+      <div className="data-stream-layer">
+        {dataStreams.map((stream) => (
+          <span
+            key={stream.x}
+            className="data-stream"
+            style={
+              {
+                "--stream-x": stream.x,
+                "--stream-height": stream.height,
+                "--stream-delay": stream.delay,
+                "--stream-duration": stream.duration,
+                "--stream-opacity": stream.opacity,
+              } as CSSProperties
+            }
+          />
+        ))}
+      </div>
+
       <svg
         className="absolute inset-0 h-full w-full"
         viewBox="0 0 1600 900"

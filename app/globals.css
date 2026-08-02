@@ -93,6 +93,84 @@ html {
   }
 }
 
+@keyframes data-stream-fall {
+  0% {
+    transform: translate3d(0, -30vh, 0) scaleY(0.72);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--stream-opacity);
+  }
+  82% {
+    opacity: calc(var(--stream-opacity) * 0.8);
+  }
+  100% {
+    transform: translate3d(0, 135vh, 0) scaleY(1);
+    opacity: 0;
+  }
+}
+
+.data-stream-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.72;
+  background-image: linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(12.5% - 0.5px),
+    rgb(52 211 153 / 0.025) calc(12.5% - 0.5px),
+    rgb(52 211 153 / 0.025) 12.5%,
+    transparent 12.5%,
+    transparent 100%
+  );
+  background-size: 12.5% 100%;
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 76% at 50% 48%,
+    rgb(0 0 0 / 0.2) 0%,
+    rgb(0 0 0 / 0.46) 45%,
+    black 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 72% 76% at 50% 48%,
+    rgb(0 0 0 / 0.2) 0%,
+    rgb(0 0 0 / 0.46) 45%,
+    black 100%
+  );
+}
+
+.data-stream {
+  position: absolute;
+  top: 0;
+  left: var(--stream-x);
+  width: 1px;
+  height: var(--stream-height);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(52 211 153 / 0.08) 22%,
+    rgb(110 231 183 / 0.56) 86%,
+    rgb(167 243 208 / 0.88)
+  );
+  box-shadow: 0 0 8px rgb(16 185 129 / 0.16);
+  will-change: transform, opacity;
+  animation: data-stream-fall var(--stream-duration) linear var(--stream-delay) infinite;
+}
+
+.data-stream::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgb(167 243 208 / 0.9);
+  box-shadow:
+    0 0 5px rgb(110 231 183 / 0.65),
+    0 0 12px rgb(16 185 129 / 0.3);
+}
+
 .chip-trace {
   stroke: rgb(52 211 153 / 0.13);
   stroke-width: 0.7;
@@ -229,12 +307,17 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   .system-trace,
+  .data-stream,
   .chip-current,
   .chip-core-meter,
   .code-module,
   .code-module::after,
   .telemetry-label {
     animation: none;
+  }
+
+  .data-stream {
+    display: none;
   }
 
   .code-module {
