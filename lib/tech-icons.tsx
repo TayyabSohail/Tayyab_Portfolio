@@ -24,6 +24,10 @@ import {
   SiGithubactions,
   SiDocker,
   SiTwilio,
+  SiPython,
+  SiFastapi,
+  SiAnthropic,
+  SiLangchain,
 } from "react-icons/si";
 import {
   FaDhl,
@@ -55,6 +59,14 @@ interface TechMeta {
 const TECH: Record<string, TechMeta> = {
   "Next.js": { icon: SiNextdotjs, color: "#FFFFFF" },
   React: { icon: SiReact, color: "#61DAFB" },
+  Python: { icon: SiPython, color: "#3776AB" },
+  FastAPI: { icon: SiFastapi, color: "#009688" },
+  OpenAI: { icon: SiOpenai, color: "#10A37F" },
+  "OpenAI Realtime API": { icon: SiOpenai, color: "#10A37F" },
+  "Claude (Anthropic)": { icon: SiAnthropic, color: "#D4A27F" },
+  Claude: { icon: SiAnthropic, color: "#D4A27F" },
+  LangChain: { icon: SiLangchain, color: "#1C3C3C" },
+  LangGraph: { icon: SiLangchain, color: "#34D399" },
   TypeScript: { icon: SiTypescript, color: "#3178C6" },
   TailwindCSS: { icon: SiTailwindcss, color: "#38BDF8" },
   ShadCN: { icon: SiShadcnui, color: "#FFFFFF" },
