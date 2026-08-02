@@ -12,13 +12,15 @@ export function ProjectsSection() {
       id="projects"
       className="relative scroll-mt-5 bg-transparent py-20 text-neutral-100"
     >
-      <div className="mx-auto w-full max-w-6xl px-6">
-        <div className="mb-16 text-center">
-          <h2 className="relative inline-block text-4xl font-bold tracking-tight text-white md:text-5xl">
-            Projects
-            <span className="absolute -bottom-2 left-1/2 h-1 w-full -translate-x-1/2 rounded-full bg-linear-to-r from-emerald-500 to-emerald-300" />
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-400">
+      <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
+        <div className="mb-12 grid gap-6 border-b border-white/10 pb-10 md:grid-cols-[1fr_0.9fr] md:items-end">
+          <div>
+            <p className="nx-kicker">Selected work</p>
+            <h2 className="mt-4 text-4xl font-bold tracking-[-0.045em] text-white md:text-6xl">
+              Projects
+            </h2>
+          </div>
+          <p className="max-w-2xl text-base leading-relaxed text-neutral-300 md:justify-self-end md:text-lg">
             Turning ideas into shipped products. Full-stack, AI and cloud
             automation work, designed and built end to end.
           </p>

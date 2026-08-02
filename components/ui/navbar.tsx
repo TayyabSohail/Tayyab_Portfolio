@@ -107,7 +107,7 @@ export const NavBody = ({
           : visible
           ? "0.5rem 1rem"
           : "0.85rem 1rem",
-        width: isMobile ? "60%" : visible ? "60%" : "92%",
+        width: isMobile ? "calc(100% - 1rem)" : "calc(100% - 2rem)",
       }}
       transition={{
         type: "spring",
@@ -118,7 +118,7 @@ export const NavBody = ({
         // The bar takes its animated width (70% on mobile) and the pill row
         // spreads inside it; min-w-fit only kicks in if the content genuinely
         // cannot fit, so the bar grows rather than clipping.
-        "relative z-[60] mx-auto mt-3 flex min-w-fit max-w-[calc(100%-1rem)] items-center justify-between rounded-full border md:min-w-0 md:max-w-3xl",
+        "relative z-[60] mx-auto mt-3 flex max-w-6xl items-center justify-between border [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))]",
         className
       )}
     >
@@ -141,7 +141,7 @@ export const NavItems = ({
       className={cn(
         // justify-between fills the bar's width; gap acts as the minimum
         // spacing so the pills never touch when the bar is at its narrowest.
-        "relative flex w-full flex-1 flex-row items-center justify-between gap-1.5 text-[11px] font-medium text-neutral-300 transition duration-200 sm:gap-2 sm:text-sm md:justify-center md:gap-3",
+        "relative flex min-w-0 w-full flex-1 flex-row items-center justify-between gap-0.5 font-medium text-neutral-300 transition duration-200 sm:gap-2 md:justify-center md:gap-3",
         className
       )}
     >
@@ -149,14 +149,14 @@ export const NavItems = ({
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative whitespace-nowrap rounded-full px-2 py-2 text-neutral-400 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:px-3.5 sm:py-2"
+          className="relative whitespace-nowrap px-1.5 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.05em] text-neutral-300 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:px-3.5 sm:text-[11px] sm:tracking-[0.08em]"
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full border border-emerald-500/25 bg-emerald-500/10"
+              className="absolute inset-0 h-full w-full border-b border-emerald-400 bg-emerald-500/[0.06]"
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -166,7 +166,7 @@ export const NavItems = ({
         <a
           onClick={onItemClick}
           href={cta.link}
-          className="relative whitespace-nowrap rounded-full bg-emerald-500 px-3 py-2 font-medium text-neutral-950 shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-400 hover:shadow-emerald-500/30 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden sm:px-4 sm:py-2 sm:font-semibold"
+          className="nx-btn nx-btn-primary relative whitespace-nowrap px-2 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.04em] focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden sm:px-4 sm:text-[11px] sm:tracking-[0.08em]"
         >
           {cta.name}
         </a>

@@ -20,10 +20,19 @@ export function NavbarDemo() {
           {/* Everything sits in one centred flow row — the links and the CTA
               are the same kind of item, the CTA just carries the filled
               treatment. Nothing is absolutely positioned, so nothing overlaps. */}
-          <div className="flex w-full items-center justify-center">
+          <div className="flex w-full items-center gap-6">
+            <a
+              href="/#home"
+              aria-label="Tayyab Sohail — home"
+              className="hidden shrink-0 items-center gap-3 font-mono text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:text-emerald-400 sm:flex"
+            >
+              <span className="text-emerald-400">//</span>
+              Tayyab Sohail
+            </a>
+            <span className="hidden h-5 w-px bg-white/10 sm:block" />
             <NavItems
               items={navItems}
-              className="w-full md:flex-none"
+              className="w-full md:justify-end"
               cta={{ name: "Book a Call", link: "/#contact" }}
             />
           </div>

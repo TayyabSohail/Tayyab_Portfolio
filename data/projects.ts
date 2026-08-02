@@ -75,6 +75,8 @@ export interface Project {
    *   patterned plate.
    */
   coverFit?: "cover" | "contain" | "mark";
+  /** Preserve wide cover art in a matching frame instead of masonry cropping. */
+  coverFrame?: "native";
   /** Flat list, used for filtering and quick scanning. */
   tech: string[];
   /** Grouped stack, rendered as the "Tech Stack" grid on the case study. */
@@ -709,31 +711,21 @@ export const projects: Project[] = [
 
   {
     slug: "ai-physiotherapy",
-    title: "AI-Driven Physiotherapy",
-    tagline: "Live posture correction powered by AI",
-    summary: "AI platform for live posture correction.",
+    title: "AI-Powered Physiotherapy Assistant",
+    tagline: "Adaptive rehabilitation guided by AI",
+    summary: "Full-stack AI platform for adaptive rehabilitation.",
     description:
-      "Computer vision corrects a patient's posture live, mid-exercise, with a RAG chatbot grounded in the clinic's own guidance.",
+      "A connected rehabilitation journey spanning intake, movement assessment, adaptive exercise planning, daily progress and AI-assisted video feedback.",
     coverImage: "/images/AI-powered physiotherapy assistance logo.png",
     coverWidth: 1024,
     coverHeight: 1024,
     // Square artwork with text — cropping to 4:3 cut the title off.
     coverFit: "contain",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "TailwindCSS",
-      "Computer Vision",
-      "Generative AI",
-      "RAG",
-    ],
+    tech: ["React", "Python", "FastAPI", "LangChain", "OpenAI"],
     techStack: [
-      { category: "Frontend", tools: ["Next.js", "TypeScript"] },
-      { category: "Styling", tools: ["TailwindCSS"] },
-      {
-        category: "AI & Vision",
-        tools: ["Computer Vision", "Generative AI", "RAG"],
-      },
+      { category: "Frontend", tools: ["React"] },
+      { category: "Backend", tools: ["Python", "FastAPI"] },
+      { category: "AI", tools: ["LangChain", "OpenAI"] },
     ],
     category: "AI",
     capabilities: ["AI"],
@@ -742,12 +734,12 @@ export const projects: Project[] = [
     liveUnavailableReason:
       "Not publicly available due to confidentiality around patient data.",
     problem:
-      "Patients performing physiotherapy exercises at home had no way to know whether their form was correct, so mistakes went uncorrected between supervised sessions and slowed recovery.",
+      "The rehabilitation journey was fragmented across manual intake, movement assessment, generic exercise plans and infrequent follow-up. Patients had little guidance between supervised sessions and plans did not respond quickly to performance.",
     approach:
-      "Combined computer vision with generative AI to assess posture live and return corrective feedback during the exercise, alongside a RAG chatbot grounded in the clinic's own exercise guidance for follow-up questions.",
+      "Built the journey around an intake agent, guided movement assessment and automatic exercise plan generation. Daily logs drive plan progression or regression, while uploaded exercise videos receive AI feedback and injury articles inform future plans.",
     outcomes: [
-      "95% accuracy in real-time posture assessment.",
-      "1 correction at a time, so guidance stays actionable mid-exercise.",
+      "<5 minutes for the patient intake process.",
+      "Daily plan progression and regression automated from patient performance.",
     ],
     design: [
       {
@@ -764,26 +756,27 @@ export const projects: Project[] = [
       },
     ],
     architecture:
-      "Next.js drives the live camera session. Pose is evaluated against target positions on-device, then passed to a generative model for corrective phrasing. The chatbot retrieves from an indexed clinical corpus before answering.",
+      "A React frontend connects to a Python and FastAPI backend. LangChain coordinates intake, assessment context and plan generation, with OpenAI producing adaptive guidance. Video uploads feed the form-analysis workflow, and uploaded injury articles provide source material for plan generation.",
     keyFeatures: [
-      "Real-time posture assessment from camera input",
-      "Corrective feedback during the exercise",
-      "RAG-powered patient support chatbot",
-      "Exercise guidance and recovery tracking",
-      "Low-latency interactive sessions",
+      "Intake agent starting the patient journey",
+      "Movement assessment with instructional videos and tutorials",
+      "Automatic exercise plan generation",
+      "Daily logging with automatic plan progression or regression",
+      "Uploaded-video form analysis with AI feedback",
+      "Plan generation informed by uploaded injury articles",
     ],
     challenges: [
       {
         challenge:
-          "Round-tripping every frame for evaluation introduced latency that made feedback useless mid-movement.",
+          "Static exercise plans could not respond when a patient's daily performance improved or declined.",
         solution:
-          "Evaluated pose on-device and reserved model calls for phrasing the correction, keeping the feedback loop inside the window where it is still actionable.",
+          "Connected daily logs to progression and regression rules so the plan adapts automatically instead of waiting for manual review.",
       },
       {
         challenge:
-          "A general-purpose model gave plausible but clinically unsafe advice.",
+          "Plan generation needed injury-specific context rather than relying on generic model knowledge.",
         solution:
-          "Grounded the chatbot in the clinic's own approved exercise corpus via RAG, so answers stay within vetted guidance.",
+          "Made uploaded articles on common injuries available to the generation workflow so recommendations can use relevant source material.",
       },
     ],
   },
@@ -864,6 +857,185 @@ export const projects: Project[] = [
           "Manual per-shop setup made reseller onboarding the bottleneck on growth.",
         solution:
           "Automated provisioning end to end, turning a multi-day manual process into a bulk operation.",
+      },
+    ],
+  },
+
+  {
+    slug: "real-estate-management-system",
+    title: "Real Estate Management System",
+    tagline: "Multi-tenant AI platform automating real estate agency operations",
+    summary:
+      "Multi-tenant AI platform automating real estate agency operations.",
+    description:
+      "A unified operating system for real estate agencies, bringing CRM, compliance, marketing, document generation and e-signing into one multi-tenant platform.",
+    coverImage:
+      "/images/SaaS AI Cloud & Automation Full-Stack Real Estate Management System.svg",
+    coverWidth: 1200,
+    coverHeight: 630,
+    coverFit: "cover",
+    coverFrame: "native",
+    tech: [
+      "React",
+      "Python",
+      "FastAPI",
+      "LangGraph",
+      "OpenAI",
+      "Multi-tenant Architecture",
+    ],
+    techStack: [
+      { category: "Frontend", tools: ["React"] },
+      { category: "Backend", tools: ["Python", "FastAPI"] },
+      { category: "AI", tools: ["LangGraph", "OpenAI"] },
+      { category: "Architecture", tools: ["Multi-tenant Architecture"] },
+    ],
+    category: "SaaS",
+    capabilities: ["AI", "Cloud & Automation", "Full-Stack"],
+    liveUnavailableReason: "Private — client project.",
+    featured: true,
+    problem:
+      "Real estate agencies managed CRM, compliance, marketing and document workflows across disconnected tools and manual processes. They had no unified system for client and property management or agreement generation.",
+    approach:
+      "Built a multi-tenant AI system with specialised CRM, compliance and knowledge agents, then connected them to a marketing module and a complete document generation and e-signing pipeline.",
+    outcomes: [
+      "30+ agencies supported on one platform.",
+      "70% reduction in manual document and agreement processing time.",
+    ],
+    architecture:
+      "A React frontend talks to a Python and FastAPI backend, while LangGraph orchestrates specialised multi-agent workflows powered by OpenAI models. The multi-tenant architecture serves more than 30 agencies from one platform while supporting each agency's own CRM and workflows.",
+    keyFeatures: [
+      "CRM agent syncing with agency-specific CRMs",
+      "Compliance agent for regulatory workflows",
+      "Knowledge agent for pipeline and workflow Q&A",
+      "Marketing module for photography booking and brochure ordering",
+      "Vendor reporting",
+      "Automated document generation and e-signing",
+    ],
+    challenges: [
+      {
+        challenge:
+          "Each agency used its own CRM and operating workflow, so one fixed integration could not serve every tenant.",
+        solution:
+          "Put the differences behind agency-specific CRM integrations while keeping the agent workflow and product experience shared across tenants.",
+      },
+      {
+        challenge:
+          "CRM, compliance, knowledge and document tasks had to cooperate without turning one long workflow into a fragile chain.",
+        solution:
+          "Split the work into specialised agents and used LangGraph to coordinate their responsibilities and hand-offs.",
+      },
+    ],
+  },
+
+  {
+    slug: "qa-compliance-agent",
+    title: "Quality Assurance / Compliance Review Agent",
+    tagline: "AI compliance agent generating clause-level tracked-change findings",
+    summary:
+      "AI compliance agent generating clause-level tracked-change findings.",
+    description:
+      "An AI review workflow that checks uploaded reports against established standards and returns clause-level tracked changes with a clear explanation for every finding.",
+    coverImage:
+      "/images/AI Cloud & Automation QA & Compliance Review Agent.svg",
+    coverWidth: 1200,
+    coverHeight: 630,
+    coverFit: "cover",
+    coverFrame: "native",
+    tech: ["Python", "FastAPI", "AWS", "Claude (Anthropic)"],
+    techStack: [
+      { category: "Backend", tools: ["Python", "FastAPI"] },
+      { category: "Cloud", tools: ["AWS"] },
+      { category: "AI", tools: ["Claude (Anthropic)"] },
+    ],
+    category: "AI",
+    capabilities: ["AI", "Cloud & Automation"],
+    liveUnavailableReason: "Private — client project.",
+    featured: true,
+    problem:
+      "Manual compliance and audit reviews against established standards were slow and inconsistent between reviewers, with each report taking about a week to complete.",
+    approach:
+      "Built an agent that checks uploaded reports against an established standards dataset, then generates a findings report with clause-level tracked changes and AI-written comments explaining every flagged issue.",
+    outcomes: [
+      "50% shorter audit turnaround, from about one week to roughly half that.",
+      "2x faster review process with more consistent outcomes.",
+    ],
+    architecture:
+      "A Python and FastAPI backend deployed on AWS handles report ingestion and comparison against the standards dataset. Claude powers the review and comment generation, returning findings tied to individual clauses for a traceable review workflow.",
+    keyFeatures: [
+      "Report upload and comparison against a standards dataset",
+      "Clause-level tracked-change findings",
+      "AI-generated comments for every finding",
+      "Consistent, repeatable review logic across reports",
+    ],
+    challenges: [
+      {
+        challenge:
+          "Broad AI feedback was not precise enough for reviewers who needed to see exactly which clause triggered a finding.",
+        solution:
+          "Grounded each check in the standards dataset and returned findings as clause-level tracked changes with an explanation attached.",
+      },
+      {
+        challenge:
+          "Reviewer judgement varied between reports, making outcomes difficult to compare and slowing final sign-off.",
+        solution:
+          "Encoded the review as one repeatable agent workflow so every report is evaluated against the same standards and output structure.",
+      },
+    ],
+  },
+
+  {
+    slug: "ai-interview-assistant",
+    title: "AI-Powered Interview Assistant (Realtime Voice)",
+    tagline: "End-to-end AI interview platform with live voice and transcription",
+    summary:
+      "End-to-end AI interview platform with live voice and transcription.",
+    description:
+      "An end-to-end interview platform that plans, schedules and conducts live AI voice interviews, then delivers the transcript automatically when the session ends.",
+    coverImage:
+      "/images/AI Full-Stack AI Realtime Voice Interview Assistant.svg",
+    coverWidth: 1200,
+    coverHeight: 630,
+    coverFit: "cover",
+    coverFrame: "native",
+    tech: ["Next.js", "OpenAI Realtime API"],
+    techStack: [
+      { category: "Frontend & Backend", tools: ["Next.js"] },
+      { category: "AI", tools: ["OpenAI Realtime API"] },
+    ],
+    category: "AI",
+    capabilities: ["AI", "Full-Stack"],
+    liveUnavailableReason: "Private — client project.",
+    featured: true,
+    problem:
+      "Running structured general, podcast-style or recruitment interviews at scale required manual scheduling, live facilitation and transcript handling for every session.",
+    approach:
+      "Built a platform where users choose an interview type, description, style and custom intro or outro. It conducts the interview live through OpenAI's Realtime API, handles transcription, meeting links and invitations, then delivers the transcript automatically.",
+    outcomes: [
+      "30+ intern interviews conducted through the platform.",
+      "3 interview formats supported: general, podcast-style and recruitment.",
+    ],
+    architecture:
+      "Next.js powers both the frontend and backend, keeping interview setup, invitations and post-session delivery in one application. OpenAI's Realtime API runs the live voice conversation and transcription, including recruitment sessions with multiple candidates and CVs.",
+    keyFeatures: [
+      "General, podcast-style and recruitment interview types",
+      "Custom interview description, style, intro and outro",
+      "Live voice interview with real-time transcription",
+      "Multi-candidate and CV support for recruitment sessions",
+      "Automated meeting link generation and invitations",
+      "Automatic post-interview transcript email",
+    ],
+    challenges: [
+      {
+        challenge:
+          "A live interview had to keep the spoken conversation and transcript aligned throughout the session.",
+        solution:
+          "Used OpenAI's Realtime API for both the voice interview and live transcription so they run within the same real-time session.",
+      },
+      {
+        challenge:
+          "Recruitment interviews needed to support several candidates and CVs without mixing their context.",
+        solution:
+          "Structured recruitment sessions around candidate-specific inputs while keeping scheduling, invitations and transcript delivery in one workflow.",
       },
     ],
   },
