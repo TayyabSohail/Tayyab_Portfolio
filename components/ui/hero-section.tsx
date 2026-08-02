@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   FaArrowRight,
   FaEnvelope,
@@ -7,6 +6,7 @@ import {
   FaLinkedin,
   FaWhatsapp,
 } from "react-icons/fa";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
 
 const impactStats = [
   { value: "100+", label: "Projects delivered" },
@@ -120,13 +120,13 @@ export function HeroSection() {
             </dl>
 
             <div className="mt-7 grid gap-3 sm:grid-cols-2">
-              <Link
+              <SmoothScrollLink
                 href="/#projects"
                 className="nx-btn nx-btn-primary group order-2 inline-flex min-h-12 items-center justify-center gap-2 px-5 text-sm font-bold uppercase tracking-[0.1em] focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-none"
               >
                 See what I build
                 <FaArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </SmoothScrollLink>
               <a
                 href="/resume/Resume_M.TayyabSohail.pdf"
                 target="_blank"
