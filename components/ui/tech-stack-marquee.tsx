@@ -180,19 +180,19 @@ function CategoryPanel({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: index * 0.06 }}
       viewport={{ once: true, margin: "-60px" }}
-      className={`nx-panel nx-panel-interactive group relative p-6 ${
+      className={`nx-panel relative p-6 ${
         index === 1 || index === 2 || index === 4 ? "lg:col-span-2" : ""
       }`}
     >
       <span
         aria-hidden="true"
-        className="absolute -right-2 -top-7 font-mono text-8xl font-black text-white/[0.025] transition-colors group-hover:text-emerald-400/[0.07]"
+        className="absolute -right-2 -top-7 font-mono text-8xl font-black text-white/[0.035]"
       >
         {String(index + 1).padStart(2, "0")}
       </span>
       <div
         aria-hidden="true"
-        className="nx-grid-surface absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-70"
+        className="nx-grid-surface absolute inset-0 opacity-25"
       />
       <span className="absolute left-0 top-7 h-12 w-px bg-emerald-400/70" />
 
@@ -222,11 +222,11 @@ function CategoryPanel({
           return (
             <li
               key={tech.name}
-              className="group/tool flex min-h-12 items-center gap-3 border-b border-white/[0.12] py-3 text-sm text-neutral-300 transition-all hover:border-emerald-400/40 hover:pl-1 hover:text-white"
+              className="flex min-h-12 items-center gap-3 border-b border-white/[0.12] py-3 text-sm text-neutral-300"
             >
               <Icon
                 aria-hidden="true"
-                className="h-5 w-5 shrink-0 transition-transform group-hover/tool:scale-110"
+                className="h-5 w-5 shrink-0"
                 style={{ color: tech.color }}
               />
               <span>{tech.name}</span>

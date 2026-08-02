@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { Project, ProjectCapability } from "@/data/projects";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,27 @@ interface FilterableProjectsProps {
 }
 
 type Filter<T> = T | "All";
+
+function ProjectQuerySync({
+  capabilities,
+  onChange,
+}: {
+  capabilities: ProjectCapability[];
+  onChange: (filter: Filter<ProjectCapability>) => void;
+}) {
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const requested = searchParams.get("capability");
+    const matchingCapability = capabilities.find(
+      (capability) => capability === requested
+    );
+
+    if (matchingCapability) onChange(matchingCapability);
+  }, [capabilities, onChange, searchParams]);
+
+  return null;
+}
 
 /**
  * Client wrapper around the grid so filtering stays interactive while the
@@ -41,6 +63,10 @@ export function FilterableProjects({
 
   return (
     <>
+      <Suspense fallback={null}>
+        <ProjectQuerySync capabilities={capabilities} onChange={setActive} />
+      </Suspense>
+
       <div
         role="group"
         aria-label="Filter projects by capability"

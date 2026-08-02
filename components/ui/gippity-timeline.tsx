@@ -1,5 +1,12 @@
-import { IconLayoutGrid, IconSparkles, IconCloud } from "@tabler/icons-react";
+import Link from "next/link";
+import {
+  IconArrowRight,
+  IconCloud,
+  IconLayoutGrid,
+  IconSparkles,
+} from "@tabler/icons-react";
 import type { Icon } from "@tabler/icons-react";
+import type { ProjectCapability } from "@/data/projects";
 
 interface Capability {
   icon: Icon;
@@ -7,6 +14,7 @@ interface Capability {
   title: string;
   statement: string;
   signals: string[];
+  projectFilter: ProjectCapability;
 }
 
 const CAPABILITIES: Capability[] = [
@@ -16,6 +24,7 @@ const CAPABILITIES: Capability[] = [
     title: "Product systems",
     statement: "End-to-end platforms that work as one.",
     signals: ["Interfaces", "APIs", "Data", "Payments"],
+    projectFilter: "Full-Stack",
   },
   {
     icon: IconSparkles,
@@ -23,6 +32,7 @@ const CAPABILITIES: Capability[] = [
     title: "Applied AI",
     statement: "Agents and automation built into real workflows.",
     signals: ["RAG", "Voice", "Multi-agent", "Automation"],
+    projectFilter: "AI",
   },
   {
     icon: IconCloud,
@@ -30,6 +40,7 @@ const CAPABILITIES: Capability[] = [
     title: "Cloud architecture",
     statement: "Secure foundations for products that need to grow.",
     signals: ["Security", "Multi-tenancy", "Workflows", "Delivery"],
+    projectFilter: "Cloud & Automation",
   },
 ];
 
@@ -46,9 +57,15 @@ export function GippityAITimeline() {
 
         <div className="border-t border-white/15">
           {CAPABILITIES.map(({ icon: Icon, ...item }) => (
-            <article
+            <Link
               key={item.title}
-              className="group relative grid gap-5 border-b border-white/15 py-7 transition-colors duration-300 hover:border-emerald-400/45 md:grid-cols-[2.5rem_minmax(0,1fr)_auto] md:items-center md:gap-6 md:py-8"
+              href={{
+                pathname: "/",
+                query: { capability: item.projectFilter },
+                hash: "projects",
+              }}
+              aria-label={`View projects related to ${item.title}`}
+              className="group relative grid cursor-pointer gap-5 border-b border-white/15 py-7 transition-colors duration-300 hover:border-emerald-400/45 focus-visible:bg-emerald-400/[0.035] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-400 focus-visible:outline-hidden md:grid-cols-[2.5rem_minmax(0,1fr)_auto] md:items-center md:gap-6 md:py-8"
             >
               <span className="font-mono text-[0.65rem] tracking-[0.2em] text-neutral-600 transition-colors group-hover:text-emerald-400">
                 {item.index}
@@ -70,26 +87,36 @@ export function GippityAITimeline() {
                 </div>
               </div>
 
-              <ul className="flex flex-wrap gap-2 pl-[4.75rem] md:max-w-[19rem] md:justify-end md:pl-0">
-                {item.signals.map((signal) => (
-                  <li
-                    key={signal}
-                    className="inline-flex items-center gap-2 border border-white/[0.09] bg-white/[0.025] px-2.5 py-1.5 font-mono text-[0.62rem] font-semibold tracking-[0.1em] whitespace-nowrap text-neutral-400 uppercase transition-colors group-hover:border-emerald-400/25 group-hover:bg-emerald-400/[0.04] group-hover:text-neutral-200"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="h-1 w-1 shrink-0 rounded-full bg-emerald-400/75"
-                    />
-                    {signal}
-                  </li>
-                ))}
-              </ul>
+              <div className="flex flex-col items-start gap-3 pl-[4.75rem] md:max-w-[19rem] md:items-end md:pl-0">
+                <ul className="flex flex-wrap gap-2 md:justify-end">
+                  {item.signals.map((signal) => (
+                    <li
+                      key={signal}
+                      className="inline-flex items-center gap-2 border border-white/[0.09] bg-white/[0.025] px-2.5 py-1.5 font-mono text-[0.62rem] font-semibold tracking-[0.1em] whitespace-nowrap text-neutral-400 uppercase transition-colors group-hover:border-emerald-400/25 group-hover:bg-emerald-400/[0.04] group-hover:text-neutral-200"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="h-1 w-1 shrink-0 rounded-full bg-emerald-400/75"
+                      />
+                      {signal}
+                    </li>
+                  ))}
+                </ul>
+
+                <span className="inline-flex items-center gap-2 font-mono text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-emerald-300/80 transition-colors group-hover:text-emerald-300">
+                  View related work
+                  <IconArrowRight
+                    aria-hidden="true"
+                    className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </span>
+              </div>
 
               <span
                 aria-hidden="true"
                 className="absolute bottom-0 left-0 h-px w-0 bg-emerald-400 transition-all duration-500 group-hover:w-full"
               />
-            </article>
+            </Link>
           ))}
         </div>
       </div>

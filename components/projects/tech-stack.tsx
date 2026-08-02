@@ -25,7 +25,7 @@ export function TechStack({ groups }: TechStackProps) {
           {groups.map((group) => (
             <li
               key={group.category}
-              className="nx-panel nx-panel-interactive p-5"
+              className="nx-panel p-5"
             >
               <h3 className="text-xs font-semibold uppercase tracking-widest text-emerald-400">
                 {group.category}

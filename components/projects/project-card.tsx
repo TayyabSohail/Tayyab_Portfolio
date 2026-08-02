@@ -39,11 +39,9 @@ export function ProjectCard({
     // wrappers inside the card trapped it in their own stacking context.
     <Link
       href={`/case-studies/${project.slug}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${project.title}: ${project.tagline} (opens in a new tab)`}
+      aria-label={`${project.title}: ${project.tagline}`}
       className={cn(
-        "nx-panel nx-panel-interactive group relative isolate block",
+        "nx-panel nx-panel-interactive group relative isolate block cursor-pointer",
         "focus-visible:-translate-y-1.5 focus-visible:border-emerald-500/40 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden",
         className
       )}
@@ -96,12 +94,6 @@ export function ProjectCard({
           {project.category}
         </span>
 
-        <span
-          aria-hidden="true"
-          className="absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center border border-emerald-400 bg-emerald-400 text-neutral-950 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-        >
-          <IconArrowUpRight className="h-6 w-6" stroke={2.5} />
-        </span>
       </div>
 
       <div className="relative p-5 sm:p-6">
@@ -115,11 +107,11 @@ export function ProjectCard({
           </span>
         )}
 
-        <h3 className="text-2xl font-bold tracking-tight text-white">
+        <h3 className="text-2xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-emerald-300 group-focus-visible:text-emerald-300">
           {project.title}
         </h3>
 
-        <p className="mt-2 text-base text-neutral-300 transition-colors duration-300 group-hover:text-white">
+        <p className="mt-2 text-sm leading-relaxed text-neutral-300 transition-colors duration-300 group-hover:text-white sm:text-base">
           {project.tagline}
         </p>
 
@@ -129,7 +121,7 @@ export function ProjectCard({
           {project.capabilities.map((capability) => (
             <li
               key={capability}
-              className="inline-flex items-center gap-1.5 border-l border-emerald-500/45 bg-emerald-500/[0.06] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.08em] text-emerald-300/85 transition group-hover:bg-emerald-500/10"
+              className="inline-flex items-center gap-1.5 border border-white/10 bg-white/[0.035] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.08em] text-neutral-300 transition-colors group-hover:border-emerald-400/25"
             >
               <span
                 aria-hidden="true"
@@ -164,15 +156,22 @@ export function ProjectCard({
           )}
         </ul>
 
-        {/* Visual button — the whole card is already the link, so this is a
-            styled span (a nested <a> would be invalid). It carries the
-            clickable affordance on touch, where hover cues never fire. */}
-        <span className="mt-6 inline-flex w-full items-center justify-between border-t border-white/15 pt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-400 transition-colors group-hover:text-emerald-300">
-          Open case study
-          <IconArrowUpRight
-            aria-hidden="true"
-            className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
+        {/* The card is the link; this full-bleed footer keeps the action
+            visible on touch devices without repeating a primary button. */}
+        <span className="-mx-5 -mb-5 mt-6 flex min-h-14 items-center justify-between border-t border-white/10 bg-white/[0.025] px-5 font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors duration-300 group-hover:bg-emerald-400/[0.07] group-hover:text-emerald-300 group-focus-visible:bg-emerald-400/[0.07] group-focus-visible:text-emerald-300 sm:-mx-6 sm:-mb-6 sm:px-6">
+          <span className="inline-flex items-center gap-2.5">
+            <span
+              aria-hidden="true"
+              className="h-px w-4 bg-emerald-400 transition-[width] duration-300 group-hover:w-6 group-focus-visible:w-6"
+            />
+            View case study
+          </span>
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-emerald-400/35 bg-emerald-400/[0.08] text-emerald-300 transition-colors duration-300 group-hover:border-emerald-400 group-hover:bg-emerald-400 group-hover:text-neutral-950 group-focus-visible:border-emerald-400 group-focus-visible:bg-emerald-400 group-focus-visible:text-neutral-950">
+            <IconArrowUpRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5"
+            />
+          </span>
         </span>
       </div>
     </Link>
