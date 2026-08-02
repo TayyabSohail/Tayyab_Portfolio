@@ -5,31 +5,31 @@ interface Capability {
   icon: Icon;
   index: string;
   title: string;
-  headline: string;
-  body: string;
+  statement: string;
+  signals: string[];
 }
 
 const CAPABILITIES: Capability[] = [
   {
     icon: IconLayoutGrid,
     index: "01",
-    title: "Full Stack Development",
-    headline: "Production web applications",
-    body: "Responsive frontends, secure APIs and scalable data models, built as one coherent product rather than disconnected layers.",
+    title: "Product systems",
+    statement: "End-to-end platforms that work as one.",
+    signals: ["Interfaces", "APIs", "Data", "Payments"],
   },
   {
     icon: IconSparkles,
     index: "02",
-    title: "AI Integration & Automation",
-    headline: "AI built for real workflows",
-    body: "LLMs, RAG, speech and intelligent automation grounded in business data and connected to the tools teams already use.",
+    title: "Applied AI",
+    statement: "Agents and automation built into real workflows.",
+    signals: ["RAG", "Voice", "Multi-agent", "Automation"],
   },
   {
     icon: IconCloud,
     index: "03",
-    title: "Cloud & Infrastructure",
-    headline: "Reliable systems, simple delivery",
-    body: "Secure authentication, resilient databases, background workflows and deployment pipelines designed for production from day one.",
+    title: "Cloud architecture",
+    statement: "Secure foundations for products that need to grow.",
+    signals: ["Security", "Multi-tenancy", "Workflows", "Delivery"],
   },
 ];
 
@@ -37,45 +37,58 @@ export function GippityAITimeline() {
   return (
     <section className="w-full bg-transparent pb-24 md:pb-32">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 sm:px-6 lg:grid-cols-[0.32fr_1fr] lg:gap-14">
-        <header className="lg:pt-5">
+        <header className="lg:pt-2">
           <p className="nx-kicker">Capabilities</p>
-          <h3 className="mt-4 text-4xl font-bold tracking-[-0.045em] text-white md:text-5xl">
-            What I do
+          <h3 className="mt-4 max-w-xs text-4xl font-bold leading-[0.98] tracking-[-0.045em] text-white md:text-5xl">
+            From idea to infrastructure.
           </h3>
-          <p className="mt-5 max-w-xs text-sm leading-relaxed text-neutral-300">
-            Product engineering across the application, intelligence and
-            infrastructure layers.
-          </p>
         </header>
 
-        <div className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-3">
+        <div className="border-t border-white/15">
           {CAPABILITIES.map(({ icon: Icon, ...item }) => (
             <article
               key={item.title}
-              className="nx-panel nx-panel-interactive group min-h-72 p-5 sm:min-h-[340px] sm:p-7"
+              className="group relative grid gap-5 border-b border-white/15 py-7 transition-colors duration-300 hover:border-emerald-400/45 md:grid-cols-[2.5rem_minmax(0,1fr)_auto] md:items-center md:gap-6 md:py-8"
             >
-              <div className="flex items-start justify-between">
-                <span className="font-mono text-xs tracking-[0.2em] text-emerald-400/65">
-                  {item.index}
-                </span>
+              <span className="font-mono text-[0.65rem] tracking-[0.2em] text-neutral-600 transition-colors group-hover:text-emerald-400">
+                {item.index}
+              </span>
+
+              <div className="flex items-center gap-4 sm:gap-5">
                 <Icon
                   aria-hidden="true"
-                  className="h-7 w-7 text-emerald-400 transition-transform duration-300 group-hover:-translate-y-1"
-                  stroke={1.4}
+                  className="h-8 w-8 shrink-0 text-emerald-400/80 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105"
+                  stroke={1.25}
                 />
+                <div>
+                  <h4 className="text-2xl font-bold leading-tight tracking-[-0.03em] text-white sm:text-3xl">
+                    {item.title}
+                  </h4>
+                  <p className="mt-1 text-sm text-neutral-400 sm:text-base">
+                    {item.statement}
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-12 sm:mt-16">
-                <p className="inline-flex min-h-10 items-center border-l-2 border-emerald-400 bg-emerald-400/10 px-3 py-2 font-mono text-sm font-bold leading-snug tracking-[-0.01em] text-emerald-200 shadow-[0_0_24px_rgba(52,211,153,0.08)]">
-                  {item.title}
-                </p>
-                <h4 className="mt-5 text-2xl font-bold leading-tight tracking-[-0.025em] text-white">
-                  {item.headline}
-                </h4>
-                <p className="mt-4 text-sm leading-relaxed text-neutral-300">
-                  {item.body}
-                </p>
-              </div>
+              <ul className="flex flex-wrap gap-2 pl-[4.75rem] md:max-w-[19rem] md:justify-end md:pl-0">
+                {item.signals.map((signal) => (
+                  <li
+                    key={signal}
+                    className="inline-flex items-center gap-2 border border-white/[0.09] bg-white/[0.025] px-2.5 py-1.5 font-mono text-[0.62rem] font-semibold tracking-[0.1em] whitespace-nowrap text-neutral-400 uppercase transition-colors group-hover:border-emerald-400/25 group-hover:bg-emerald-400/[0.04] group-hover:text-neutral-200"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="h-1 w-1 shrink-0 rounded-full bg-emerald-400/75"
+                    />
+                    {signal}
+                  </li>
+                ))}
+              </ul>
+
+              <span
+                aria-hidden="true"
+                className="absolute bottom-0 left-0 h-px w-0 bg-emerald-400 transition-all duration-500 group-hover:w-full"
+              />
             </article>
           ))}
         </div>

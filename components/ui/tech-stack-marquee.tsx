@@ -16,6 +16,7 @@ import {
   SiJavascript,
   SiKubernetes,
   SiMongodb,
+  SiN8N,
   SiNextdotjs,
   SiNodedotjs,
   SiOpenai,
@@ -34,6 +35,7 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiVercel,
+  SiZapier,
 } from "react-icons/si";
 import {
   FaDatabase,
@@ -123,6 +125,8 @@ const techCategories: TechCategory[] = [
       { name: "LangChain", icon: SiLangchain, color: "#1C3C3C" },
       { name: "OpenRouter", icon: FaRobot, color: "#A855F7" },
       { name: "Trigger.dev", icon: TriggerDevIcon, color: "#FF6B35" },
+      { name: "Zapier", icon: SiZapier, color: "#FF4F00" },
+      { name: "n8n", icon: SiN8N, color: "#EA4B71" },
       { name: "Pinecone", icon: FaDatabase, color: "#60A5FA" },
     ],
   },
