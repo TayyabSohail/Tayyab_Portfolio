@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   IconExternalLink,
   IconBrandGithub,
@@ -16,7 +15,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
   return (
     <header className="border-b border-white/10">
       <div className="mx-auto w-full max-w-6xl px-5 pb-16 pt-28 sm:px-6 md:pt-36">
-        <Link
+        <a
           href="/#projects"
           className="group inline-flex items-center gap-2 border-l border-emerald-400 bg-emerald-500/[0.06] px-3.5 py-2 font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400 transition hover:text-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
         >
@@ -25,7 +24,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             className="h-4 w-4 transition-transform group-hover:-translate-x-1"
           />
           All projects
-        </Link>
+        </a>
 
         <div className="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>

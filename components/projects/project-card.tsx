@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { IconArrowUpRight } from "@tabler/icons-react";
 import type { Project } from "@/data/projects";
 import { getTechMeta } from "@/lib/tech-icons";
@@ -37,7 +36,7 @@ export function ProjectCard({
     // The whole card is one link, so every part of it (cover included) is
     // clickable. A stretched-link overlay was unreliable here: positioned
     // wrappers inside the card trapped it in their own stacking context.
-    <Link
+    <a
       href={`/case-studies/${project.slug}`}
       aria-label={`${project.title}: ${project.tagline}`}
       className={cn(
@@ -164,7 +163,7 @@ export function ProjectCard({
               aria-hidden="true"
               className="h-px w-4 bg-emerald-400 transition-[width] duration-300 group-hover:w-6 group-focus-visible:w-6"
             />
-            View case study
+            View project
           </span>
           <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-emerald-400/35 bg-emerald-400/[0.08] text-emerald-300 transition-colors duration-300 group-hover:border-emerald-400 group-hover:bg-emerald-400 group-hover:text-neutral-950 group-focus-visible:border-emerald-400 group-focus-visible:bg-emerald-400 group-focus-visible:text-neutral-950">
             <IconArrowUpRight
@@ -174,6 +173,6 @@ export function ProjectCard({
           </span>
         </span>
       </div>
-    </Link>
+    </a>
   );
 }

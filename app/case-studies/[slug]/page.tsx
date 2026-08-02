@@ -204,13 +204,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </div>
 
         <div className="mt-10 text-center">
-          <Link
+          <a
             href="/#projects"
             className="nx-btn nx-btn-secondary inline-flex items-center gap-2 px-6 py-3 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
           >
             <IconLayoutGrid aria-hidden="true" className="h-4 w-4" />
             All projects
-          </Link>
+          </a>
         </div>
       </nav>
     </main>
