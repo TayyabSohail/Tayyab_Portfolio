@@ -114,7 +114,7 @@ function WhatsAppOption() {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="nx-btn nx-btn-secondary group mx-auto mt-4 inline-flex w-fit items-center justify-center gap-3 px-5 py-3.5"
+        className="nx-btn nx-btn-secondary group mx-auto mt-4 flex w-fit items-center justify-center gap-3 px-5 py-3.5"
       >
         <span className="flex min-w-0 items-center gap-3">
           <svg

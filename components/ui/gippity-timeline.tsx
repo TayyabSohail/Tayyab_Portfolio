@@ -65,11 +65,11 @@ export function GippityAITimeline() {
                 />
               </div>
 
-              <div className="mt-14 sm:mt-20">
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-400">
+              <div className="mt-12 sm:mt-16">
+                <p className="inline-flex min-h-10 items-center border-l-2 border-emerald-400 bg-emerald-400/10 px-3 py-2 font-mono text-sm font-bold leading-snug tracking-[-0.01em] text-emerald-200 shadow-[0_0_24px_rgba(52,211,153,0.08)]">
                   {item.title}
                 </p>
-                <h4 className="mt-3 text-2xl font-bold leading-tight tracking-[-0.025em] text-white">
+                <h4 className="mt-5 text-2xl font-bold leading-tight tracking-[-0.025em] text-white">
                   {item.headline}
                 </h4>
                 <p className="mt-4 text-sm leading-relaxed text-neutral-300">

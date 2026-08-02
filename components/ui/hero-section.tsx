@@ -1,9 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import {
   FaArrowRight,
   FaEnvelope,
@@ -11,12 +7,11 @@ import {
   FaLinkedin,
   FaWhatsapp,
 } from "react-icons/fa";
-const proficiencies = [
-  "Product Development",
-  "AI Systems & Agents",
-  "Workflow Automation",
-  "Cloud Infrastructure",
-  "Software Architecture",
+
+const impactStats = [
+  { value: "100+", label: "Projects delivered" },
+  { value: "30+", label: "Clients served" },
+  { value: "5+", label: "Years building products" },
 ];
 
 const socialLinks = [
@@ -43,19 +38,6 @@ const socialLinks = [
 ];
 
 export function HeroSection() {
-  const [activeProficiency, setActiveProficiency] = useState(0);
-  const [isProficiencyPaused, setIsProficiencyPaused] = useState(false);
-
-  useEffect(() => {
-    if (isProficiencyPaused) return;
-
-    const id = window.setTimeout(() => {
-      setActiveProficiency((current) => (current + 1) % proficiencies.length);
-    }, 3600);
-
-    return () => window.clearTimeout(id);
-  }, [activeProficiency, isProficiencyPaused]);
-
   return (
     <section
       id="hero"
@@ -86,9 +68,6 @@ export function HeroSection() {
             <p className="text-3xl font-black uppercase leading-none tracking-[-0.045em] text-white sm:text-4xl">
               Tayyab Sohail
             </p>
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-emerald-400/75">
-              Full-Stack Developer · AI Engineer
-            </p>
           </div>
 
           <span className="absolute bottom-0 left-0 z-30 h-8 w-px bg-emerald-400" />
@@ -104,6 +83,12 @@ export function HeroSection() {
           <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-emerald-400/70 via-emerald-400/15 to-transparent" />
 
           <div className="p-6 sm:p-9 lg:p-10">
+            <p className="max-w-2xl font-mono text-[10px] font-semibold leading-relaxed uppercase tracking-[0.12em] text-emerald-300 sm:text-xs">
+              Full-Stack Developer <span className="text-white/30">·</span> AI &amp;
+              Automation Engineer <span className="text-white/30">·</span> Cloud
+              Architect
+            </p>
+
             <h1 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.06] tracking-[-0.04em] text-white sm:text-4xl lg:text-[2.85rem]">
               I build the products
               <span className="mt-1 block text-emerald-400">
@@ -112,43 +97,27 @@ export function HeroSection() {
             </h1>
 
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-neutral-300 sm:text-base">
-              Full-stack platforms and AI systems engineered to ship fast,
-              scale cleanly, and deliver measurable results.
+              Full-stack platforms and AI systems engineered to ship fast, scale
+              cleanly, and deliver measurable results.
             </p>
 
-            <div
-              className="mt-7 border-y border-white/10 py-5"
-              onMouseEnter={() => setIsProficiencyPaused(true)}
-              onMouseLeave={() => setIsProficiencyPaused(false)}
-              onFocusCapture={() => setIsProficiencyPaused(true)}
-              onBlurCapture={(event) => {
-                if (!event.currentTarget.contains(event.relatedTarget)) {
-                  setIsProficiencyPaused(false);
-                }
-              }}
-            >
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-300">
-                I specialize in
-              </p>
-
-              <div className="relative mt-3 h-14 overflow-hidden border-l-2 border-emerald-400 bg-emerald-500/[0.045] px-4 [perspective:700px] sm:h-16 sm:px-5">
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.p
-                    key={proficiencies[activeProficiency]}
-                    initial={{ opacity: 0, y: 24, rotateX: -45 }}
-                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                    exit={{ opacity: 0, y: -24, rotateX: 45 }}
-                    transition={{
-                      duration: 0.4,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="absolute inset-0 flex items-center px-4 text-lg font-bold tracking-[-0.02em] text-white [transform-style:preserve-3d] sm:px-5 sm:text-xl"
-                  >
-                    {proficiencies[activeProficiency]}
-                  </motion.p>
-                </AnimatePresence>
-              </div>
-            </div>
+            <dl className="mt-7 grid grid-cols-3 border-y border-white/10 py-5">
+              {impactStats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={`min-w-0 px-3 first:pl-0 last:pr-0 sm:px-5 ${
+                    index > 0 ? "border-l border-white/10" : ""
+                  }`}
+                >
+                  <dd className="text-2xl font-black tracking-[-0.05em] text-white sm:text-3xl">
+                    {stat.value}
+                  </dd>
+                  <dt className="mt-1 text-[10px] font-semibold leading-snug uppercase tracking-[0.08em] text-neutral-400 sm:text-xs">
+                    {stat.label}
+                  </dt>
+                </div>
+              ))}
+            </dl>
 
             <div className="mt-7 grid gap-3 sm:grid-cols-2">
               <Link
