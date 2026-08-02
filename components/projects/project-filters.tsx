@@ -44,7 +44,7 @@ export function FilterableProjects({
       <div
         role="group"
         aria-label="Filter projects by capability"
-        className="mb-10 flex flex-wrap justify-center gap-2"
+        className="mb-10 flex w-fit max-w-full flex-wrap justify-start gap-px border border-white/10 bg-white/10 p-px"
       >
         {filters.map((filter) => {
           const isActive = filter === active;
@@ -55,11 +55,11 @@ export function FilterableProjects({
               onClick={() => setActive(filter)}
               aria-pressed={isActive}
               className={cn(
-                "rounded-lg border px-4 py-2 text-sm font-medium transition",
+                "border px-3 py-2.5 text-[11px] font-medium uppercase tracking-[0.06em] transition sm:px-4 sm:text-xs sm:tracking-[0.08em]",
                 "focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden",
                 isActive
-                  ? "border-emerald-500 bg-emerald-500 text-neutral-950"
-                  : "border-neutral-800 bg-neutral-900/60 text-neutral-400 backdrop-blur-sm hover:border-neutral-600 hover:text-neutral-200"
+                  ? "border-emerald-400 bg-emerald-400 text-neutral-950"
+                  : "border-transparent bg-[#050807] text-neutral-300 hover:bg-emerald-500/[0.08] hover:text-white"
               )}
             >
               {filter}

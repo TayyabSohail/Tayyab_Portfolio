@@ -77,26 +77,26 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     <main className="pb-28">
       <ProjectHero project={project} />
 
-      <div className="mx-auto w-full max-w-5xl px-6">
+      <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
         {/* Lede */}
-        <section className="border-b border-neutral-800 py-16 md:py-24">
-          <p className="max-w-4xl text-2xl font-medium leading-snug tracking-tight text-neutral-100 md:text-3xl md:leading-snug">
+        <section className="border-b border-white/10 py-16 md:py-24">
+          <p className="max-w-4xl text-xl font-medium leading-snug tracking-tight text-neutral-100 sm:text-2xl md:text-3xl md:leading-snug">
             {project.description}
           </p>
         </section>
 
         {/* Problem → approach, side by side on desktop. */}
-        <section className="border-b border-neutral-800 py-16 md:py-24">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-sm p-7 md:p-8">
+        <section className="border-b border-white/10 py-16 md:py-24">
+          <div className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 md:grid-cols-2">
+            <div className="nx-panel p-5 sm:p-7 md:p-9">
               <SectionLabel>The problem</SectionLabel>
-              <p className="text-justify text-lg leading-relaxed text-neutral-300 hyphens-auto">
+              <p className="text-base leading-relaxed text-neutral-300 sm:text-lg md:text-justify md:hyphens-auto">
                 {project.problem}
               </p>
             </div>
-            <div className="rounded-2xl border border-emerald-500/25 bg-emerald-500/5 p-7 md:p-8">
+            <div className="nx-panel p-5 sm:p-7 md:p-9">
               <SectionLabel>My approach</SectionLabel>
-              <p className="text-justify text-lg leading-relaxed text-neutral-300 hyphens-auto">
+              <p className="text-base leading-relaxed text-neutral-300 sm:text-lg md:text-justify md:hyphens-auto">
                 {project.approach}
               </p>
             </div>
@@ -104,22 +104,22 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </section>
 
         {/* Architecture */}
-        <section className="border-b border-neutral-800 py-16 md:py-24">
+        <section className="border-b border-white/10 py-16 md:py-24">
           <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
             How it&apos;s built
           </h2>
-          <p className="max-w-3xl text-justify text-lg leading-relaxed text-neutral-300 hyphens-auto">
+          <p className="max-w-3xl text-base leading-relaxed text-neutral-300 sm:text-lg md:text-justify md:hyphens-auto">
             {project.architecture}
           </p>
 
           <h3 className="mt-14 mb-6 text-sm font-semibold uppercase tracking-widest text-emerald-400">
             Key features
           </h3>
-          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-2">
             {project.keyFeatures.map((feature) => (
               <li
                 key={feature}
-                className="flex items-center gap-3 rounded-xl border border-neutral-800 bg-neutral-900/60 px-5 py-4 text-base text-neutral-200 backdrop-blur-sm transition duration-300 hover:border-emerald-500/40"
+                className="flex items-center gap-3 bg-[#050807] px-5 py-4 text-base text-neutral-300 transition hover:bg-emerald-500/[0.055] hover:text-white"
               >
                 <IconCheck
                   aria-hidden="true"
@@ -134,28 +134,28 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* Challenges, after the build details: the hard parts land better once
             the reader knows what was being built. */}
-        <section className="border-b border-neutral-800 py-16 md:py-24">
+        <section className="border-b border-white/10 py-16 md:py-24">
           <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
             Challenges &amp; Solutions
           </h2>
-          <ol className="space-y-4">
+          <ol className="grid gap-px border border-white/10 bg-white/10">
             {project.challenges.map((item, index) => (
               <li
                 key={item.challenge}
-                className="rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-sm p-6 transition duration-300 hover:border-neutral-600 md:p-8"
+                className="nx-panel nx-panel-interactive p-5 sm:p-6 md:p-8"
               >
-                <div className="flex gap-5">
+                <div className="flex gap-3 sm:gap-5">
                   <span
                     aria-hidden="true"
-                    className="font-mono text-3xl font-bold text-neutral-700"
+                    className="font-mono text-2xl font-bold text-neutral-700 sm:text-3xl"
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
-                    <p className="text-justify text-lg font-medium leading-relaxed text-neutral-100 hyphens-auto">
+                    <p className="text-base font-medium leading-relaxed text-neutral-100 sm:text-lg md:text-justify md:hyphens-auto">
                       {item.challenge}
                     </p>
-                    <p className="mt-5 border-l-2 border-emerald-500 pl-5 text-justify text-base leading-relaxed text-neutral-400 hyphens-auto">
+                    <p className="mt-5 border-l-2 border-emerald-500 pl-4 text-sm leading-relaxed text-neutral-400 sm:pl-5 sm:text-base md:text-justify md:hyphens-auto">
                       {item.solution}
                     </p>
                   </div>
@@ -170,11 +170,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
             Results
           </h2>
-          <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 md:grid-cols-3">
             {project.outcomes.map((outcome) => (
               <li
                 key={outcome}
-                className="rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-sm p-7 transition duration-300 hover:border-emerald-500/40"
+                className="nx-panel nx-panel-interactive p-7"
               >
                 <Metric text={outcome} />
               </li>
@@ -190,7 +190,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       {/* Prev / next */}
       <nav
         aria-label="Project navigation"
-        className="mx-auto w-full max-w-5xl px-6"
+        className="mx-auto w-full max-w-6xl px-5 sm:px-6"
       >
         <div className="grid grid-cols-1 gap-4 border-t border-neutral-800 pt-12 sm:grid-cols-2">
           {previous && <AdjacentLink project={previous} direction="previous" />}
@@ -206,7 +206,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <div className="mt-10 text-center">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-900/60 px-6 py-3 text-sm font-semibold text-neutral-200 backdrop-blur-sm transition hover:border-emerald-500/40 hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
+            className="nx-btn nx-btn-secondary inline-flex items-center gap-2 px-6 py-3 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
           >
             <IconLayoutGrid aria-hidden="true" className="h-4 w-4" />
             All projects
@@ -233,12 +233,12 @@ function AdjacentLink({
     <Link
       href={`/case-studies/${project.slug}`}
       className={cn(
-        "group flex items-center gap-4 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-4 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-500/40 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden",
+        "nx-panel nx-panel-interactive group flex items-center gap-4 p-4 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden",
         isNext && "flex-row-reverse text-right",
         className
       )}
     >
-      <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-lg border border-neutral-800 bg-neutral-950">
+      <div className="relative h-16 w-20 shrink-0 overflow-hidden border border-white/10 bg-neutral-950">
         <Image
           src={project.coverImage}
           alt=""
@@ -246,7 +246,9 @@ function AdjacentLink({
           fill
           sizes="80px"
           className={cn(
-            project.coverFit === "cover"
+            project.coverFrame === "native"
+              ? "object-contain p-1.5"
+              : project.coverFit === "cover"
               ? "object-cover"
               : "object-contain p-1.5"
           )}
@@ -256,7 +258,7 @@ function AdjacentLink({
       <div className="min-w-0">
         <span
           className={cn(
-            "inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-neutral-500",
+            "inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-neutral-400",
             isNext && "flex-row-reverse"
           )}
         >
@@ -270,7 +272,7 @@ function AdjacentLink({
         <span className="mt-1 block truncate text-lg font-bold text-white transition group-hover:text-emerald-400">
           {project.title}
         </span>
-        <span className="mt-0.5 block truncate text-sm text-neutral-500">
+        <span className="mt-0.5 block truncate text-sm text-neutral-400">
           {project.tagline}
         </span>
       </div>

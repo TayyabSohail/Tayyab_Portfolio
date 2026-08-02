@@ -16,11 +16,11 @@ export function ProjectHero({ project }: ProjectHeroProps) {
   const hasLinks = Boolean(project.liveUrl || project.githubUrl);
 
   return (
-    <header className="border-b border-neutral-800">
-      <div className="mx-auto w-full max-w-5xl px-6 pb-14 pt-28 md:pt-32">
+    <header className="border-b border-white/10">
+      <div className="mx-auto w-full max-w-6xl px-5 pb-16 pt-28 sm:px-6 md:pt-36">
         <Link
           href="/#projects"
-          className="group inline-flex items-center gap-2 rounded-full border border-neutral-700/70 bg-neutral-900/50 px-3.5 py-1.5 text-sm font-medium tracking-wide text-white backdrop-blur-sm transition hover:border-emerald-500/50 hover:text-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
+          className="group inline-flex items-center gap-2 border-l border-emerald-400 bg-emerald-500/[0.06] px-3.5 py-2 font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400 transition hover:text-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
         >
           <IconArrowLeft
             aria-hidden="true"
@@ -29,10 +29,11 @@ export function ProjectHero({ project }: ProjectHeroProps) {
           All projects
         </Link>
 
-        <div className="mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-md border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+            <p className="nx-kicker">Case study</p>
+            <div className="mt-5 flex flex-wrap items-center gap-2">
+              <span className="border-l border-emerald-400 bg-emerald-500/[0.07] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.08em] text-emerald-400">
                 {project.category}
               </span>
               {/* The kinds of work involved, in a lighter treatment than the
@@ -40,14 +41,14 @@ export function ProjectHero({ project }: ProjectHeroProps) {
               {project.capabilities.map((capability) => (
                 <span
                   key={capability}
-                  className="rounded-md border border-neutral-700 bg-neutral-900/60 px-3 py-1 text-xs font-medium text-neutral-300"
+                  className="border-l border-neutral-600 bg-white/[0.035] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.08em] text-neutral-400"
                 >
                   {capability}
                 </span>
               ))}
             </div>
 
-            <h1 className="mt-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
+            <h1 className="mt-6 text-3xl font-bold tracking-[-0.045em] text-white sm:text-4xl md:text-6xl">
               {project.title}
             </h1>
 
@@ -61,7 +62,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-neutral-950 transition hover:bg-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden"
+                  className="nx-btn nx-btn-primary order-2 inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden"
                 >
                   <IconExternalLink aria-hidden="true" className="h-4 w-4" />
                   View live
@@ -72,14 +73,14 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-neutral-500 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden"
+                  className="nx-btn nx-btn-secondary order-1 inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden"
                 >
                   <IconBrandGithub aria-hidden="true" className="h-4 w-4" />
                   Source
                 </a>
               )}
               {!hasLinks && project.liveUnavailableReason && (
-                <p className="text-sm text-neutral-500">
+                <p className="text-sm text-neutral-300">
                   {project.liveUnavailableReason}
                 </p>
               )}
@@ -87,7 +88,14 @@ export function ProjectHero({ project }: ProjectHeroProps) {
           </div>
 
           {/* Logos are contained so they are not cropped; screenshots fill. */}
-          <div className="relative aspect-4/3 overflow-hidden rounded-xl border border-neutral-800 bg-neutral-950">
+          <div
+            className={cn(
+              "nx-panel relative bg-neutral-950",
+              project.coverFrame === "native"
+                ? "aspect-[40/21]"
+                : "aspect-4/3"
+            )}
+          >
             {project.coverFit === "mark" && (
               <>
                 <div

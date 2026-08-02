@@ -48,7 +48,11 @@ export function ProjectGrid({
           project={project}
           priority={index < priorityCount}
           index={index + 1}
-          coverRatio={RATIOS[index % RATIOS.length]}
+          coverRatio={
+            project.coverFrame === "native"
+              ? "aspect-[40/21]"
+              : RATIOS[index % RATIOS.length]
+          }
           // break-inside prevents a card splitting across two columns.
           className="mb-6 break-inside-avoid"
         />

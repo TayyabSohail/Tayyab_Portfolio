@@ -43,21 +43,20 @@ export function ProjectCard({
       rel="noopener noreferrer"
       aria-label={`${project.title}: ${project.tagline} (opens in a new tab)`}
       className={cn(
-        "group relative isolate block overflow-hidden rounded-2xl border border-emerald-500/25 bg-neutral-900/60 backdrop-blur-sm lg:border-neutral-800",
-        "transition duration-300 hover:-translate-y-1.5 hover:border-emerald-500/40 hover:shadow-2xl hover:shadow-black/60",
+        "nx-panel nx-panel-interactive group relative isolate block",
         "focus-visible:-translate-y-1.5 focus-visible:border-emerald-500/40 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden",
         className
       )}
     >
       {/* Accent wash, revealed on hover. */}
-      <div className="absolute inset-0 -z-10 bg-linear-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+      <div className="nx-grid-surface absolute inset-0 -z-10 opacity-0 transition duration-500 group-hover:opacity-70" />
 
       <div
         className={cn(
           // `fill` needs a positioned ancestor, but a positioned wrapper also
           // stacks above the stretched link, so the overlay is raised instead
           // (see the link's z-index below).
-          "relative overflow-hidden border-b border-neutral-800 bg-neutral-950",
+          "relative overflow-hidden border-b border-white/10 bg-neutral-950",
           coverRatio
         )}
       >
@@ -92,28 +91,25 @@ export function ProjectCard({
           )}
         />
 
-        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-neutral-950/80 px-3 py-1.5 text-xs font-medium text-neutral-200 shadow-lg backdrop-blur-md">
-          <span
-            aria-hidden="true"
-            className="h-1.5 w-1.5 rounded-full bg-emerald-400"
-          />
+        <span className="absolute left-4 top-4 inline-flex items-center gap-2 border border-white/10 bg-neutral-950/85 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-neutral-300 backdrop-blur-md">
+          <span aria-hidden="true" className="h-px w-3 bg-emerald-400" />
           {project.category}
         </span>
 
         <span
           aria-hidden="true"
-          className="absolute right-4 top-4 flex h-11 w-11 translate-y-2 items-center justify-center rounded-full bg-emerald-500 text-neutral-950 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+          className="absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center border border-emerald-400 bg-emerald-400 text-neutral-950 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"
         >
           <IconArrowUpRight className="h-6 w-6" stroke={2.5} />
         </span>
       </div>
 
-      <div className="relative p-6">
+      <div className="relative p-5 sm:p-6">
         {/* Oversized index, mirroring the capability cards. */}
         {index !== undefined && (
           <span
             aria-hidden="true"
-            className="absolute -top-3 right-4 -z-10 font-mono text-6xl font-bold text-white/[0.04] transition duration-300 group-hover:text-emerald-400/10"
+            className="absolute -top-3 right-4 -z-10 font-mono text-6xl font-bold text-white/[0.045] transition duration-300 group-hover:text-emerald-400/12"
           >
             {String(index).padStart(2, "0")}
           </span>
@@ -123,7 +119,7 @@ export function ProjectCard({
           {project.title}
         </h3>
 
-        <p className="mt-2 text-base text-neutral-400 transition-colors duration-300 group-hover:text-neutral-200">
+        <p className="mt-2 text-base text-neutral-300 transition-colors duration-300 group-hover:text-white">
           {project.tagline}
         </p>
 
@@ -133,11 +129,11 @@ export function ProjectCard({
           {project.capabilities.map((capability) => (
             <li
               key={capability}
-              className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-300/90 transition group-hover:border-emerald-500/40 group-hover:text-emerald-300"
+              className="inline-flex items-center gap-1.5 border-l border-emerald-500/45 bg-emerald-500/[0.06] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.08em] text-emerald-300/85 transition group-hover:bg-emerald-500/10"
             >
               <span
                 aria-hidden="true"
-                className="h-1 w-1 rounded-full bg-emerald-400"
+                className="h-1 w-1 bg-emerald-400"
               />
               {capability}
             </li>
@@ -150,7 +146,7 @@ export function ProjectCard({
             return (
               <li
                 key={tech}
-                className="inline-flex items-center gap-1.5 rounded-md border border-neutral-800 bg-neutral-950/80 px-2 py-1 text-xs text-neutral-400 transition group-hover:border-neutral-700 group-hover:text-neutral-300"
+                className="inline-flex items-center gap-1.5 border border-white/[0.12] bg-neutral-950/70 px-2 py-1 text-xs text-neutral-400 transition group-hover:text-neutral-200"
               >
                 <Icon
                   aria-hidden="true"
@@ -162,7 +158,7 @@ export function ProjectCard({
             );
           })}
           {overflowCount > 0 && (
-            <li className="inline-flex items-center rounded-md border border-neutral-800 bg-neutral-950/80 px-2 py-1 text-xs text-neutral-500">
+            <li className="inline-flex items-center border border-white/[0.12] bg-neutral-950/70 px-2 py-1 text-xs text-neutral-400">
               +{overflowCount}
             </li>
           )}
@@ -171,8 +167,8 @@ export function ProjectCard({
         {/* Visual button — the whole card is already the link, so this is a
             styled span (a nested <a> would be invalid). It carries the
             clickable affordance on touch, where hover cues never fire. */}
-        <span className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-400 to-emerald-500 px-4 py-2.5 text-sm font-semibold text-neutral-950 shadow-lg shadow-emerald-500/20 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-emerald-500/30">
-          Learn more
+        <span className="mt-6 inline-flex w-full items-center justify-between border-t border-white/15 pt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-400 transition-colors group-hover:text-emerald-300">
+          Open case study
           <IconArrowUpRight
             aria-hidden="true"
             className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
