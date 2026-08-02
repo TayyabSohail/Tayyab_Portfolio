@@ -255,7 +255,7 @@ export function TechStackSection() {
           </p>
         </div>
 
-        <div className="grid gap-px border border-white/10 bg-white/10 lg:grid-cols-3">
+        <div className="grid gap-px border border-white/10 bg-[#020605] lg:grid-cols-3">
           {techCategories.map((category, index) => (
             <CategoryPanel
               key={category.title}

@@ -29,8 +29,8 @@ export type ProjectCapability =
 export const CAPABILITY_ORDER: ProjectCapability[] = [
   "Full-Stack",
   "AI",
-  "Cloud & Automation",
   "Web",
+  "Cloud & Automation",
 ];
 
 export interface DesignNote {

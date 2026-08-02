@@ -87,7 +87,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* Problem → approach, side by side on desktop. */}
         <section className="border-b border-white/10 py-16 md:py-24">
-          <div className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px border border-white/10 bg-[#020605] md:grid-cols-2">
             <div className="nx-panel p-5 sm:p-7 md:p-9">
               <SectionLabel>The problem</SectionLabel>
               <p className="text-base leading-relaxed text-neutral-300 sm:text-lg md:text-justify md:hyphens-auto">
@@ -115,11 +115,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <h3 className="mt-14 mb-6 text-sm font-semibold uppercase tracking-widest text-emerald-400">
             Key features
           </h3>
-          <ul className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-px border border-white/10 bg-[#020605] sm:grid-cols-2">
             {project.keyFeatures.map((feature) => (
               <li
                 key={feature}
-                className="flex items-center gap-3 bg-[#050807] px-5 py-4 text-base text-neutral-300 transition hover:bg-emerald-500/[0.055] hover:text-white"
+                className="flex items-center gap-3 border border-white/10 bg-[#050807] px-5 py-4 text-base text-neutral-300 transition hover:border-emerald-400/30 hover:bg-emerald-500/[0.055] hover:text-white"
               >
                 <IconCheck
                   aria-hidden="true"
@@ -138,7 +138,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
             Challenges &amp; Solutions
           </h2>
-          <ol className="grid gap-px border border-white/10 bg-white/10">
+          <ol className="grid gap-px border border-white/10 bg-[#020605]">
             {project.challenges.map((item, index) => (
               <li
                 key={item.challenge}
@@ -170,7 +170,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
             Results
           </h2>
-          <ul className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 md:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-px border border-white/10 bg-[#020605] md:grid-cols-3">
             {project.outcomes.map((outcome) => (
               <li
                 key={outcome}

@@ -21,7 +21,7 @@ export function TechStack({ groups }: TechStackProps) {
           Tech Stack
         </h2>
 
-        <ul className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-px border border-white/10 bg-[#020605] sm:grid-cols-2 lg:grid-cols-3">
           {groups.map((group) => (
             <li
               key={group.category}

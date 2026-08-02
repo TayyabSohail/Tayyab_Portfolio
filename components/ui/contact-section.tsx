@@ -297,7 +297,7 @@ export function ContactSection() {
       <div
         role="tablist"
         aria-label="How to get in touch"
-        className="grid w-full grid-cols-2 gap-px border border-white/10 bg-white/10 p-px lg:grid-cols-1"
+        className="grid w-full grid-cols-2 gap-px border border-white/10 bg-[#020605] p-px lg:grid-cols-1"
       >
         {(
           [
@@ -316,7 +316,7 @@ export function ContactSection() {
             className={
               tab === value
                 ? "w-full border border-emerald-400 bg-emerald-400 px-3 py-3 text-xs font-semibold whitespace-nowrap text-neutral-950 transition focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
-                : "w-full border border-transparent bg-[#050807] px-3 py-3 text-xs font-medium whitespace-nowrap text-neutral-300 transition hover:bg-emerald-500/[0.06] hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
+                : "w-full border border-white/15 bg-[#050807] px-3 py-3 text-xs font-medium whitespace-nowrap text-neutral-300 transition hover:border-emerald-400/40 hover:bg-emerald-500/[0.06] hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
             }
           >
             {label}

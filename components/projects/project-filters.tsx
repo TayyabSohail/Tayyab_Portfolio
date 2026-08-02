@@ -44,7 +44,7 @@ export function FilterableProjects({
       <div
         role="group"
         aria-label="Filter projects by capability"
-        className="mb-10 flex w-fit max-w-full flex-wrap justify-start gap-px border border-white/10 bg-white/10 p-px"
+        className="mb-10 flex w-full max-w-full flex-nowrap justify-start gap-px overflow-x-auto border border-white/10 bg-[#020605] p-px [scrollbar-width:none] sm:w-fit sm:overflow-visible [&::-webkit-scrollbar]:hidden"
       >
         {filters.map((filter) => {
           const isActive = filter === active;
@@ -55,11 +55,11 @@ export function FilterableProjects({
               onClick={() => setActive(filter)}
               aria-pressed={isActive}
               className={cn(
-                "border px-3 py-2.5 text-[11px] font-medium uppercase tracking-[0.06em] transition sm:px-4 sm:text-xs sm:tracking-[0.08em]",
+                "shrink-0 whitespace-nowrap border px-3 py-2.5 text-[11px] font-medium uppercase tracking-[0.06em] transition sm:px-4 sm:text-xs sm:tracking-[0.08em]",
                 "focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden",
                 isActive
                   ? "border-emerald-400 bg-emerald-400 text-neutral-950"
-                  : "border-transparent bg-[#050807] text-neutral-300 hover:bg-emerald-500/[0.08] hover:text-white"
+                  : "border-white/15 bg-[#050807] text-neutral-300 hover:border-emerald-400/40 hover:bg-emerald-500/[0.08] hover:text-white"
               )}
             >
               {filter}
