@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import { IconArrowUp } from "@tabler/icons-react";
 import { NavbarDemo } from "@/components/ui/navbar-demo";
 import { GridBackground } from "@/components/ui/grid-background";
 import { HashScroll } from "@/components/ui/hash-scroll";
+import { BackToTop } from "@/components/ui/back-to-top";
 import { SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
@@ -95,17 +95,7 @@ export default function RootLayout({
         {children}
 
         <div className="mx-auto flex w-full max-w-6xl justify-center px-5 pb-10 sm:px-6">
-          <a
-            href="/"
-            aria-label="Back to top"
-            className="group inline-flex items-center gap-2 border border-emerald-400/30 bg-emerald-400/[0.06] px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-300 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 hover:bg-emerald-400 hover:text-neutral-950 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
-          >
-            <IconArrowUp
-              aria-hidden="true"
-              className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5"
-            />
-            Back to top
-          </a>
+          <BackToTop />
         </div>
 
         {/* Theme Initialization Script */}
