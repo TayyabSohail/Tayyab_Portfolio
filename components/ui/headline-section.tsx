@@ -30,25 +30,59 @@ export function HeadlineSection() {
   return (
     <section className="w-full bg-transparent py-20 md:py-28">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
-        <div className="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[0.72fr_1.28fr] md:gap-16">
+        <div className="grid items-start gap-10 border-b border-white/10 pb-12 md:grid-cols-[0.58fr_1.42fr] md:gap-10 lg:gap-14">
           <div>
             <p className="nx-kicker">About</p>
-            <h2 className="mt-5 text-4xl font-bold tracking-[-0.045em] text-white md:text-6xl">
+            <h2 className="mt-5 text-4xl font-bold tracking-[-0.045em] text-white md:text-5xl lg:text-6xl">
               Building beyond the brief.
             </h2>
           </div>
 
-          <div className="md:pt-7">
-            <p className="max-w-3xl text-2xl font-bold leading-[1.12] tracking-[-0.035em] text-white md:text-4xl">
-              Full Stack Developer building systems that perform when the stakes
-              are real.
-            </p>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-300 md:text-lg">
-              I engineer modern web platforms, AI systems, and resilient cloud
-              infrastructure&mdash;from marketplaces that move real money to
-              multi-tenant products that power real teams. Computer Science
-              graduate from FAST NUCES Islamabad.
-            </p>
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-emerald-300/20 bg-[linear-gradient(145deg,rgba(16,185,129,0.14),rgba(10,10,10,0.96)_48%,rgba(16,185,129,0.06))] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.06)] sm:p-8 lg:p-10">
+            <div
+              aria-hidden="true"
+              className="nx-grid-surface pointer-events-none absolute inset-0 opacity-35 [mask-image:linear-gradient(to_bottom_right,black,transparent_72%)]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-emerald-400/15 blur-3xl"
+            />
+
+            <div className="relative">
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="h-2.5 w-2.5 rounded-full bg-emerald-300 shadow-[0_0_20px_rgba(110,231,183,0.95)]"
+                />
+                <p className="font-mono text-[0.68rem] font-bold tracking-[0.2em] text-emerald-200 uppercase sm:text-xs">
+                  Production engineering
+                </p>
+              </div>
+
+              <p className="mt-7 max-w-3xl text-3xl font-black leading-[1.06] tracking-[-0.05em] text-white sm:text-4xl lg:text-[2.75rem]">
+                Full Stack Developer building systems that perform when the
+                <span className="text-emerald-300"> stakes are real.</span>
+              </p>
+
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-300 sm:text-lg">
+                I engineer modern web platforms, AI systems, and resilient cloud
+                infrastructure. From marketplaces that move real money to
+                multitenant products that power real teams.
+              </p>
+
+              <div className="mt-8 inline-flex max-w-full items-center gap-3 rounded-full border border-white/10 bg-white/[0.055] py-2.5 pr-5 pl-3 backdrop-blur-sm">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-300 text-xs font-black text-emerald-950">
+                  CS
+                </span>
+                <p className="text-sm font-semibold text-neutral-100 sm:text-base">
+                  Computer Science graduate
+                  <span className="mx-2 text-emerald-300" aria-hidden="true">
+                    &bull;
+                  </span>
+                  FAST NUCES Islamabad
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
