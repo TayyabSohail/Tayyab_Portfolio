@@ -38,30 +38,30 @@ export function HeadlineSection() {
             </h2>
           </div>
 
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-emerald-300/20 bg-[linear-gradient(145deg,rgba(16,185,129,0.14),rgba(10,10,10,0.96)_48%,rgba(16,185,129,0.06))] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.06)] sm:p-8 lg:p-10">
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.045),rgba(10,10,10,0.98)_52%,rgba(16,185,129,0.025))] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-8 lg:p-10">
             <div
               aria-hidden="true"
-              className="nx-grid-surface pointer-events-none absolute inset-0 opacity-35 [mask-image:linear-gradient(to_bottom_right,black,transparent_72%)]"
+              className="nx-grid-surface pointer-events-none absolute inset-0 opacity-20 [mask-image:linear-gradient(to_bottom_right,black,transparent_72%)]"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-emerald-400/15 blur-3xl"
+              className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-emerald-400/[0.06] blur-3xl"
             />
 
             <div className="relative">
               <div className="flex items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className="h-2.5 w-2.5 rounded-full bg-emerald-300 shadow-[0_0_20px_rgba(110,231,183,0.95)]"
+                  className="h-2 w-2 rounded-full bg-emerald-400/80"
                 />
-                <p className="font-mono text-[0.68rem] font-bold tracking-[0.2em] text-emerald-200 uppercase sm:text-xs">
+                <p className="font-mono text-[0.68rem] font-bold tracking-[0.2em] text-neutral-400 uppercase sm:text-xs">
                   Production engineering
                 </p>
               </div>
 
               <p className="mt-7 max-w-3xl text-3xl font-black leading-[1.06] tracking-[-0.05em] text-white sm:text-4xl lg:text-[2.75rem]">
                 Full Stack Developer building systems that perform when the
-                <span className="text-emerald-300"> stakes are real.</span>
+                <span className="text-emerald-200/85"> stakes are real.</span>
               </p>
 
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-300 sm:text-lg">
@@ -70,16 +70,20 @@ export function HeadlineSection() {
                 multitenant products that power real teams.
               </p>
 
-              <div className="mt-8 inline-flex max-w-full items-center gap-3 rounded-full border border-white/10 bg-white/[0.055] py-2.5 pr-5 pl-3 backdrop-blur-sm">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-300 text-xs font-black text-emerald-950">
+              <div className="mt-8 inline-flex max-w-full items-center gap-3 rounded-full border border-white/[0.08] bg-white/[0.035] py-2.5 pr-5 pl-3 backdrop-blur-sm">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.07] text-xs font-bold text-neutral-300">
                   CS
                 </span>
-                <p className="text-sm font-semibold text-neutral-100 sm:text-base">
-                  Computer Science graduate
-                  <span className="mx-2 text-emerald-300" aria-hidden="true">
+                <p className="text-sm sm:text-base">
+                  <span className="font-semibold text-neutral-200">
+                    Computer Science graduate
+                  </span>
+                  <span className="mx-2 text-neutral-600" aria-hidden="true">
                     &bull;
                   </span>
-                  FAST NUCES Islamabad
+                  <span className="font-normal text-neutral-500">
+                    FAST NUCES Islamabad
+                  </span>
                 </p>
               </div>
             </div>
