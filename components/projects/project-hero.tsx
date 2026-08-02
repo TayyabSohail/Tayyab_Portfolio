@@ -83,8 +83,9 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                 <button
                   type="button"
                   disabled
-                  className="inline-flex cursor-not-allowed items-center border border-white/20 bg-white/[0.03] px-5 py-2.5 text-sm font-semibold text-neutral-500"
+                  className="order-2 inline-flex cursor-not-allowed items-center gap-2 border border-emerald-950 bg-emerald-950/50 px-5 py-2.5 text-sm font-semibold text-emerald-700"
                 >
+                  <IconExternalLink aria-hidden="true" className="h-4 w-4" />
                   {project.liveUnavailableReason}
                 </button>
               )}

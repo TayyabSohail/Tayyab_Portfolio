@@ -891,7 +891,7 @@ export const projects: Project[] = [
     ],
     category: "SaaS",
     capabilities: ["AI", "Cloud & Automation", "Full-Stack"],
-    liveUnavailableReason: "Private — client project.",
+    liveUnavailableReason: "Preview not available — client project.",
     featured: true,
     problem:
       "Real estate agencies managed CRM, compliance, marketing and document workflows across disconnected tools and manual processes. They had no unified system for client and property management or agreement generation.",
@@ -949,7 +949,7 @@ export const projects: Project[] = [
     ],
     category: "AI",
     capabilities: ["AI", "Cloud & Automation"],
-    liveUnavailableReason: "Private — client project.",
+    liveUnavailableReason: "Preview not available — client project.",
     featured: true,
     problem:
       "Manual compliance and audit reviews against established standards were slow and inconsistent between reviewers, with each report taking about a week to complete.",
@@ -1004,7 +1004,7 @@ export const projects: Project[] = [
     ],
     category: "AI",
     capabilities: ["AI", "Full-Stack"],
-    liveUnavailableReason: "Private — client project.",
+    liveUnavailableReason: "Preview not available — client project.",
     featured: true,
     problem:
       "Running structured general, podcast-style or recruitment interviews at scale required manual scheduling, live facilitation and transcript handling for every session.",
