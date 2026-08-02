@@ -28,7 +28,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 /** Left padding clears the leading icon; peer-* lets the icon react to focus. */
 const FIELD_CLASS =
-  "peer w-full rounded-xl border border-neutral-300 bg-white/70 py-3 pr-4 pl-11 text-sm text-neutral-900 placeholder:text-neutral-400 transition-all duration-200 focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/30 focus:outline-hidden disabled:opacity-60 dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-100 dark:placeholder:text-neutral-500 dark:focus:bg-neutral-900";
+  "peer w-full border border-white/15 bg-[#050807]/80 py-3 pr-4 pl-11 text-sm text-neutral-100 placeholder:text-neutral-500 transition-all duration-200 focus:border-emerald-500/70 focus:bg-emerald-500/[0.025] focus:ring-1 focus:ring-emerald-500/25 focus:outline-hidden disabled:opacity-60";
 
 /** Sentence case, not uppercase — it reads as a question, not a database column. */
 const LABEL_CLASS =
@@ -36,12 +36,12 @@ const LABEL_CLASS =
 
 /** Sits inside the field's left gutter and picks up the emerald focus tint. */
 const ICON_CLASS =
-  "pointer-events-none absolute left-3.5 h-4 w-4 text-neutral-400 transition-colors peer-focus:text-emerald-500 dark:text-neutral-500 dark:peer-focus:text-emerald-400";
+  "pointer-events-none absolute left-3.5 h-4 w-4 text-neutral-300 transition-colors peer-focus:text-emerald-500 dark:text-neutral-300 dark:peer-focus:text-emerald-400";
 
 /** Small caps label above the CTA heading — sets context before the pitch. */
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold tracking-[0.1em] whitespace-nowrap text-emerald-300 uppercase sm:px-3 sm:text-[11px] sm:tracking-[0.14em]">
+    <span className="inline-flex w-fit items-center gap-2 border-l border-emerald-400 bg-emerald-500/[0.06] px-3 py-1 text-[10px] font-semibold tracking-[0.14em] whitespace-nowrap text-emerald-300 uppercase sm:text-[11px]">
       {/* Pulsing dot: reads as "available", cheaply. */}
       <span className="relative flex h-1.5 w-1.5">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -61,7 +61,7 @@ function Perks({ items }: { items: string[] }) {
           key={item}
           className="flex items-center gap-3 text-[13px] text-neutral-300 sm:text-sm"
         >
-          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-500/30">
+          <span className="flex h-5 w-5 shrink-0 items-center justify-center border border-emerald-500/30 bg-emerald-500/10">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -104,7 +104,7 @@ function WhatsAppOption() {
     <>
       <div className="mt-6 flex items-center gap-3">
         <span className="h-px flex-1 bg-neutral-200 dark:bg-neutral-800" />
-        <span className="text-[11px] font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
+        <span className="text-[11px] font-medium tracking-wide text-neutral-300 uppercase">
           or
         </span>
         <span className="h-px flex-1 bg-neutral-200 dark:bg-neutral-800" />
@@ -114,7 +114,7 @@ function WhatsAppOption() {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="group mt-4 flex items-center justify-between gap-3 rounded-xl border border-neutral-300 bg-white/60 px-5 py-3.5 transition hover:border-emerald-500/40 hover:bg-emerald-500/5 dark:border-neutral-800 dark:bg-neutral-900/60"
+        className="nx-btn nx-btn-secondary group mx-auto mt-4 inline-flex w-fit items-center justify-center gap-3 px-5 py-3.5"
       >
         <span className="flex min-w-0 items-center gap-3">
           <svg
@@ -125,7 +125,7 @@ function WhatsAppOption() {
           >
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.25.69-1.45 1.32-1.99 1.37-.53.05-1.03.24-3.47-.72-2.92-1.15-4.77-4.13-4.91-4.32-.14-.19-1.17-1.55-1.17-2.96s.74-2.1 1-2.39c.26-.29.57-.36.76-.36h.54c.18 0 .41-.03.64.49.24.55.81 1.92.88 2.06.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.37-.43.5-.14.14-.29.29-.13.57.17.29.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.3 1.41.29.14.46.12.63-.07.17-.19.72-.85.92-1.14.19-.29.38-.24.64-.14.26.09 1.64.77 1.92.91.29.14.48.22.55.34.07.12.07.69-.18 1.38z" />
           </svg>
-          <span className="truncate text-sm font-medium text-neutral-900 dark:text-white">
+          <span className="truncate text-sm font-medium text-inherit">
             Message me on WhatsApp
           </span>
         </span>
@@ -270,35 +270,34 @@ export function ContactSection() {
   }
 
   return (
-    <div className="relative mx-auto w-full max-w-2xl px-4 py-14 sm:py-20 md:py-28">
-      {/* Soft emerald bloom anchored under the card, echoing GridBackground. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-[18rem] w-[18rem] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-[90px] sm:h-[26rem] sm:w-[26rem] sm:blur-[120px]"
-      />
+    <div className="relative mx-auto w-full max-w-6xl px-5 py-20 sm:px-6 md:py-28">
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-8 text-center sm:mb-10"
+        className="mb-12 grid gap-5 border-b border-white/10 pb-10 text-left md:grid-cols-[1fr_0.85fr] md:items-end"
       >
-        <h2 className="relative inline-block text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl dark:text-white">
-          Get in Touch
-          <span className="absolute -bottom-2 left-1/2 h-1 w-full -translate-x-1/2 rounded-full bg-linear-to-r from-emerald-500 to-emerald-300" />
-        </h2>
-        <p className="mx-auto mt-6 max-w-md text-sm text-balance text-neutral-600 sm:mt-8 dark:text-neutral-400">
+        <div>
+          <p className="nx-kicker">Start a conversation</p>
+          <h2 className="mt-4 text-4xl font-bold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
+            Get in touch
+          </h2>
+        </div>
+        <p className="max-w-md text-sm leading-relaxed text-neutral-400 md:justify-self-end">
           Send a message, ping me on WhatsApp, or grab a slot on my calendar.
         </p>
       </motion.div>
+
+      <div className="grid gap-6 lg:grid-cols-[0.3fr_1fr] lg:items-start">
 
       {/* Tabs: one panel at a time, so each gets the full card width and
           nothing has to survive a half-width column on a phone. */}
       <div
         role="tablist"
         aria-label="How to get in touch"
-        className="mx-auto mb-6 grid w-full max-w-sm grid-cols-2 gap-1 rounded-full border border-neutral-200 bg-white/60 p-1 sm:mb-8 dark:border-neutral-800 dark:bg-neutral-900/60"
+        className="grid w-full grid-cols-2 gap-px border border-white/10 bg-white/10 p-px lg:grid-cols-1"
       >
         {(
           [
@@ -316,8 +315,8 @@ export function ContactSection() {
             onClick={() => setTab(value)}
             className={
               tab === value
-                ? "w-full rounded-full bg-emerald-500 px-2 py-2 text-xs font-semibold whitespace-nowrap text-neutral-950 shadow-lg shadow-emerald-500/20 transition focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:py-2.5 sm:text-sm"
-                : "w-full rounded-full px-2 py-2 text-xs font-medium whitespace-nowrap text-neutral-600 transition hover:text-neutral-900 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:py-2.5 sm:text-sm dark:text-neutral-400 dark:hover:text-white"
+                ? "w-full border border-emerald-400 bg-emerald-400 px-3 py-3 text-xs font-semibold whitespace-nowrap text-neutral-950 transition focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
+                : "w-full border border-transparent bg-[#050807] px-3 py-3 text-xs font-medium whitespace-nowrap text-neutral-300 transition hover:bg-emerald-500/[0.06] hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden"
             }
           >
             {label}
@@ -332,30 +331,17 @@ export function ContactSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
-        className="rounded-2xl bg-linear-to-br from-emerald-500/30 via-neutral-500/10 to-sky-500/20 p-px shadow-2xl shadow-emerald-500/5"
+        className="nx-panel"
       >
-        <div className="relative overflow-hidden rounded-2xl bg-white/80 p-4 backdrop-blur-xl sm:p-6 md:p-8 dark:bg-neutral-950/80">
+        <div className="relative overflow-hidden bg-[#050807]/90 p-4 backdrop-blur-xl sm:p-6 md:p-8">
           {/* Card backdrop — clipped to the rounded corners, so it decorates
               the card itself rather than bleeding across the whole section. */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl"
+            className="pointer-events-none absolute inset-0 overflow-hidden"
           >
             {/* Grid, faded out at the edges so it has no visible seam. */}
             <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(to_right,rgba(16,185,129,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.4)_1px,transparent_1px)] [background-size:36px_36px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,black,transparent)]" />
-
-            {/* Two slow counter-drifting orbs. Offset durations keep the pair
-                from settling into an obvious loop. */}
-            <motion.div
-              animate={{ x: [0, 30, -15, 0], y: [0, -20, 15, 0] }}
-              transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-24 -right-16 h-64 w-64 rounded-full bg-emerald-500/20 blur-[80px]"
-            />
-            <motion.div
-              animate={{ x: [0, -25, 18, 0], y: [0, 18, -12, 0] }}
-              transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-sky-500/15 blur-[80px]"
-            />
 
             {/* Hairline highlight along the top edge — catches the light. */}
             <div className="absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-emerald-400/40 to-transparent" />
@@ -493,7 +479,7 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="group mt-2 flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-500 to-emerald-400 px-6 py-3.5 text-sm font-semibold text-neutral-950 shadow-lg shadow-emerald-500/20 transition-all hover:shadow-xl hover:shadow-emerald-500/30 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none dark:focus-visible:ring-offset-neutral-950"
+                    className="nx-btn nx-btn-primary group mt-2 flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {status === "submitting" ? (
                       <>
@@ -567,7 +553,7 @@ export function ContactSection() {
                 {/* The booking plate. Layered dark surface: a deep gradient base, a
               fine grid, and two emerald blooms — built up rather than flat so
               it reads as the primary action and not as empty space. */}
-                <div className="relative overflow-hidden rounded-xl bg-linear-to-br from-neutral-900 via-neutral-950 to-black p-5 ring-1 ring-white/10 sm:p-6 md:p-8">
+                <div className="nx-panel relative p-5 sm:p-6 md:p-8">
                   {/* No grid here — the card behind already provides one, and
                     two grids at different pitches moiré against each other. */}
                   {/* Two blooms at opposing corners give the plate depth. */}
@@ -611,7 +597,7 @@ export function ContactSection() {
                         href={CAL_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group mx-auto mt-6 inline-flex w-fit items-center gap-2 rounded-xl bg-linear-to-r from-emerald-400 to-emerald-500 px-5 py-3 text-sm font-semibold text-neutral-950 shadow-lg shadow-emerald-500/25 transition-all hover:shadow-xl hover:shadow-emerald-500/40 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 focus-visible:outline-hidden sm:mt-8 sm:px-6 sm:py-3.5"
+                        className="nx-btn nx-btn-primary group mx-auto mt-6 inline-flex w-fit items-center gap-2 px-5 py-3 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 focus-visible:outline-hidden sm:mt-8 sm:px-6 sm:py-3.5"
                       >
                         Book a call
                         <ArrowIcon />
@@ -619,7 +605,7 @@ export function ContactSection() {
                     ) : (
                       <a
                         href={`mailto:${EMAIL}`}
-                        className="group mx-auto mt-6 inline-flex w-fit items-center gap-2 rounded-xl bg-linear-to-r from-emerald-400 to-emerald-500 px-5 py-3 text-sm font-semibold text-neutral-950 shadow-lg shadow-emerald-500/25 transition-all hover:shadow-xl hover:shadow-emerald-500/40 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 focus-visible:outline-hidden sm:mt-8 sm:px-6 sm:py-3.5"
+                        className="nx-btn nx-btn-primary group mx-auto mt-6 inline-flex w-fit items-center gap-2 px-5 py-3 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 focus-visible:outline-hidden sm:mt-8 sm:px-6 sm:py-3.5"
                       >
                         Email me
                         <ArrowIcon />
@@ -632,6 +618,7 @@ export function ContactSection() {
           </div>
         </div>
       </motion.div>
+      </div>
 
       {/* Mounted outside the animated card on purpose: that wrapper is
         transformed by motion, which would make it the containing block for

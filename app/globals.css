@@ -32,3 +32,383 @@ html {
   max-width: 100%;
 }
 
+@keyframes current-flow {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+@keyframes module-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.16;
+  }
+  28% {
+    transform: translate3d(6px, -4px, 0);
+    opacity: 0.24;
+  }
+  62% {
+    transform: translate3d(-4px, 3px, 0);
+    opacity: 0.2;
+  }
+}
+
+@keyframes module-scan {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  12%,
+  70% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(112px);
+    opacity: 0;
+  }
+}
+
+@keyframes core-meter {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  45%,
+  70% {
+    stroke-dashoffset: 18;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+@keyframes telemetry-blink {
+  0%,
+  88%,
+  100% {
+    opacity: 0.18;
+  }
+  90% {
+    opacity: 0.48;
+  }
+}
+
+.chip-trace {
+  stroke: rgb(52 211 153 / 0.13);
+  stroke-width: 0.7;
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
+}
+
+.chip-current {
+  stroke: rgb(110 231 183 / 0.75);
+  stroke-width: 1;
+  stroke-dasharray: 2 98;
+  stroke-dashoffset: 0;
+  vector-effect: non-scaling-stroke;
+  animation: current-flow 14s linear infinite;
+}
+
+.chip-junction {
+  fill: rgb(110 231 183 / 0.42);
+}
+
+.chip-core {
+  stroke: rgb(52 211 153 / 0.18);
+  stroke-width: 0.75;
+  vector-effect: non-scaling-stroke;
+}
+
+.chip-core-label,
+.chip-core-status {
+  stroke: none;
+  fill: rgb(110 231 183 / 0.26);
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: 0.22em;
+}
+
+.chip-core-label {
+  font-size: 8px;
+}
+
+.chip-core-status {
+  fill: rgb(110 231 183 / 0.42);
+  font-size: 13px;
+}
+
+.chip-core-meter {
+  stroke: rgb(110 231 183 / 0.45);
+  stroke-width: 1;
+  stroke-dasharray: 22 78;
+  animation: core-meter 5s linear infinite;
+}
+
+.chip-calibration {
+  stroke: rgb(52 211 153 / 0.12);
+  stroke-width: 0.65;
+  vector-effect: non-scaling-stroke;
+}
+
+.code-module {
+  position: absolute;
+  width: 252px;
+  overflow: hidden;
+  border: 1px solid rgb(52 211 153 / 0.14);
+  background: rgb(2 8 6 / 0.62);
+  color: rgb(167 243 208 / 0.32);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  animation: module-drift 48s ease-in-out infinite;
+}
+
+.code-module::before,
+.code-module::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.code-module::before {
+  z-index: 2;
+  inset: 0;
+  border-left: 2px solid rgb(52 211 153 / 0.2);
+}
+
+.code-module::after {
+  z-index: 1;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: rgb(110 231 183 / 0.5);
+  box-shadow: 0 0 8px rgb(16 185 129 / 0.3);
+  animation: module-scan 14s linear infinite;
+}
+
+.code-module-head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(52 211 153 / 0.12);
+  padding: 6px 9px;
+  color: rgb(110 231 183 / 0.42);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+}
+
+.code-module pre {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 10px 9px 11px;
+  font-size: 9px;
+  line-height: 1.8;
+}
+
+.code-module pre > span {
+  display: block;
+  white-space: pre;
+}
+
+.code-line-number {
+  display: inline-block;
+  width: 24px;
+  color: rgb(52 211 153 / 0.16);
+  user-select: none;
+}
+
+.telemetry-label {
+  position: absolute;
+  color: rgb(110 231 183 / 0.22);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  opacity: 0.18;
+}
+
+.chip-vignette {
+  box-shadow: inset 0 0 190px 90px rgb(0 0 0 / 0.82);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .system-trace,
+  .chip-current,
+  .chip-core-meter,
+  .code-module,
+  .code-module::after,
+  .telemetry-label {
+    animation: none;
+  }
+
+  .code-module {
+    opacity: 0.26;
+  }
+}
+
+@keyframes nx-signal-pass {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  18%,
+  78% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(420%);
+    opacity: 0;
+  }
+}
+
+@keyframes specialty-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.specialty-progress {
+  transform-origin: left;
+  animation: specialty-progress 3.2s linear;
+}
+
+/* Shared visual system: sharp clipped panels, fine borders and a restrained
+   signal highlight. Used on the homepage and case studies alike. */
+.nx-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background:
+    linear-gradient(145deg, rgb(16 185 129 / 0.035), transparent 42%),
+    rgb(5 8 7 / 0.9);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 13px) 0,
+    100% 13px,
+    100% 100%,
+    13px 100%,
+    0 calc(100% - 13px)
+  );
+}
+
+.nx-panel::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: -1px;
+  left: 0;
+  width: 28%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(52 211 153 / 0.9), transparent);
+}
+
+.nx-panel::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  width: 26px;
+  height: 26px;
+  border-right: 1px solid rgb(52 211 153 / 0.36);
+  border-bottom: 1px solid rgb(52 211 153 / 0.36);
+  pointer-events: none;
+}
+
+.nx-panel-interactive {
+  transition:
+    transform 280ms ease,
+    border-color 280ms ease,
+    background-color 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.nx-panel-interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgb(52 211 153 / 0.36);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.34);
+}
+
+.nx-panel-interactive:hover::before {
+  animation: nx-signal-pass 1.4s ease-out;
+}
+
+.nx-grid-surface {
+  background-image:
+    linear-gradient(to right, rgb(52 211 153 / 0.038) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(52 211 153 / 0.038) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+.nx-kicker {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgb(110 231 183 / 0.92);
+}
+
+/* Site-wide action hierarchy. The secondary fills downward on hover; the
+   solid primary clears downward, then refills upward when the pointer leaves. */
+.nx-btn {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 100% 0%;
+  transition:
+    background-size 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 260ms ease,
+    border-color 260ms ease,
+    transform 260ms ease;
+}
+
+.nx-btn:hover {
+  background-size: 100% 100%;
+}
+
+.nx-btn-secondary {
+  border: 1px solid rgb(255 255 255 / 0.34);
+  color: white;
+  background-image: linear-gradient(white, white);
+  background-position: top;
+}
+
+.nx-btn-secondary:hover {
+  color: #020605;
+  border-color: white;
+}
+
+.nx-btn-primary {
+  border: 1px solid rgb(52 211 153 / 0.9);
+  color: #020605;
+  background-image: linear-gradient(rgb(52 211 153), rgb(52 211 153));
+  background-position: bottom;
+  background-size: 100% 100%;
+}
+
+.nx-btn-primary:hover {
+  color: rgb(52 211 153);
+  border-color: rgb(52 211 153);
+  background-size: 100% 0%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nx-panel-interactive,
+  .nx-panel-interactive:hover {
+    transform: none;
+  }
+
+  .nx-panel-interactive:hover::before {
+    animation: none;
+  }
+
+  .nx-btn {
+    transition: color 150ms ease, border-color 150ms ease;
+  }
+
+  .specialty-progress {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+

@@ -1,8 +1,4 @@
-import {
-  IconLayoutGrid,
-  IconSparkles,
-  IconCloud,
-} from "@tabler/icons-react";
+import { IconLayoutGrid, IconSparkles, IconCloud } from "@tabler/icons-react";
 import type { Icon } from "@tabler/icons-react";
 
 interface Capability {
@@ -19,73 +15,71 @@ const CAPABILITIES: Capability[] = [
     index: "01",
     title: "Full Stack Development",
     headline: "Production web applications",
-    body: "From responsive frontends to scalable backends, I build complete products with end-to-end type safety, secure APIs, and databases designed to grow with your business.",
+    body: "Responsive frontends, secure APIs and scalable data models, built as one coherent product rather than disconnected layers.",
   },
   {
     icon: IconSparkles,
     index: "02",
     title: "AI Integration & Automation",
     headline: "AI built for real workflows",
-    body: "I integrate LLMs, RAG, speech, and intelligent automations into existing products, using your own data so responses stay accurate and useful.",
+    body: "LLMs, RAG, speech and intelligent automation grounded in business data and connected to the tools teams already use.",
   },
   {
     icon: IconCloud,
     index: "03",
-    title: "Cloud & Backend Infrastructure",
-    headline: "Reliable systems, simple deployments",
-    body: "I build and deploy cloud-native applications with secure authentication, scalable databases, automated workflows, and production-ready infrastructure.",
+    title: "Cloud & Infrastructure",
+    headline: "Reliable systems, simple delivery",
+    body: "Secure authentication, resilient databases, background workflows and deployment pipelines designed for production from day one.",
   },
 ];
 
-export const GippityAITimeline = () => {
+export function GippityAITimeline() {
   return (
-    <section className="w-full bg-transparent pb-20">
-      <div className="mx-auto w-full max-w-5xl px-6">
-        <div className="mb-12 text-center">
-          <h3 className="relative inline-block text-4xl font-bold tracking-tight text-white md:text-5xl">
-            What I Do
-            <span className="absolute -bottom-2 left-1/2 h-1 w-full -translate-x-1/2 rounded-full bg-linear-to-r from-emerald-500 to-emerald-300" />
+    <section className="w-full bg-transparent pb-24 md:pb-32">
+      <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 sm:px-6 lg:grid-cols-[0.32fr_1fr] lg:gap-14">
+        <header className="lg:pt-5">
+          <p className="nx-kicker">Capabilities</p>
+          <h3 className="mt-4 text-4xl font-bold tracking-[-0.045em] text-white md:text-5xl">
+            What I do
           </h3>
-        </div>
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-neutral-300">
+            Product engineering across the application, intelligence and
+            infrastructure layers.
+          </p>
+        </header>
 
-        {/* Below md the grid collapses to one column, so cap and centre it —
-            otherwise a single card stretches edge to edge on narrow screens. */}
-        <div className="mx-auto grid max-w-sm grid-cols-1 gap-4 md:max-w-none md:grid-cols-3">
+        <div className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-3">
           {CAPABILITIES.map(({ icon: Icon, ...item }) => (
             <article
               key={item.title}
-              className="group relative isolate flex flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/60 p-7 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-500/40"
+              className="nx-panel nx-panel-interactive group min-h-72 p-5 sm:min-h-[340px] sm:p-7"
             >
-              {/* Accent wash + oversized index, both revealed on hover. */}
-              <div className="absolute inset-0 -z-10 bg-linear-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-              <span
-                aria-hidden="true"
-                className="absolute -right-2 -top-4 -z-10 font-mono text-7xl font-bold text-white/[0.04] transition duration-300 group-hover:text-emerald-400/10"
-              >
-                {item.index}
-              </span>
-
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 transition duration-300 group-hover:scale-110 group-hover:bg-emerald-500/20">
+              <div className="flex items-start justify-between">
+                <span className="font-mono text-xs tracking-[0.2em] text-emerald-400/65">
+                  {item.index}
+                </span>
                 <Icon
                   aria-hidden="true"
-                  className="h-6 w-6 text-emerald-400"
-                  stroke={1.75}
+                  className="h-7 w-7 text-emerald-400 transition-transform duration-300 group-hover:-translate-y-1"
+                  stroke={1.4}
                 />
-              </span>
+              </div>
 
-              <h4 className="mt-6 text-xs font-semibold uppercase tracking-widest text-emerald-400">
-                <span className="font-mono">{item.index}.</span> {item.title}
-              </h4>
-              <p className="mt-2 text-xl font-bold tracking-tight text-white">
-                {item.headline}
-              </p>
-              <p className="mt-3 text-justify leading-relaxed text-neutral-400 hyphens-auto">
-                {item.body}
-              </p>
+              <div className="mt-14 sm:mt-20">
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-400">
+                  {item.title}
+                </p>
+                <h4 className="mt-3 text-2xl font-bold leading-tight tracking-[-0.025em] text-white">
+                  {item.headline}
+                </h4>
+                <p className="mt-4 text-sm leading-relaxed text-neutral-300">
+                  {item.body}
+                </p>
+              </div>
             </article>
           ))}
         </div>
       </div>
     </section>
   );
-};
+}

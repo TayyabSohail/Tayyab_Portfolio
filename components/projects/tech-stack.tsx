@@ -15,16 +15,17 @@ export function TechStack({ groups }: TechStackProps) {
 
   return (
     <section>
-      <div className="mx-auto w-full max-w-5xl border-t border-neutral-800 px-6 py-16 md:py-24">
-        <h2 className="mb-8 text-3xl font-bold tracking-tight text-white md:text-4xl">
+      <div className="mx-auto w-full max-w-6xl border-t border-white/10 px-5 py-16 sm:px-6 md:py-24">
+        <p className="nx-kicker">Implementation stack</p>
+        <h2 className="mt-4 mb-8 text-3xl font-bold tracking-[-0.04em] text-white md:text-5xl">
           Tech Stack
         </h2>
 
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
           {groups.map((group) => (
             <li
               key={group.category}
-              className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-5 backdrop-blur-sm transition duration-300 hover:border-emerald-500/40"
+              className="nx-panel nx-panel-interactive p-5"
             >
               <h3 className="text-xs font-semibold uppercase tracking-widest text-emerald-400">
                 {group.category}
@@ -36,7 +37,7 @@ export function TechStack({ groups }: TechStackProps) {
                   return (
                     <li
                       key={tool}
-                      className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-950/80 px-2.5 py-1.5 text-sm text-neutral-200"
+                      className="inline-flex items-center gap-2 border border-white/[0.08] bg-neutral-950/70 px-2.5 py-1.5 text-sm text-neutral-300"
                     >
                       <Icon
                         aria-hidden="true"
