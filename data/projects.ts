@@ -107,8 +107,6 @@ export interface Project {
   architecture: string;
   keyFeatures: string[];
   challenges: { challenge: string; solution: string }[];
-  /** Shown instead of a live link when the product cannot be shared publicly. */
-  liveUnavailableReason?: string;
 }
 
 export const projects: Project[] = [
@@ -731,8 +729,6 @@ export const projects: Project[] = [
     capabilities: ["AI"],
     role: "Full Stack Developer",
     timeline: "2024",
-    liveUnavailableReason:
-      "Not publicly available due to confidentiality around patient data.",
     problem:
       "The rehabilitation journey was fragmented across manual intake, movement assessment, generic exercise plans and infrequent follow-up. Patients had little guidance between supervised sessions and plans did not respond quickly to performance.",
     approach:
@@ -812,8 +808,6 @@ export const projects: Project[] = [
     capabilities: ["AI", "Cloud & Automation"],
     role: "Full Stack Developer",
     timeline: "2023 — 2024",
-    liveUnavailableReason:
-      "Not publicly available. The product is sold through resellers rather than direct signup.",
     problem:
       "Resellers wanted to offer AI support agents to their own customers, but every deployment was bespoke, so onboarding a new shop took days of manual setup.",
     approach:
@@ -891,7 +885,6 @@ export const projects: Project[] = [
     ],
     category: "SaaS",
     capabilities: ["AI", "Cloud & Automation", "Full-Stack"],
-    liveUnavailableReason: "Preview not available — client project.",
     featured: true,
     problem:
       "Real estate agencies managed CRM, compliance, marketing and document workflows across disconnected tools and manual processes. They had no unified system for client and property management or agreement generation.",
@@ -949,7 +942,6 @@ export const projects: Project[] = [
     ],
     category: "AI",
     capabilities: ["AI", "Cloud & Automation"],
-    liveUnavailableReason: "Preview not available — client project.",
     featured: true,
     problem:
       "Manual compliance and audit reviews against established standards were slow and inconsistent between reviewers, with each report taking about a week to complete.",
@@ -1004,7 +996,6 @@ export const projects: Project[] = [
     ],
     category: "AI",
     capabilities: ["AI", "Full-Stack"],
-    liveUnavailableReason: "Preview not available — client project.",
     featured: true,
     problem:
       "Running structured general, podcast-style or recruitment interviews at scale required manual scheduling, live facilitation and transcript handling for every session.",

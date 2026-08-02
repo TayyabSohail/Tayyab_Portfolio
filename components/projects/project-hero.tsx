@@ -13,8 +13,6 @@ interface ProjectHeroProps {
 }
 
 export function ProjectHero({ project }: ProjectHeroProps) {
-  const hasLinks = Boolean(project.liveUrl || project.githubUrl);
-
   return (
     <header className="border-b border-white/10">
       <div className="mx-auto w-full max-w-6xl px-5 pb-16 pt-28 sm:px-6 md:pt-36">
@@ -38,14 +36,16 @@ export function ProjectHero({ project }: ProjectHeroProps) {
               </span>
               {/* The kinds of work involved, in a lighter treatment than the
                   product type so the two read as separate dimensions. */}
-              {project.capabilities.map((capability) => (
-                <span
-                  key={capability}
-                  className="border-l border-neutral-600 bg-white/[0.035] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.08em] text-neutral-400"
-                >
-                  {capability}
-                </span>
-              ))}
+              {project.capabilities
+                .filter((capability) => capability !== project.category)
+                .map((capability) => (
+                  <span
+                    key={capability}
+                    className="border-l border-neutral-600 bg-white/[0.035] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.08em] text-neutral-400"
+                  >
+                    {capability}
+                  </span>
+                ))}
             </div>
 
             <h1 className="mt-6 text-3xl font-bold tracking-[-0.045em] text-white sm:text-4xl md:text-6xl">
@@ -79,14 +79,14 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                   Source
                 </a>
               )}
-              {!hasLinks && project.liveUnavailableReason && (
+              {!project.liveUrl && (
                 <button
                   type="button"
                   disabled
                   className="order-2 inline-flex cursor-not-allowed items-center gap-2 border border-emerald-950 bg-emerald-950/50 px-5 py-2.5 text-sm font-semibold text-emerald-700"
                 >
                   <IconExternalLink aria-hidden="true" className="h-4 w-4" />
-                  {project.liveUnavailableReason}
+                  Preview not available — client project.
                 </button>
               )}
             </div>
