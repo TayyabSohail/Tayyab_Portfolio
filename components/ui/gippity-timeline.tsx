@@ -105,7 +105,6 @@ export function GippityAITimeline() {
             <circle cx="50" cy="50" r="18" fill="none" stroke="rgba(52,211,153,0.28)" strokeWidth="0.28" />
             <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.22" strokeDasharray="1.2 1.6" />
             <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="0.25" />
-            <path d="M50 8a42 42 0 0 1 36.4 21" fill="none" stroke="rgba(52,211,153,0.8)" strokeWidth="0.65" strokeLinecap="round" />
             <path d="M13.6 71a42 42 0 0 1 0-42" fill="none" stroke="rgba(52,211,153,0.24)" strokeWidth="0.35" strokeDasharray="1 1.6" />
           </svg>
 
@@ -140,7 +139,7 @@ export function GippityAITimeline() {
                     stroke={2}
                   />
                 </span>
-                <span className={`flex w-[clamp(4.5rem,20vw,7rem)] flex-col ${textAlign}`}>
+                <span className={`flex w-[clamp(4.5rem,20vw,7rem)] flex-col [text-shadow:0_1px_8px_#000,0_0_12px_#000] ${textAlign}`}>
                   <span className="font-mono text-[clamp(0.42rem,1.6vw,0.58rem)] font-semibold tracking-[0.1em] text-neutral-500">
                     {number}
                   </span>
