@@ -3,8 +3,8 @@ import {
   IconCode,
   IconMap2,
   IconRocket,
+  IconShieldCheck,
   IconTargetArrow,
-  IconTestPipe,
 } from "@tabler/icons-react";
 import type { Icon } from "@tabler/icons-react";
 
@@ -23,60 +23,60 @@ const LIFECYCLE_STEPS: LifecycleStep[] = [
   {
     icon: IconTargetArrow,
     number: "01",
-    title: "Frame value",
-    detail: "Goal & success metric",
+    title: "Planning",
+    detail: "Goals, scope & success metrics",
     position: "top-[1%] left-1/2 -translate-x-1/2",
-    layout: "flex-col",
+    layout: "flex-col items-center",
     textAlign: "items-center text-center",
     planet: "bg-cyan-300 shadow-[0_0_24px_rgba(103,232,249,0.75)]",
   },
   {
     icon: IconMap2,
     number: "02",
-    title: "Study reality",
-    detail: "Users & workflows",
+    title: "Product design",
+    detail: "Experience, workflows & architecture",
     position: "top-[22%] right-0",
-    layout: "flex-row",
+    layout: "flex-row items-center",
     textAlign: "items-start text-left",
     planet: "bg-blue-400 shadow-[0_0_24px_rgba(96,165,250,0.7)]",
   },
   {
-    icon: IconTestPipe,
+    icon: IconCode,
     number: "03",
-    title: "Prove direction",
-    detail: "Test the riskiest journey",
+    title: "Development",
+    detail: "Interfaces, APIs & data",
     position: "right-0 bottom-[22%]",
-    layout: "flex-row",
+    layout: "flex-row items-center",
     textAlign: "items-start text-left",
     planet: "bg-violet-400 shadow-[0_0_24px_rgba(167,139,250,0.72)]",
   },
   {
-    icon: IconCode,
+    icon: IconShieldCheck,
     number: "04",
-    title: "Build the whole",
-    detail: "Product, data & AI",
+    title: "Security",
+    detail: "Access, privacy & resilience",
     position: "bottom-[1%] left-1/2 -translate-x-1/2",
-    layout: "flex-col-reverse",
+    layout: "flex-col-reverse items-center",
     textAlign: "items-center text-center",
     planet: "bg-emerald-400 shadow-[0_0_26px_rgba(52,211,153,0.72)]",
   },
   {
     icon: IconRocket,
     number: "05",
-    title: "Launch safely",
-    detail: "Quality & delivery",
+    title: "Deployment",
+    detail: "Testing, cloud & release",
     position: "bottom-[22%] left-0",
-    layout: "flex-row-reverse",
+    layout: "flex-row-reverse items-center",
     textAlign: "items-end text-right",
     planet: "bg-amber-300 shadow-[0_0_24px_rgba(252,211,77,0.68)]",
   },
   {
     icon: IconChartDots,
     number: "06",
-    title: "Grow the value",
-    detail: "Measure & improve",
+    title: "Scale up",
+    detail: "Measure, automate & improve",
     position: "top-[22%] left-0",
-    layout: "flex-row-reverse",
+    layout: "flex-row-reverse items-center",
     textAlign: "items-end text-right",
     planet: "bg-rose-400 shadow-[0_0_24px_rgba(251,113,133,0.68)]",
   },
@@ -89,11 +89,10 @@ export function GippityAITimeline() {
         <header>
           <p className="nx-kicker">Product lifecycle</p>
           <h3 className="mt-4 max-w-sm text-4xl font-bold leading-[0.98] tracking-[-0.045em] text-white md:text-5xl">
-            Every orbit moves the product forward.
+            From planning to a secure, scalable product.
           </h3>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-neutral-400 sm:text-base">
-            Six connected decisions turn an idea into something useful,
-            dependable, and ready to improve.
+            One connected lifecycle from the first decision to continuous growth.
           </p>
         </header>
 
