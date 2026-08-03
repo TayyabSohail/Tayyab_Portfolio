@@ -21,6 +21,20 @@ export const CATEGORY_ORDER: ProjectCategory[] = [
   "Website",
 ];
 
+/** Projects that are shipped software products with a recurring SaaS model or
+ * SaaS-style operational experience. This intentionally cuts across primary
+ * categories such as Marketplace and AI. */
+export const SAAS_PROJECT_SLUGS = new Set([
+  "seomaven",
+  "unibid",
+  "anina",
+  "vestafi",
+  "bitsmiths-hrm",
+  "ai-physiotherapy",
+  "real-estate-management-system",
+  "ai-interview-assistant",
+]);
+
 /**
  * What the work *was*, as opposed to what the product is. These mirror the
  * pitch on the homepage — full-stack, AI, cloud and automation — so a visitor

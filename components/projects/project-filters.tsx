@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import type { Project, ProjectCategory } from "@/data/projects";
+import { SAAS_PROJECT_SLUGS, type Project, type ProjectCategory } from "@/data/projects";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { cn } from "@/lib/utils";
 
@@ -65,7 +65,9 @@ export function FilterableProjects({
     () =>
       active === "All"
         ? projects
-        : active === "AI"
+        : active === "SaaS"
+          ? projects.filter((project) => SAAS_PROJECT_SLUGS.has(project.slug))
+          : active === "AI"
           ? projects.filter((project) => project.capabilities.includes("AI"))
           : projects.filter((project) => project.category === active),
     [active, projects]
