@@ -26,6 +26,22 @@ const dataStreams = [
   { x: "94%", height: "20vh", delay: "-8s", duration: "15s", opacity: 0.48 },
 ];
 
+const agentLinks = [
+  "M500 374H594L650 405",
+  "M500 490H594L650 450",
+  "M1100 374H1006L950 405",
+  "M1100 490H1006L950 450",
+  "M500 374V490",
+  "M1100 374V490",
+];
+
+const agentNodes = [
+  { x: 500, y: 374, label: "VECTOR" },
+  { x: 500, y: 490, label: "RERANK" },
+  { x: 1100, y: 374, label: "TOOLS" },
+  { x: 1100, y: 490, label: "MEMORY" },
+];
+
 const codeModules = [
   {
     label: "agent.router.ts",
@@ -52,18 +68,28 @@ const codeModules = [
     duration: "56s",
   },
   {
-    label: "mobile.core.ts",
-    status: "LIVE",
+    label: "ai.pipeline.log",
+    status: "RUN",
     lines: [
-      "const signal = observe(view);",
-      "  signal.on('scroll', reveal);",
-      "return render(signal);",
+      "[OK]  index vectors / context",
+      "[RUN] model reasoning / plan",
+      "[LIVE] tool execution / response",
     ],
     className:
-      "left-1/2 top-[42%] w-[min(252px,calc(100vw-2rem))] -translate-x-1/2 lg:hidden",
+      "ai-mobile-console left-1/2 top-[42%] w-[min(252px,calc(100vw-2rem))] -translate-x-1/2 lg:hidden",
     delay: "-9s",
     duration: "42s",
   },
+];
+
+const compilerLines = [
+  "$ pnpm build --filter portfolio",
+  "info  compiling route graph...",
+  "info  bundling /case-studies/[slug]",
+  "emit  server chunk 18.4 kB",
+  "cache hit  component registry",
+  "done  static generation complete",
+  "✓ build passed in 1.24s",
 ];
 
 /** A precise animated circuit schematic that sits behind every page. */
@@ -80,9 +106,6 @@ export function GridBackground() {
           precise circuit strokes without becoming a conventional gradient. */}
       <div className="signal-orb -left-40 top-[14%]" />
       <div className="signal-orb -right-44 bottom-[8%] [animation-delay:-12s]" />
-      <div className="ambient-scan" />
-      <div className="ambient-scan top-[68%] [animation-delay:-14s] [animation-duration:26s]" />
-
       {/* Low-energy data packets fall on staggered rails behind the schematic. */}
       <div className="data-stream-layer">
         {dataStreams.map((stream) => (
@@ -162,6 +185,23 @@ export function GridBackground() {
           <path className="chip-core-meter" d="M682 438H842" pathLength="100" />
         </g>
 
+        {/* Agent graph: retrieval, tools and memory route into the model core. */}
+        <g>
+          {agentLinks.map((path, index) => (
+            <g key={path}>
+              <path className="agent-link" d={path} />
+              {index < 4 && <path className="agent-link-active" d={path} pathLength="100" style={{ animationDelay: `${-index * 1.6}s` }} />}
+            </g>
+          ))}
+          {agentNodes.map((node, index) => (
+            <g key={node.label} style={{ animationDelay: `${-index * 0.8}s` }}>
+              <circle className="agent-node" cx={node.x} cy={node.y} r="4" />
+              <text className="agent-label" x={node.x + (node.x < 800 ? -48 : 12)} y={node.y - 11}>{node.label}</text>
+            </g>
+          ))}
+          <text className="agent-label" x="720" y="302">AGENT.ORCHESTRATOR</text>
+        </g>
+
         {/* Sparse technical calibration marks, not a repeated grid. */}
         <g className="chip-calibration">
           <path d="M48 48H128M48 48V128" />
@@ -198,6 +238,19 @@ export function GridBackground() {
             </pre>
           </div>
         ))}
+
+        <div className="compiler-module bottom-[12%] left-[6%] hidden md:block xl:left-[7%]">
+          <div className="compiler-module-header"><span>BUILD.PIPELINE</span><span>ACTIVE</span></div>
+          <div className="compiler-feed">
+            <div className="compiler-feed-track">
+              {[...compilerLines, ...compilerLines].map((line, index) => (
+                <span key={`${line}-${index}`} className={`compiler-line ${line.startsWith("✓") ? "compiler-line--success" : ""}`}>
+                  {line}{index === compilerLines.length - 1 && <span className="compiler-cursor" />}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
 
         <span className="telemetry-label left-[22%] top-[8%]">0x7A // ONLINE</span>
         <span className="telemetry-label right-[24%] top-[11%]">LATENCY 024ms</span>
