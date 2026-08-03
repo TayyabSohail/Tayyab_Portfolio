@@ -8,7 +8,7 @@
 
 An all-in-one AI SEO platform for keyword research, content generation, rank tracking, and local insights. Durable background processing, live SEO data, and optimized batching enable 30 articles in 10 minutes, reduce article costs by 3×, and cut keyword-tracking costs by 50%.
 
-**Live URL:** https://seomaven.ai
+**Live URL:** [https://seomaven.ai](https://seomaven.ai)
 
 ---
 
@@ -20,7 +20,7 @@ An all-in-one AI SEO platform for keyword research, content generation, rank tra
 
 A real-time housing marketplace where students and parents bid on verified rentals while landlords manage listings and offers. Transaction-safe bidding prevents conflicting winners, and sub-200 ms live updates support more than 1,000 concurrent users across three account types.
 
-**Live URL:** https://unibid.ai
+**Live URL:** [https://unibid.ai](https://unibid.ai)
 
 ---
 
@@ -32,7 +32,7 @@ A real-time housing marketplace where students and parents bid on verified renta
 
 A personalized multi-seller marketplace with recommendations, seller dashboards, automated payouts, order management, and live delivery tracking. Personalized shopping increased engagement by 40%, while automated payment and shipping workflows reduced support tickets by 70%.
 
-**Live URL:** https://anina.app/
+**Live URL:** [https://anina.app/](https://anina.app/)
 
 ---
 
@@ -44,7 +44,7 @@ A personalized multi-seller marketplace with recommendations, seller dashboards,
 
 A fractional property platform that lets vetted members co-own apartments, receive rental income, and resell their stakes. Exact ledger rules, whole-shilling accounting, admin approvals, and strict access controls keep investments, wallets, distributions, and resale activity accurate and auditable.
 
-**Live URL:** https://www.vestafi.co/
+**Live URL:** [https://www.vestafi.co/](https://www.vestafi.co/)
 
 ---
 
@@ -56,7 +56,7 @@ A fractional property platform that lets vetted members co-own apartments, recei
 
 A fast, conversion-focused agency website powered by Directus CMS. The team can publish case studies, articles, testimonials, and FAQs without developer support, while reusable templates, automated image optimization, and complete SEO metadata keep every page consistent and performant.
 
-**Live URL:** https://bitsmiths.studio/
+**Live URL:** [https://bitsmiths.studio/](https://bitsmiths.studio/)
 
 ---
 
@@ -68,7 +68,7 @@ A fast, conversion-focused agency website powered by Directus CMS. The team can 
 
 A performance-focused rebuild designed to improve search visibility and lead generation. Static rendering, code splitting, responsive images, and complete SEO metadata made the site 40% faster and placed a clear call to action within one scroll on every route.
 
-**Live URL:** https://www.newweborder.us/
+**Live URL:** [https://www.newweborder.us/](https://www.newweborder.us/)
 
 ---
 
@@ -80,7 +80,7 @@ A performance-focused rebuild designed to improve search visibility and lead gen
 
 An auditable HR platform combining onboarding, leave, medical claims, overtime, payroll, and payslips. Automated payroll periods, approval trails, locked payslips, live balances, and 12 status emails reduce manual administration while four security layers protect employee and payroll data.
 
-**Live URL:** https://hrm.bitsmiths.studio/
+**Live URL:** [https://hrm.bitsmiths.studio/](https://hrm.bitsmiths.studio/)
 
 ---
 
@@ -131,4 +131,3 @@ An AI compliance workflow that compares uploaded reports with established standa
 ### Project description
 
 An end-to-end AI platform for planning, scheduling, conducting, and transcribing live voice interviews. Custom interview formats, candidate and CV context, automated invitations, and transcript delivery have supported more than 30 intern interviews.
-
