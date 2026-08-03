@@ -80,8 +80,7 @@ export default function RootLayout({
           gtag('config', 'G-7ERWVLWFKQ');
         `}
         </Script>
-        <meta name="theme-color" content="#ffffff" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <meta name="theme-color" content="#07110f" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />

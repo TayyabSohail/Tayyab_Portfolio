@@ -2,34 +2,42 @@
 
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import type { Project, ProjectCapability } from "@/data/projects";
+import type { Project, ProjectCategory } from "@/data/projects";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { cn } from "@/lib/utils";
 
 interface FilterableProjectsProps {
   projects: Project[];
-  capabilities: ProjectCapability[];
+  categories: ProjectCategory[];
 }
 
-type Filter<T> = T | "All";
+type Filter = ProjectCategory | "AI" | "All";
+
+const FILTER_LABELS: Record<Filter, string> = {
+  All: "All work",
+  SaaS: "SaaS",
+  Marketplace: "Marketplaces",
+  AI: "AI",
+  Website: "Websites",
+};
 
 function ProjectQuerySync({
-  capabilities,
+  categories,
   onChange,
 }: {
-  capabilities: ProjectCapability[];
-  onChange: (filter: Filter<ProjectCapability>) => void;
+  categories: ProjectCategory[];
+  onChange: (filter: Filter) => void;
 }) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const requested = searchParams.get("capability");
-    const matchingCapability = capabilities.find(
-      (capability) => capability === requested
+    const requested = searchParams.get("category");
+    const matchingCategory = categories.find(
+      (category) => category === requested
     );
 
-    if (matchingCapability) onChange(matchingCapability);
-  }, [capabilities, onChange, searchParams]);
+    if (matchingCategory) onChange(matchingCategory);
+  }, [categories, onChange, searchParams]);
 
   return null;
 }
@@ -40,37 +48,39 @@ function ProjectQuerySync({
  * would not allow — the grid is cheap enough to re-render on the client.
  *
  * Filtering is by capability — the kind of work, matching the pitch on the
- * homepage. Product type stays on the cards as context but is not a filter.
+ * Each project has one product type, so filter results are unambiguous.
  */
 export function FilterableProjects({
   projects,
-  capabilities,
+  categories,
 }: FilterableProjectsProps) {
-  const [active, setActive] = useState<Filter<ProjectCapability>>("All");
+  const [active, setActive] = useState<Filter>("All");
 
-  const filters: Filter<ProjectCapability>[] = useMemo(
-    () => ["All", ...capabilities],
-    [capabilities]
+  const filters: Filter[] = useMemo(
+    () => ["All", ...categories.filter((category) => category !== "AI"), "AI"],
+    [categories]
   );
 
   const visible = useMemo(
     () =>
       active === "All"
         ? projects
-        : projects.filter((project) => project.capabilities.includes(active)),
+        : active === "AI"
+          ? projects.filter((project) => project.capabilities.includes("AI"))
+          : projects.filter((project) => project.category === active),
     [active, projects]
   );
 
   return (
     <>
       <Suspense fallback={null}>
-        <ProjectQuerySync capabilities={capabilities} onChange={setActive} />
+        <ProjectQuerySync categories={categories} onChange={setActive} />
       </Suspense>
 
       <div
         role="group"
-        aria-label="Filter projects by capability"
-        className="mb-10 flex w-full max-w-full flex-nowrap justify-start gap-px overflow-x-auto border border-white/10 bg-[#020605] p-px [scrollbar-width:none] sm:w-fit sm:overflow-visible [&::-webkit-scrollbar]:hidden"
+        aria-label="Filter projects by product type"
+        className="mb-10 flex w-full max-w-full flex-nowrap justify-start gap-px overflow-x-auto border border-white/10 bg-[#141414] p-px [scrollbar-width:none] sm:w-fit sm:overflow-visible [&::-webkit-scrollbar]:hidden"
       >
         {filters.map((filter) => {
           const isActive = filter === active;
@@ -88,7 +98,7 @@ export function FilterableProjects({
                   : "border-white/15 bg-[#050807] text-neutral-300 hover:border-emerald-400/40 hover:bg-emerald-500/[0.08] hover:text-white"
               )}
             >
-              {filter}
+              {FILTER_LABELS[filter]}
             </button>
           );
         })}
@@ -101,7 +111,7 @@ export function FilterableProjects({
       <p aria-live="polite" className="sr-only">
         {active === "All"
           ? `Showing all ${visible.length} projects.`
-          : `${visible.length} projects match ${active}.`}
+          : `${visible.length} projects match ${FILTER_LABELS[active]}.`}
       </p>
     </>
   );

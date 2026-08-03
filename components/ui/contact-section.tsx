@@ -28,11 +28,11 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 /** Left padding clears the leading icon; peer-* lets the icon react to focus. */
 const FIELD_CLASS =
-  "peer w-full border border-white/15 bg-[#050807]/80 py-3 pr-4 pl-11 text-sm text-neutral-100 placeholder:text-neutral-500 transition-all duration-200 focus:border-emerald-500/70 focus:bg-emerald-500/[0.025] focus:ring-1 focus:ring-emerald-500/25 focus:outline-hidden disabled:opacity-60";
+  "peer w-full border border-white/30 bg-[#191919] py-3 pr-4 pl-11 text-sm text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.05)] placeholder:text-neutral-300 transition-all duration-200 hover:border-white/45 focus:border-emerald-300 focus:bg-[#202020] focus:ring-2 focus:ring-emerald-400/35 focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-60";
 
 /** Sentence case, not uppercase — it reads as a question, not a database column. */
 const LABEL_CLASS =
-  "mb-2 block text-sm font-medium text-neutral-800 dark:text-neutral-200";
+  "mb-2 block text-sm font-semibold text-white";
 
 /** Sits inside the field's left gutter and picks up the emerald focus tint. */
 const ICON_CLASS =

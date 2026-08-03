@@ -13,6 +13,14 @@
  */
 export type ProjectCategory = "Marketplace" | "SaaS" | "AI" | "Website";
 
+/** Fixed, mutually exclusive product types for the project filter. */
+export const CATEGORY_ORDER: ProjectCategory[] = [
+  "SaaS",
+  "Marketplace",
+  "AI",
+  "Website",
+];
+
 /**
  * What the work *was*, as opposed to what the product is. These mirror the
  * pitch on the homepage — full-stack, AI, cloud and automation — so a visitor
@@ -1047,6 +1055,11 @@ export function getFeaturedProjects(): Project[] {
 export function getCapabilities(): ProjectCapability[] {
   const present = new Set(projects.flatMap((project) => project.capabilities));
   return CAPABILITY_ORDER.filter((capability) => present.has(capability));
+}
+
+export function getCategories(): ProjectCategory[] {
+  const present = new Set(projects.map((project) => project.category));
+  return CATEGORY_ORDER.filter((category) => present.has(category));
 }
 
 /**

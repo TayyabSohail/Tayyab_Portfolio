@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #020605;
+  --foreground: #f1f5f3;
 }
 
 .dark {
@@ -26,6 +26,8 @@ body {
   max-width: 100%;
 }
 html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.75rem;
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
@@ -35,6 +37,69 @@ html {
   to {
     stroke-dashoffset: -100;
   }
+}
+
+@keyframes ambient-scan {
+  0% {
+    transform: translate3d(-130%, -20%, 0) rotate(-12deg);
+    opacity: 0;
+  }
+  16%,
+  74% {
+    opacity: 0.72;
+  }
+  100% {
+    transform: translate3d(130%, 20%, 0) rotate(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes signal-orbit {
+  0%,
+  100% {
+    transform: translate3d(-6%, -4%, 0) scale(0.9);
+  }
+  50% {
+    transform: translate3d(9%, 7%, 0) scale(1.08);
+  }
+}
+
+@keyframes circuit-pulse {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 0.34;
+    transform: scale(1.06);
+  }
+}
+
+.ambient-scan {
+  position: absolute;
+  top: 18%;
+  left: 0;
+  width: 40%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(110 231 183 / 0.06), rgb(167 243 208 / 0.34), rgb(110 231 183 / 0.06), transparent);
+  box-shadow: 0 0 24px rgb(16 185 129 / 0.14);
+  animation: ambient-scan 19s ease-in-out -7s infinite;
+}
+
+.signal-orb {
+  position: absolute;
+  width: 22rem;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgb(16 185 129 / 0.11), rgb(16 185 129 / 0.025) 34%, transparent 70%);
+  filter: blur(4px);
+  animation: signal-orbit 24s ease-in-out infinite;
+}
+
+.circuit-pulse {
+  transform-origin: center;
+  animation: circuit-pulse 7s ease-in-out infinite;
 }
 
 @keyframes module-drift {
@@ -332,6 +397,12 @@ html {
     animation: none;
   }
 
+  .ambient-scan,
+  .signal-orb,
+  .circuit-pulse {
+    animation: none;
+  }
+
   .data-stream {
     display: none;
   }
@@ -377,8 +448,8 @@ html {
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 0.1);
   background:
-    linear-gradient(145deg, rgb(16 185 129 / 0.035), transparent 42%),
-    rgb(5 8 7 / 0.9);
+    linear-gradient(145deg, rgb(255 255 255 / 0.035), transparent 42%),
+    rgb(20 20 20 / 0.94);
   clip-path: polygon(
     0 0,
     calc(100% - 13px) 0,
@@ -436,6 +507,26 @@ html {
     linear-gradient(to right, rgb(52 211 153 / 0.038) 1px, transparent 1px),
     linear-gradient(to bottom, rgb(52 211 153 / 0.038) 1px, transparent 1px);
   background-size: 38px 38px;
+}
+
+/* Kept transparent so the animated circuit backdrop remains visible across
+   every section of the homepage. */
+.nx-section-surface {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  border-block: 1px solid rgb(255 255 255 / 0.06);
+}
+
+.nx-section-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: none;
+  background-size: 72px 100%;
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
 
 .nx-kicker {

@@ -11,6 +11,7 @@ import {
 } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { useRef } from "react";
+import { scrollToHash } from "@/components/ui/hash-scroll";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -195,6 +196,22 @@ export const NavItems = ({
     };
   }, [items, cta]);
 
+  const handleAnchorClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    link: string
+  ) => {
+    const url = new URL(link, window.location.origin);
+    if (url.pathname !== window.location.pathname || !url.hash) {
+      onItemClick?.();
+      return;
+    }
+
+    event.preventDefault();
+    window.history.pushState(null, "", `${url.pathname}${url.hash}`);
+    scrollToHash();
+    onItemClick?.();
+  };
+
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
@@ -211,7 +228,7 @@ export const NavItems = ({
         return (
           <a
             onMouseEnter={() => setHovered(idx)}
-            onClick={onItemClick}
+            onClick={(event) => handleAnchorClick(event, item.link)}
             aria-current={isActive ? "location" : undefined}
             className={cn(
               "relative whitespace-nowrap px-1.5 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.05em] transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-hidden sm:px-3.5 sm:text-[11px] sm:tracking-[0.08em]",
@@ -239,7 +256,7 @@ export const NavItems = ({
       })}
       {cta && (
         <a
-          onClick={onItemClick}
+          onClick={(event) => handleAnchorClick(event, cta.link)}
           href={cta.link}
           aria-current={activeLink === cta.link ? "location" : undefined}
           className={cn(

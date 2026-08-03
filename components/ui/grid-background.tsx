@@ -76,6 +76,13 @@ export function GridBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-50 overflow-hidden bg-[#020605]"
     >
+      {/* Slow ambient layers give the schematic a little depth between the
+          precise circuit strokes without becoming a conventional gradient. */}
+      <div className="signal-orb -left-40 top-[14%]" />
+      <div className="signal-orb -right-44 bottom-[8%] [animation-delay:-12s]" />
+      <div className="ambient-scan" />
+      <div className="ambient-scan top-[68%] [animation-delay:-14s] [animation-duration:26s]" />
+
       {/* Low-energy data packets fall on staggered rails behind the schematic. */}
       <div className="data-stream-layer">
         {dataStreams.map((stream) => (
@@ -128,7 +135,7 @@ export function GridBackground() {
         ))}
 
         {/* Central processor outline and its narrow pins. */}
-        <g className="chip-core">
+        <g className="chip-core circuit-pulse">
           <path d="M650 315H950V495H650V315Z" />
           <path d="M664 329H936V481H664V329Z" />
           <path d="M690 358H910V452H690V358Z" strokeDasharray="2 7" />

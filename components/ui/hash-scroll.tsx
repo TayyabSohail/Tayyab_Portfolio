@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 
-function scrollToHash() {
+const NAVBAR_OFFSET = 104;
+
+export function scrollToHash() {
   const id = window.location.hash.slice(1);
   if (!id) return;
 
@@ -12,7 +14,8 @@ function scrollToHash() {
   // Wait for the route and client-rendered sections to finish laying out.
   window.requestAnimationFrame(() => {
     window.requestAnimationFrame(() => {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      const top = target.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     });
   });
 }

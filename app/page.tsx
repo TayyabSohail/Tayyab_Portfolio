@@ -16,7 +16,7 @@ export default function Home() {
       {/* Headline Section */}
 
       {/* About Section with Wobble Cards */}
-      <section id="about" className="scroll-mt-5">
+      <section id="about" className="scroll-mt-28">
         {" "}
         {/* scroll-mt-20 accounts for navbar height */}
         <HeadlineSection />
@@ -27,12 +27,12 @@ export default function Home() {
       <ProjectsSection />
 
       {
-        <section id="stack" className="scroll-mt-5">
+        <section id="stack" className="scroll-mt-28">
           <TechStackSection />
         </section>
       }
 
-      <section id="contact" className="scroll-mt-5">
+      <section id="contact" className="scroll-mt-28">
         <ContactSection />
       </section>
     </div>

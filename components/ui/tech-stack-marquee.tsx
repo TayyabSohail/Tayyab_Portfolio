@@ -240,7 +240,7 @@ function CategoryPanel({
 
 export function TechStackSection() {
   return (
-    <section id="tech-stack" className="scroll-mt-20 bg-transparent py-24">
+    <section id="tech-stack" className="scroll-mt-28 bg-transparent py-24">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
         <div className="mb-14 grid gap-6 border-b border-white/10 pb-10 md:grid-cols-[1fr_0.9fr] md:items-end">
           <div>
@@ -255,7 +255,7 @@ export function TechStackSection() {
           </p>
         </div>
 
-        <div className="grid gap-px border border-white/10 bg-[#020605] lg:grid-cols-3">
+        <div className="grid gap-px border border-white/10 bg-[#141414] lg:grid-cols-3">
           {techCategories.map((category, index) => (
             <CategoryPanel
               key={category.title}

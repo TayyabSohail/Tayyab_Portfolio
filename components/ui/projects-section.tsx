@@ -1,4 +1,4 @@
-import { projects, getCapabilities } from "@/data/projects";
+import { projects, getCategories } from "@/data/projects";
 import { FilterableProjects } from "@/components/projects/project-filters";
 
 /**
@@ -10,7 +10,7 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative scroll-mt-5 bg-transparent py-20 text-neutral-100"
+      className="relative scroll-mt-28 py-20 text-neutral-100"
     >
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
         <div className="mb-12 grid gap-6 border-b border-white/10 pb-10 md:grid-cols-[1fr_0.9fr] md:items-end">
@@ -28,7 +28,7 @@ export function ProjectsSection() {
 
         <FilterableProjects
           projects={projects}
-          capabilities={getCapabilities()}
+          categories={getCategories()}
         />
       </div>
     </section>
