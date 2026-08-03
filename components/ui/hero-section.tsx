@@ -101,18 +101,22 @@ export function HeroSection() {
               cleanly, and deliver measurable results.
             </p>
 
-            <dl className="mt-7 grid grid-cols-3 border-y border-white/10 py-5">
+            <dl className="mt-7 grid grid-cols-3 gap-px overflow-hidden border border-emerald-400/20 bg-emerald-400/15">
               {impactStats.map((stat, index) => (
                 <div
                   key={stat.label}
-                  className={`min-w-0 px-3 first:pl-0 last:pr-0 sm:px-5 ${
-                    index > 0 ? "border-l border-white/10" : ""
-                  }`}
+                  className="group relative min-w-0 bg-neutral-950/90 px-2 py-5 text-center sm:px-5 sm:py-6"
                 >
-                  <dd className="text-2xl font-black tracking-[-0.05em] text-white sm:text-3xl">
+                  <span
+                    aria-hidden="true"
+                    className={`absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent to-transparent ${
+                      index === 1 ? "via-emerald-300/90" : "via-emerald-400/45"
+                    }`}
+                  />
+                  <dd className="text-3xl font-black tracking-[-0.065em] text-emerald-300 [text-shadow:0_0_24px_rgb(52_211_153/0.22)] sm:text-4xl lg:text-[2.65rem]">
                     {stat.value}
                   </dd>
-                  <dt className="mt-1 text-[10px] font-semibold leading-snug uppercase tracking-[0.08em] text-neutral-400 sm:text-xs">
+                  <dt className="mx-auto mt-2 max-w-28 text-[9px] font-bold leading-snug uppercase tracking-[0.09em] text-neutral-200 sm:text-[11px]">
                     {stat.label}
                   </dt>
                 </div>
