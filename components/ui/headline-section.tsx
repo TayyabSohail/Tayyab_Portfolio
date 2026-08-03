@@ -12,7 +12,7 @@ const CLIENT_OUTCOMES = [
     project: "SEOMaven",
     slug: "seomaven",
     description:
-      "One automated workflow now handles keyword research, content generation, and rank tracking—work that previously required several tools.",
+      "The same content budget now produces three times more output, helping SEO teams expand coverage without increasing spend.",
   },
   {
     value: "1,000+",
@@ -20,7 +20,7 @@ const CLIENT_OUTCOMES = [
     project: "UniBid",
     slug: "unibid",
     description:
-      "Conflict-free bid synchronisation keeps every student and landlord on the same live state, even during peak campus traffic.",
+      "Peak campus demand can be handled without lost bids or conflicting states, protecting trust when marketplace activity is highest.",
   },
   {
     value: "70%",
@@ -28,7 +28,7 @@ const CLIENT_OUTCOMES = [
     project: "Anina",
     slug: "anina",
     description:
-      "Checkout and shipping flows resolve common problems before customers need support, reducing workload without weakening the experience.",
+      "Seven out of every ten support issues were removed, lowering service workload while giving customers a smoother checkout and delivery experience.",
   },
   {
     value: "30 days",
@@ -36,7 +36,7 @@ const CLIENT_OUTCOMES = [
     project: "Bitsmiths Studio",
     slug: "bitsmiths-studio",
     description:
-      "A focused scope and reusable content system turned an initial brief into a production-ready launch within one month.",
+      "The business reached market in one month, shortening the wait for customer feedback, qualified leads, and revenue opportunities.",
   },
   {
     value: "40%",
@@ -44,7 +44,7 @@ const CLIENT_OUTCOMES = [
     project: "New Web Order",
     slug: "new-web-order",
     description:
-      "Route-level rendering and bundle improvements made the experience faster while keeping every page focused on conversion.",
+      "Visitors reach the content and call to action sooner, reducing avoidable drop-off and giving each campaign a better chance to convert.",
   },
   {
     value: "<5 min",
@@ -52,7 +52,7 @@ const CLIENT_OUTCOMES = [
     project: "AI Physiotherapy Assistant",
     slug: "ai-physiotherapy",
     description:
-      "A guided clinical flow collects the right information quickly, then creates a plan that adapts to the patient’s daily performance.",
+      "Clinicians spend less time on intake administration, while patients can begin a personalised treatment plan during the same session.",
   },
   {
     value: "60%",
@@ -60,7 +60,7 @@ const CLIENT_OUTCOMES = [
     project: "SnobBots",
     slug: "snobbots",
     description:
-      "Automated orchestration replaced repetitive tenant setup, helping resellers provision secure AI assistants at scale.",
+      "New customer environments go live in less than half the previous time, allowing resellers to onboard more clients with the same team.",
   },
   {
     value: "30+",
@@ -68,7 +68,7 @@ const CLIENT_OUTCOMES = [
     project: "Real Estate Management System",
     slug: "real-estate-management-system",
     description:
-      "A multi-tenant operating system connects CRM, compliance, documents, and marketing workflows without mixing agency data.",
+      "More than 30 agencies share one secure platform, reducing separate infrastructure and maintenance work without mixing client data.",
   },
   {
     value: "50%",
@@ -76,7 +76,7 @@ const CLIENT_OUTCOMES = [
     project: "QA Review Agent",
     slug: "qa-compliance-agent",
     description:
-      "Clause-level AI review turns a week of repetitive checking into traceable findings that auditors can verify and action.",
+      "Review teams recover roughly half a week per audit, increasing delivery capacity without needing to double the review team.",
   },
   {
     value: "30+",
@@ -84,30 +84,39 @@ const CLIENT_OUTCOMES = [
     project: "Realtime Voice Interview Assistant",
     slug: "ai-interview-assistant",
     description:
-      "Live voice interviews, transcription, invitations, and follow-up delivery run inside one automated recruitment workflow.",
+      "Recruiters can run consistent interviews with automatic transcripts and follow-ups, reducing coordination work across every candidate.",
   },
-].map((outcome, index) => ({
-  ...outcome,
-  number: String(index + 1).padStart(2, "0"),
-}));
+];
 
 export function HeadlineSection() {
   const [activeOutcome, setActiveOutcome] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [progress, setProgress] = useState(0);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (isPaused) return;
 
-    const timer = window.setTimeout(
-      () => setActiveOutcome((current) => (current + 1) % CLIENT_OUTCOMES.length),
-      6000,
-    );
+    const timer = window.setInterval(() => {
+      setProgress((current) => {
+        const next = current + 100 / 60;
 
-    return () => window.clearTimeout(timer);
-  }, [activeOutcome, isPaused]);
+        if (next >= 100) {
+          setActiveOutcome(
+            (active) => (active + 1) % CLIENT_OUTCOMES.length,
+          );
+          return 0;
+        }
+
+        return next;
+      });
+    }, 100);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused]);
 
   const selectOutcome = (direction: 1 | -1) => {
+    setProgress(0);
     setActiveOutcome(
       (current) =>
         (current + direction + CLIENT_OUTCOMES.length) % CLIENT_OUTCOMES.length,
@@ -139,11 +148,10 @@ export function HeadlineSection() {
             <div aria-hidden="true" className="nx-grid-surface absolute inset-0 opacity-25" />
             <span aria-hidden="true" className="absolute top-16 left-0 h-16 w-px bg-emerald-400/80" />
 
-            <div className="relative flex items-center justify-between gap-4 border-b border-white/[0.08] bg-black/15 px-6 py-4 sm:px-7">
+            <div className="relative flex items-center border-b border-white/[0.08] bg-black/15 px-6 py-4 sm:px-7">
               <div className="flex min-w-0 items-center gap-3.5">
-                <span className="flex h-10 w-10 shrink-0 flex-col items-center justify-center border border-emerald-400/30 bg-emerald-400/[0.08]">
-                  <span className="font-mono text-[0.48rem] tracking-[0.1em] text-emerald-300/65">NO.</span>
-                  <span className="font-mono text-xs font-bold text-emerald-200">{outcome.number}</span>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-emerald-400/30 bg-emerald-400/[0.08]">
+                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(110,231,183,0.8)]" />
                 </span>
                 <div className="min-w-0">
                   <span className="block font-mono text-[0.55rem] font-semibold tracking-[0.16em] text-neutral-500 uppercase">
@@ -154,9 +162,6 @@ export function HeadlineSection() {
                   </h3>
                 </div>
               </div>
-              <span className="shrink-0 font-mono text-[0.56rem] tracking-[0.12em] text-neutral-500 uppercase">
-                {CLIENT_OUTCOMES.length} results
-              </span>
             </div>
 
             <div className="relative min-h-80 px-6 py-6 sm:min-h-64 sm:px-7">
@@ -176,7 +181,7 @@ export function HeadlineSection() {
                   <div className="relative overflow-hidden border border-emerald-400/20 bg-linear-to-br from-emerald-400/[0.13] via-emerald-400/[0.035] to-transparent px-5 py-5">
                     <div aria-hidden="true" className="nx-grid-surface absolute inset-0 opacity-35" />
                     <p className="relative font-mono text-[0.55rem] font-semibold tracking-[0.14em] text-emerald-300/75 uppercase">
-                      Measured result
+                      Project outcome
                     </p>
                     <p className="relative mt-4 text-5xl font-black leading-none tracking-[-0.075em] text-emerald-300 [text-shadow:0_0_28px_rgb(52_211_153/0.2)] sm:text-6xl">
                       {outcome.value}
@@ -205,6 +210,20 @@ export function HeadlineSection() {
               </AnimatePresence>
             </div>
 
+            <div
+              className="relative h-1 bg-white/[0.06]"
+              role="progressbar"
+              aria-label="Time until next outcome"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round(progress)}
+            >
+              <span
+                className="absolute inset-y-0 left-0 bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.55)] transition-[width] duration-100 ease-linear"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+
             <div className="relative flex items-center justify-between border-t border-white/[0.08] bg-black/10 px-6 py-3.5 sm:px-7">
               <div className="flex max-w-[70%] gap-1" aria-label={`Slide ${activeOutcome + 1} of ${CLIENT_OUTCOMES.length}`}>
                 {CLIENT_OUTCOMES.map((item, index) => (
@@ -220,16 +239,18 @@ export function HeadlineSection() {
                   type="button"
                   onClick={() => selectOutcome(-1)}
                   aria-label="Previous outcome"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition-colors hover:border-emerald-400/50 hover:bg-emerald-400/[0.08] hover:text-emerald-200 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
+                  className="inline-flex min-h-9 items-center justify-center gap-2 border border-white/10 px-3 font-mono text-[0.58rem] font-semibold tracking-[0.08em] text-neutral-400 uppercase transition-colors hover:border-emerald-400/50 hover:bg-emerald-400/[0.08] hover:text-emerald-200 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
                 >
                   <IconArrowLeft aria-hidden="true" className="h-4 w-4" stroke={1.5} />
+                  <span className="hidden sm:inline">Previous</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => selectOutcome(1)}
                   aria-label="Next outcome"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition-colors hover:border-emerald-400/50 hover:bg-emerald-400/[0.08] hover:text-emerald-200 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
+                  className="inline-flex min-h-9 items-center justify-center gap-2 border border-emerald-400/30 bg-emerald-400/[0.06] px-3 font-mono text-[0.58rem] font-semibold tracking-[0.08em] text-emerald-200 uppercase transition-colors hover:border-emerald-300/60 hover:bg-emerald-400/[0.12] focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
                 >
+                  <span className="hidden sm:inline">Next</span>
                   <IconArrowRight aria-hidden="true" className="h-4 w-4" stroke={1.5} />
                 </button>
               </div>
