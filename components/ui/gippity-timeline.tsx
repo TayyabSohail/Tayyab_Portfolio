@@ -1,9 +1,10 @@
 import {
-  IconArrowUpRight,
-  IconBolt,
+  IconChartDots,
+  IconCode,
+  IconMap2,
   IconRocket,
-  IconRoute,
-  IconSparkles,
+  IconTargetArrow,
+  IconTestPipe,
 } from "@tabler/icons-react";
 import type { Icon } from "@tabler/icons-react";
 
@@ -13,41 +14,71 @@ interface LifecycleStep {
   title: string;
   detail: string;
   position: string;
+  layout: string;
+  textAlign: string;
   planet: string;
 }
 
 const LIFECYCLE_STEPS: LifecycleStep[] = [
   {
-    icon: IconRoute,
+    icon: IconTargetArrow,
     number: "01",
-    title: "Define",
-    detail: "Goals & user flows",
-    position: "top-[7%] left-1/2 -translate-x-1/2",
-    planet: "h-9 w-9 bg-cyan-300 shadow-[0_0_24px_rgba(103,232,249,0.8)]",
+    title: "Frame value",
+    detail: "Goal & success metric",
+    position: "top-[1%] left-1/2 -translate-x-1/2",
+    layout: "flex-col",
+    textAlign: "items-center text-center",
+    planet: "bg-cyan-300 shadow-[0_0_24px_rgba(103,232,249,0.75)]",
   },
   {
-    icon: IconBolt,
+    icon: IconMap2,
     number: "02",
-    title: "Build",
-    detail: "Product & platform",
-    position: "top-1/2 right-[2%] -translate-y-1/2 sm:right-[5%]",
-    planet: "h-10 w-10 bg-emerald-400 shadow-[0_0_26px_rgba(52,211,153,0.75)]",
+    title: "Study reality",
+    detail: "Users & workflows",
+    position: "top-[22%] right-0",
+    layout: "flex-row",
+    textAlign: "items-start text-left",
+    planet: "bg-blue-400 shadow-[0_0_24px_rgba(96,165,250,0.7)]",
   },
   {
-    icon: IconSparkles,
+    icon: IconTestPipe,
     number: "03",
-    title: "Automate",
-    detail: "AI & operations",
-    position: "bottom-[7%] left-1/2 -translate-x-1/2",
-    planet: "h-8 w-8 bg-violet-400 shadow-[0_0_24px_rgba(167,139,250,0.8)]",
+    title: "Prove direction",
+    detail: "Test the riskiest journey",
+    position: "right-0 bottom-[22%]",
+    layout: "flex-row",
+    textAlign: "items-start text-left",
+    planet: "bg-violet-400 shadow-[0_0_24px_rgba(167,139,250,0.72)]",
+  },
+  {
+    icon: IconCode,
+    number: "04",
+    title: "Build the whole",
+    detail: "Product, data & AI",
+    position: "bottom-[1%] left-1/2 -translate-x-1/2",
+    layout: "flex-col-reverse",
+    textAlign: "items-center text-center",
+    planet: "bg-emerald-400 shadow-[0_0_26px_rgba(52,211,153,0.72)]",
   },
   {
     icon: IconRocket,
-    number: "04",
-    title: "Scale",
-    detail: "Cloud & reliability",
-    position: "top-1/2 left-[2%] -translate-y-1/2 sm:left-[5%]",
-    planet: "h-11 w-11 bg-amber-300 shadow-[0_0_28px_rgba(252,211,77,0.72)]",
+    number: "05",
+    title: "Launch safely",
+    detail: "Quality & delivery",
+    position: "bottom-[22%] left-0",
+    layout: "flex-row-reverse",
+    textAlign: "items-end text-right",
+    planet: "bg-amber-300 shadow-[0_0_24px_rgba(252,211,77,0.68)]",
+  },
+  {
+    icon: IconChartDots,
+    number: "06",
+    title: "Grow the value",
+    detail: "Measure & improve",
+    position: "top-[22%] left-0",
+    layout: "flex-row-reverse",
+    textAlign: "items-end text-right",
+    planet: "bg-rose-400 shadow-[0_0_24px_rgba(251,113,133,0.68)]",
   },
 ];
 
@@ -58,54 +89,72 @@ export function GippityAITimeline() {
         <header>
           <p className="nx-kicker">Product lifecycle</p>
           <h3 className="mt-4 max-w-sm text-4xl font-bold leading-[0.98] tracking-[-0.045em] text-white md:text-5xl">
-            From idea to momentum.
+            Every orbit moves the product forward.
           </h3>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-neutral-400 sm:text-base">
-            A product is never one thing. Each stage makes the next one stronger.
+            Six connected decisions turn an idea into something useful,
+            dependable, and ready to improve.
           </p>
         </header>
 
-        <div className="relative mx-auto aspect-square w-full max-w-[34rem] overflow-hidden rounded-full border border-white/10 bg-neutral-950/35">
-          <div aria-hidden="true" className="nx-grid-surface absolute inset-0 opacity-20" />
+        <div className="lifecycle-system relative mx-auto aspect-square w-full max-w-[36rem]">
           <svg
             aria-hidden="true"
             viewBox="0 0 100 100"
             className="absolute inset-0 h-full w-full"
           >
-            <circle cx="50" cy="50" r="21" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="0.22" />
-            <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(52,211,153,0.25)" strokeWidth="0.25" strokeDasharray="1.2 1.4" />
-            <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.2" />
-            <path d="M50 5a45 45 0 0 1 45 45" fill="none" stroke="rgba(52,211,153,0.65)" strokeWidth="0.5" strokeLinecap="round" />
+            <circle cx="50" cy="50" r="18" fill="none" stroke="rgba(52,211,153,0.28)" strokeWidth="0.28" />
+            <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.22" strokeDasharray="1.2 1.6" />
+            <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="0.25" />
+            <path d="M50 8a42 42 0 0 1 36.4 21" fill="none" stroke="rgba(52,211,153,0.8)" strokeWidth="0.65" strokeLinecap="round" />
+            <path d="M13.6 71a42 42 0 0 1 0-42" fill="none" stroke="rgba(52,211,153,0.24)" strokeWidth="0.35" strokeDasharray="1 1.6" />
           </svg>
 
-          <div className="absolute top-1/2 left-1/2 z-10 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-emerald-300/50 bg-emerald-400/[0.08] text-center shadow-[0_0_50px_rgba(52,211,153,0.18)] sm:h-36 sm:w-36">
-            <span className="font-mono text-[0.58rem] font-semibold tracking-[0.17em] text-emerald-300 uppercase">
-              The result
+          <div className="absolute top-1/2 left-1/2 z-10 flex h-[27%] w-[27%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-emerald-300/45 text-center shadow-[0_0_50px_rgba(52,211,153,0.13)]">
+            <span className="font-mono text-[clamp(0.42rem,1.5vw,0.62rem)] font-semibold tracking-[0.15em] text-emerald-300 uppercase">
+              The outcome
             </span>
-            <span className="mt-1 px-3 text-base font-bold leading-tight tracking-[-0.04em] text-white sm:text-lg">
-              A product that moves
+            <span className="mt-1 px-2 text-[clamp(0.72rem,2.8vw,1.25rem)] font-bold leading-[1.05] tracking-[-0.04em] text-white">
+              Useful product.
+              <br />
+              Measurable value.
             </span>
           </div>
 
-          {LIFECYCLE_STEPS.map(({ icon: Icon, number, title, detail, position, planet }) => (
-            <div key={title} className={`absolute z-20 flex items-center gap-2.5 ${position}`}>
-              <div className={`shrink-0 rounded-full border border-white/30 ${planet}`} />
-              <div className="min-w-0 rounded-sm border border-white/10 bg-neutral-950/90 px-2.5 py-2 shadow-lg backdrop-blur-sm sm:px-3">
-                <div className="flex items-center gap-1.5">
-                  <Icon aria-hidden="true" className="h-3 w-3 text-emerald-300" stroke={1.8} />
-                  <span className="font-mono text-[0.58rem] font-semibold tracking-[0.1em] text-neutral-500">{number}</span>
-                </div>
-                <p className="mt-1 text-sm font-bold leading-none text-white sm:text-base">{title}</p>
-                <p className="mt-1 text-[0.62rem] leading-none text-neutral-400 sm:text-xs">{detail}</p>
-              </div>
-            </div>
-          ))}
+          <div aria-hidden="true" className="lifecycle-orbit absolute inset-[4%]">
+            <span className="absolute top-0 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] sm:h-3 sm:w-3" />
+            <span className="absolute right-[7%] bottom-[19%] h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.85)] sm:h-2 sm:w-2" />
+          </div>
 
-          <IconArrowUpRight
-            aria-hidden="true"
-            className="absolute top-[15%] right-[18%] h-3.5 w-3.5 rotate-12 text-emerald-300/75"
-            stroke={1.5}
-          />
+          {LIFECYCLE_STEPS.map(
+            ({ icon: Icon, number, title, detail, position, layout, textAlign, planet }) => (
+              <div
+                key={title}
+                className={`absolute z-20 flex gap-2 sm:gap-3 ${position} ${layout}`}
+              >
+                <span
+                  className={`flex h-[clamp(1.75rem,6vw,2.75rem)] w-[clamp(1.75rem,6vw,2.75rem)] shrink-0 items-center justify-center rounded-full border border-white/30 ${planet}`}
+                >
+                  <Icon
+                    aria-hidden="true"
+                    className="h-[42%] w-[42%] text-neutral-950/80"
+                    stroke={2}
+                  />
+                </span>
+                <span className={`flex w-[clamp(4.5rem,20vw,7rem)] flex-col ${textAlign}`}>
+                  <span className="font-mono text-[clamp(0.42rem,1.6vw,0.58rem)] font-semibold tracking-[0.1em] text-neutral-500">
+                    {number}
+                  </span>
+                  <span className="mt-0.5 text-[clamp(0.6rem,2.45vw,0.9rem)] font-bold leading-tight text-white">
+                    {title}
+                  </span>
+                  <span className="mt-0.5 text-[clamp(0.46rem,1.8vw,0.66rem)] leading-tight text-neutral-400">
+                    {detail}
+                  </span>
+                </span>
+              </div>
+            ),
+          )}
         </div>
       </div>
     </section>

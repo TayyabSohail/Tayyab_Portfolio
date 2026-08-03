@@ -626,6 +626,26 @@ html {
   background-size: 38px 38px;
 }
 
+@keyframes lifecycle-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lifecycle-orbit {
+  animation: lifecycle-orbit-spin 48s linear infinite;
+}
+
+.lifecycle-system:hover .lifecycle-orbit {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lifecycle-orbit {
+    animation: none;
+  }
+}
+
 /* Kept transparent so the animated circuit backdrop remains visible across
    every section of the homepage. */
 .nx-section-surface {
