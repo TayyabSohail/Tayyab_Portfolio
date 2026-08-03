@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { IconArrowLeft, IconArrowRight, IconTrendingUp } from "@tabler/icons-react";
+import Link from "next/link";
+import { IconArrowLeft, IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
 
 const CLIENT_OUTCOMES = [
   {
     value: "3×",
     label: "lower cost per article",
     project: "SEOMaven",
+    slug: "seomaven",
     description:
       "One automated workflow now handles keyword research, content generation, and rank tracking—work that previously required several tools.",
   },
@@ -16,6 +18,7 @@ const CLIENT_OUTCOMES = [
     value: "1,000+",
     label: "concurrent users",
     project: "UniBid",
+    slug: "unibid",
     description:
       "Conflict-free bid synchronisation keeps every student and landlord on the same live state, even during peak campus traffic.",
   },
@@ -23,6 +26,7 @@ const CLIENT_OUTCOMES = [
     value: "70%",
     label: "fewer support tickets",
     project: "Anina",
+    slug: "anina",
     description:
       "Checkout and shipping flows resolve common problems before customers need support, reducing workload without weakening the experience.",
   },
@@ -30,6 +34,7 @@ const CLIENT_OUTCOMES = [
     value: "30 days",
     label: "from brief to shipped MVP",
     project: "Bitsmiths Studio",
+    slug: "bitsmiths-studio",
     description:
       "A focused scope and reusable content system turned an initial brief into a production-ready launch within one month.",
   },
@@ -37,6 +42,7 @@ const CLIENT_OUTCOMES = [
     value: "40%",
     label: "faster performance",
     project: "New Web Order",
+    slug: "new-web-order",
     description:
       "Route-level rendering and bundle improvements made the experience faster while keeping every page focused on conversion.",
   },
@@ -44,6 +50,7 @@ const CLIENT_OUTCOMES = [
     value: "<5 min",
     label: "patient intake",
     project: "AI Physiotherapy Assistant",
+    slug: "ai-physiotherapy",
     description:
       "A guided clinical flow collects the right information quickly, then creates a plan that adapts to the patient’s daily performance.",
   },
@@ -51,6 +58,7 @@ const CLIENT_OUTCOMES = [
     value: "60%",
     label: "faster deployment",
     project: "SnobBots",
+    slug: "snobbots",
     description:
       "Automated orchestration replaced repetitive tenant setup, helping resellers provision secure AI assistants at scale.",
   },
@@ -58,6 +66,7 @@ const CLIENT_OUTCOMES = [
     value: "30+",
     label: "agencies on one platform",
     project: "Real Estate Management System",
+    slug: "real-estate-management-system",
     description:
       "A multi-tenant operating system connects CRM, compliance, documents, and marketing workflows without mixing agency data.",
   },
@@ -65,6 +74,7 @@ const CLIENT_OUTCOMES = [
     value: "50%",
     label: "shorter audit turnaround",
     project: "QA Review Agent",
+    slug: "qa-compliance-agent",
     description:
       "Clause-level AI review turns a week of repetitive checking into traceable findings that auditors can verify and action.",
   },
@@ -72,6 +82,7 @@ const CLIENT_OUTCOMES = [
     value: "30+",
     label: "interviews completed",
     project: "Realtime Voice Interview Assistant",
+    slug: "ai-interview-assistant",
     description:
       "Live voice interviews, transcription, invitations, and follow-up delivery run inside one automated recruitment workflow.",
   },
@@ -128,26 +139,27 @@ export function HeadlineSection() {
             <div aria-hidden="true" className="nx-grid-surface absolute inset-0 opacity-25" />
             <span aria-hidden="true" className="absolute top-16 left-0 h-16 w-px bg-emerald-400/80" />
 
-            <div className="relative flex items-center justify-between border-b border-white/[0.08] bg-black/10 px-6 py-4 sm:px-7">
-              <div className="flex min-w-0 items-center gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center border border-emerald-400/25 bg-emerald-400/[0.06]">
-                  <IconTrendingUp aria-hidden="true" className="h-4 w-4 text-emerald-300" stroke={1.7} />
+            <div className="relative flex items-center justify-between gap-4 border-b border-white/[0.08] bg-black/15 px-6 py-4 sm:px-7">
+              <div className="flex min-w-0 items-center gap-3.5">
+                <span className="flex h-10 w-10 shrink-0 flex-col items-center justify-center border border-emerald-400/30 bg-emerald-400/[0.08]">
+                  <span className="font-mono text-[0.48rem] tracking-[0.1em] text-emerald-300/65">NO.</span>
+                  <span className="font-mono text-xs font-bold text-emerald-200">{outcome.number}</span>
                 </span>
                 <div className="min-w-0">
                   <span className="block font-mono text-[0.55rem] font-semibold tracking-[0.16em] text-neutral-500 uppercase">
-                    Project
+                    Featured project
                   </span>
-                  <h3 className="mt-0.5 truncate text-base font-bold tracking-[-0.025em] text-white sm:text-lg">
-                  {outcome.project}
+                  <h3 className="mt-0.5 line-clamp-2 text-lg font-bold leading-tight tracking-[-0.035em] text-white sm:text-xl">
+                    {outcome.project}
                   </h3>
                 </div>
               </div>
-              <span className="font-mono text-[0.6rem] tracking-[0.14em] text-neutral-500">
-                {outcome.number} / {CLIENT_OUTCOMES.length}
+              <span className="shrink-0 font-mono text-[0.56rem] tracking-[0.12em] text-neutral-500 uppercase">
+                {CLIENT_OUTCOMES.length} results
               </span>
             </div>
 
-            <div className="relative min-h-64 px-6 py-6 sm:min-h-56 sm:px-7">
+            <div className="relative min-h-80 px-6 py-6 sm:min-h-64 sm:px-7">
               <AnimatePresence initial={false} mode="wait">
                 <motion.div
                   key={`${outcome.project}-${outcome.value}`}
@@ -158,25 +170,36 @@ export function HeadlineSection() {
                     duration: reduceMotion ? 0.15 : 0.4,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="absolute inset-x-6 top-1/2 grid -translate-y-1/2 gap-5 sm:inset-x-7 sm:grid-cols-[0.78fr_1.22fr] sm:items-center sm:gap-7"
+                  className="absolute inset-x-6 top-1/2 grid -translate-y-1/2 gap-5 sm:inset-x-7 sm:grid-cols-[0.9fr_1.1fr] sm:items-stretch sm:gap-6"
                   aria-live="polite"
                 >
-                  <div className="border-l-2 border-emerald-400 bg-emerald-400/[0.045] px-4 py-4">
-                    <p className="text-5xl font-black leading-none tracking-[-0.075em] text-white sm:text-6xl">
+                  <div className="relative overflow-hidden border border-emerald-400/20 bg-linear-to-br from-emerald-400/[0.13] via-emerald-400/[0.035] to-transparent px-5 py-5">
+                    <div aria-hidden="true" className="nx-grid-surface absolute inset-0 opacity-35" />
+                    <p className="relative font-mono text-[0.55rem] font-semibold tracking-[0.14em] text-emerald-300/75 uppercase">
+                      Measured result
+                    </p>
+                    <p className="relative mt-4 text-5xl font-black leading-none tracking-[-0.075em] text-emerald-300 [text-shadow:0_0_28px_rgb(52_211_153/0.2)] sm:text-6xl">
                       {outcome.value}
                     </p>
-                    <p className="mt-2 max-w-48 text-sm font-semibold leading-tight text-emerald-100 sm:text-base">
+                    <p className="relative mt-2 max-w-48 text-sm font-bold leading-tight text-white sm:text-base">
                       {outcome.label}
                     </p>
                   </div>
 
-                  <div>
+                  <div className="flex flex-col justify-between py-1">
                     <p className="font-mono text-[0.58rem] font-semibold tracking-[0.14em] text-neutral-500 uppercase">
-                      What changed
+                      Why it matters
                     </p>
                     <p className="mt-2 text-sm leading-relaxed text-neutral-300 sm:text-[0.92rem]">
                       {outcome.description}
                     </p>
+                    <Link
+                      href={`/case-studies/${outcome.slug}`}
+                      className="group mt-5 inline-flex w-fit items-center gap-2 border-b border-emerald-400/35 pb-1 font-mono text-[0.62rem] font-semibold tracking-[0.11em] text-emerald-300 uppercase transition-colors hover:border-emerald-300 hover:text-emerald-200 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
+                    >
+                      View case study
+                      <IconArrowUpRight aria-hidden="true" className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" stroke={1.7} />
+                    </Link>
                   </div>
                 </motion.div>
               </AnimatePresence>
