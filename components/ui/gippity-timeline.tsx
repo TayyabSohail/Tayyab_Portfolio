@@ -6,7 +6,7 @@ import {
   IconSparkles,
 } from "@tabler/icons-react";
 import type { Icon } from "@tabler/icons-react";
-import type { ProjectCapability } from "@/data/projects";
+import type { ProjectCategory } from "@/data/projects";
 
 interface Capability {
   icon: Icon;
@@ -14,7 +14,7 @@ interface Capability {
   title: string;
   statement: string;
   signals: string[];
-  projectFilter: ProjectCapability;
+  projectFilter: ProjectCategory | "All";
 }
 
 const CAPABILITIES: Capability[] = [
@@ -24,7 +24,7 @@ const CAPABILITIES: Capability[] = [
     title: "Product systems",
     statement: "End-to-end platforms that work as one.",
     signals: ["Interfaces", "APIs", "Data", "Payments"],
-    projectFilter: "Full-Stack",
+    projectFilter: "SaaS",
   },
   {
     icon: IconSparkles,
@@ -40,7 +40,7 @@ const CAPABILITIES: Capability[] = [
     title: "Cloud architecture",
     statement: "Secure foundations for products that need to grow.",
     signals: ["Security", "Multi-tenancy", "Workflows", "Delivery"],
-    projectFilter: "Cloud & Automation",
+    projectFilter: "All",
   },
 ];
 
@@ -59,13 +59,9 @@ export function GippityAITimeline() {
           {CAPABILITIES.map(({ icon: Icon, ...item }) => (
             <Link
               key={item.title}
-              href={{
-                pathname: "/",
-                query: { capability: item.projectFilter },
-                hash: "projects",
-              }}
+              href={item.projectFilter === "All" ? "/#projects" : `/?category=${item.projectFilter}#projects`}
               aria-label={`View projects related to ${item.title}`}
-              className="group relative grid cursor-pointer gap-5 border-b border-white/15 py-7 transition-colors duration-300 hover:border-emerald-400/45 focus-visible:bg-emerald-400/[0.035] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-400 focus-visible:outline-hidden md:grid-cols-[2.5rem_minmax(0,1fr)_auto] md:items-center md:gap-6 md:py-8"
+              className="group relative grid cursor-pointer gap-5 border-b border-white/15 px-3 py-7 transition-all duration-300 hover:border-emerald-400/45 hover:bg-white/[0.035] hover:shadow-[inset_3px_0_0_rgb(52_211_153/0.9)] focus-visible:bg-white/[0.035] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-400 focus-visible:outline-hidden md:grid-cols-[2.5rem_minmax(0,1fr)_auto] md:items-center md:gap-6 md:px-5 md:py-8"
             >
               <span className="font-mono text-[0.65rem] tracking-[0.2em] text-neutral-600 transition-colors group-hover:text-emerald-400">
                 {item.index}

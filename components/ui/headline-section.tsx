@@ -13,19 +13,16 @@ const proficiencies = [
 
 export function HeadlineSection() {
   const [activeProficiency, setActiveProficiency] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const reduceMotion = useReducedMotion();
   const nextProficiency = (activeProficiency + 1) % proficiencies.length;
 
   useEffect(() => {
-    if (isPaused) return;
-
     const id = window.setTimeout(() => {
       setActiveProficiency((current) => (current + 1) % proficiencies.length);
     }, 2800);
 
     return () => window.clearTimeout(id);
-  }, [activeProficiency, isPaused]);
+  }, [activeProficiency]);
 
   return (
     <section className="w-full bg-transparent py-20 md:py-28">
@@ -75,20 +72,14 @@ export function HeadlineSection() {
           </div>
         </div>
 
-        <div
-          className="border-b border-white/10 py-8 sm:py-10"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onFocusCapture={() => setIsPaused(true)}
-          onBlurCapture={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget)) {
-              setIsPaused(false);
-            }
-          }}
-        >
-          <p className="nx-kicker text-center">What I build</p>
+        <div className="border-b border-white/10 py-8 sm:py-10">
+          <div className="mb-4">
+            <p className="nx-kicker">What I build</p>
+          </div>
 
           <div className="relative mt-5 h-36 overflow-hidden border border-white/10 bg-emerald-500/[0.035] px-5 [perspective:900px] sm:h-40 sm:px-8">
+            <div aria-hidden="true" className="absolute inset-y-0 left-0 w-1 bg-emerald-400/80" />
+            <div aria-hidden="true" className="absolute right-4 top-4 font-mono text-[0.58rem] tracking-[0.14em] text-neutral-500 uppercase">Live focus</div>
             <div
               aria-hidden="true"
               className="absolute inset-x-0 top-0 mx-auto h-px w-28 bg-linear-to-r from-transparent via-emerald-400 to-transparent sm:w-40"
@@ -101,7 +92,7 @@ export function HeadlineSection() {
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -30, rotateX: 24 }}
                 transition={{ duration: reduceMotion ? 0.2 : 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-x-5 top-0 z-10 flex h-24 items-center justify-center text-center text-balance text-xl font-bold tracking-[-0.03em] text-white [transform-origin:center_top] [transform-style:preserve-3d] sm:inset-x-8 sm:h-28 sm:text-3xl"
+                className="absolute inset-x-5 top-1 z-10 flex h-24 items-center justify-center pr-5 text-left text-balance text-xl font-bold tracking-[-0.03em] text-white [transform-origin:center_top] [transform-style:preserve-3d] sm:inset-x-8 sm:h-28 sm:text-3xl"
                 aria-live="polite"
               >
                 {proficiencies[activeProficiency]}
