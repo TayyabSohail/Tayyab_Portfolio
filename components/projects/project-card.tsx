@@ -28,6 +28,7 @@ export function ProjectCard({
   // Only images whose aspect ratio matches the 4:3 frame are cropped to fill.
   const isContained = project.coverFit !== "cover";
   const isMark = project.coverFit === "mark";
+  const isVestafi = project.slug === "vestafi";
 
   const visibleTech = project.tech.slice(0, VISIBLE_TECH);
   const overflowCount = project.tech.length - visibleTech.length;
@@ -40,7 +41,7 @@ export function ProjectCard({
       href={`/case-studies/${project.slug}`}
       aria-label={`${project.title}: ${project.tagline}`}
       className={cn(
-        "nx-panel nx-panel-interactive group relative isolate block cursor-pointer",
+        "nx-panel nx-panel-interactive group relative isolate block min-w-0 max-w-full cursor-pointer overflow-hidden",
         "focus-visible:-translate-y-1.5 focus-visible:border-emerald-500/40 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:outline-hidden",
         className
       )}
@@ -53,7 +54,7 @@ export function ProjectCard({
           // `fill` needs a positioned ancestor, but a positioned wrapper also
           // stacks above the stretched link, so the overlay is raised instead
           // (see the link's z-index below).
-          "relative overflow-hidden border-b border-white/10 bg-neutral-950",
+          "relative w-full min-w-0 max-w-full overflow-hidden border-b border-white/10 bg-neutral-950",
           coverRatio
         )}
       >
@@ -79,11 +80,13 @@ export function ProjectCard({
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           priority={priority}
           className={cn(
-            "transition duration-500",
+            "max-w-full transition duration-500",
             isMark
               ? "object-contain p-[22%] group-hover:scale-[1.08]"
               : isContained
-                ? "object-contain p-3 group-hover:scale-[1.03]"
+                ? isVestafi
+                  ? "w-full max-w-full object-contain p-0 group-hover:scale-100"
+                  : "object-contain p-3 group-hover:scale-[1.03]"
                 : "object-cover group-hover:scale-105"
           )}
         />

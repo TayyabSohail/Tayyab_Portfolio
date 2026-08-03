@@ -51,6 +51,19 @@ const codeModules = [
     delay: "-14s",
     duration: "56s",
   },
+  {
+    label: "mobile.core.ts",
+    status: "LIVE",
+    lines: [
+      "const signal = observe(view);",
+      "  signal.on('scroll', reveal);",
+      "return render(signal);",
+    ],
+    className:
+      "left-1/2 top-[42%] w-[min(252px,calc(100vw-2rem))] -translate-x-1/2 lg:hidden",
+    delay: "-9s",
+    duration: "42s",
+  },
 ];
 
 /** A precise animated circuit schematic that sits behind every page. */
@@ -186,7 +199,7 @@ export function GridBackground() {
       </div>
 
       {/* Quiet center mask preserves the hero's contrast without a soft glow. */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_42%_55%_at_50%_44%,rgba(2,6,5,0.9),transparent_100%)]" />
+      <div className="chip-center-mask absolute inset-0 bg-[radial-gradient(ellipse_42%_55%_at_50%_44%,rgba(2,6,5,0.9),transparent_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(2,6,5,0.05),rgba(2,6,5,0.25)_70%,#020605_100%)]" />
       <div className="chip-vignette absolute inset-0" />
     </div>

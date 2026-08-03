@@ -120,7 +120,7 @@ export const projects: Project[] = [
     coverImage: "/images/maven.png",
     coverWidth: 4096,
     coverHeight: 3072,
-    coverFit: "cover",
+    coverFit: "contain",
     tech: [
       "Next.js",
       "TypeScript",
@@ -383,10 +383,10 @@ export const projects: Project[] = [
       "A members' club where Ugandans co-own income-producing apartments from 1,000,000 UGX.",
     description:
       "Property is sold in one indivisible lump, and that lump costs more than most people will ever have in the bank at once. Vestafi breaks the lump. Vetted members pool capital to co-own real, income-producing apartments in Uganda, earn their proportional share of monthly rent, and sell their stake to other members when they want out.",
-    coverImage: "/images/vestafi.webp",
-    coverWidth: 1920,
-    coverHeight: 800,
-    // 2.40:1 — far wider than the 4:3 frame, so fit rather than crop.
+    coverImage: "/images/Vestafi.png",
+    coverWidth: 1106,
+    coverHeight: 989,
+    // Near-square PNG, so fit rather than crop.
     coverFit: "contain",
     tech: [
       "Next.js",
