@@ -601,7 +601,12 @@ html {
   pointer-events: none;
 }
 
+/* Only ever applied to elements that actually navigate somewhere. The lift,
+   the emerald edge and the accent corner are the site's affordance vocabulary:
+   if a panel does these things, it is clickable. Read-only content uses
+   .nx-panel-static below and stays inert under the pointer. */
 .nx-panel-interactive {
+  cursor: pointer;
   transition:
     transform 280ms ease,
     border-color 280ms ease,
@@ -617,6 +622,25 @@ html {
 
 .nx-panel-interactive:hover::before {
   animation: nx-signal-pass 1.4s ease-out;
+}
+
+/* Read-only panels: same structural frame, deliberately flatter. No lift, no
+   emerald hover edge, and the accent corner marker is dropped so a static
+   card never reads as a card you can open. */
+.nx-panel-static {
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 0.02), transparent 42%),
+    rgb(16 16 16 / 0.82);
+  border-color: rgb(255 255 255 / 0.07);
+}
+
+.nx-panel-static::before {
+  display: none;
+}
+
+.nx-panel-static::after {
+  border-right-color: rgb(255 255 255 / 0.1);
+  border-bottom-color: rgb(255 255 255 / 0.1);
 }
 
 .nx-grid-surface {

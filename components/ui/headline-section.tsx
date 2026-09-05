@@ -47,12 +47,12 @@ const CLIENT_OUTCOMES = [
       "Visitors reach the content and call to action sooner, reducing avoidable drop-off and giving each campaign a better chance to convert.",
   },
   {
-    value: "<5 min",
-    label: "patient intake",
+    value: "90%+",
+    label: "assessment accuracy",
     project: "AI Physiotherapy Assistant",
     slug: "ai-physiotherapy",
     description:
-      "Clinicians spend less time on intake administration, while patients can begin a personalised treatment plan during the same session.",
+      "Movement and form assessment is reliable enough for clinicians to trust between supervised sessions, so patients get dependable correction while training on their own.",
   },
   {
     value: "60%",

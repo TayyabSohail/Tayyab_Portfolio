@@ -756,7 +756,7 @@ export const projects: Project[] = [
     approach:
       "Built the journey around an intake agent, guided movement assessment and automatic exercise plan generation. Daily logs drive plan progression or regression, while uploaded exercise videos receive AI feedback and injury articles inform future plans.",
     outcomes: [
-      "<5 minutes for the patient intake process.",
+      "90%+ accuracy on AI-assisted movement and form assessment.",
       "Daily plan progression and regression automated from patient performance.",
     ],
     design: [

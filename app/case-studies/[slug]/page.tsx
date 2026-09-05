@@ -88,13 +88,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* Problem → approach, side by side on desktop. */}
         <section className="border-b border-white/10 py-16 md:py-24">
           <div className="grid grid-cols-1 gap-px border border-white/10 bg-[#020605] md:grid-cols-2">
-            <div className="nx-panel p-5 sm:p-7 md:p-9">
+            <div className="nx-panel nx-panel-static p-5 sm:p-7 md:p-9">
               <SectionLabel>The problem</SectionLabel>
               <p className="text-base leading-relaxed text-neutral-300 sm:text-lg md:text-justify md:hyphens-auto">
                 {project.problem}
               </p>
             </div>
-            <div className="nx-panel p-5 sm:p-7 md:p-9">
+            <div className="nx-panel nx-panel-static p-5 sm:p-7 md:p-9">
               <SectionLabel>My approach</SectionLabel>
               <p className="text-base leading-relaxed text-neutral-300 sm:text-lg md:text-justify md:hyphens-auto">
                 {project.approach}
@@ -119,7 +119,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             {project.keyFeatures.map((feature) => (
               <li
                 key={feature}
-                className="flex items-center gap-3 border border-white/10 bg-[#050807] px-5 py-4 text-base text-neutral-300 transition hover:border-emerald-400/30 hover:bg-emerald-500/[0.055] hover:text-white"
+                className="flex items-center gap-3 border border-white/[0.07] bg-[#050807] px-5 py-4 text-base text-neutral-300"
               >
                 <IconCheck
                   aria-hidden="true"
@@ -142,7 +142,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             {project.challenges.map((item, index) => (
               <li
                 key={item.challenge}
-                className="nx-panel nx-panel-interactive p-5 sm:p-6 md:p-8"
+                className="nx-panel nx-panel-static p-5 sm:p-6 md:p-8"
               >
                 <div className="flex gap-3 sm:gap-5">
                   <span
@@ -172,7 +172,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </h2>
           <ul className="grid grid-cols-1 gap-px border border-white/10 bg-[#020605] md:grid-cols-3">
             {project.outcomes.map((outcome) => (
-              <li key={outcome} className="nx-panel nx-panel-interactive p-7">
+              <li key={outcome} className="nx-panel nx-panel-static p-7">
                 <Metric text={outcome} />
               </li>
             ))}
@@ -285,8 +285,10 @@ function AdjacentLink({
 function Metric({ text }: { text: string }) {
   // Leading figure: an optional currency symbol, digits, then an optional
   // unit. The currency prefix keeps sums like "$12k saved" intact.
+  // The unit and a trailing "+" can co-occur ("90%+"), so the plus is its own
+  // optional group rather than one more alternative in the unit list.
   const match = text.match(
-    /^(<?[$£€]?\d[\d,.]*\s?(?:×|x|%|ms|\+)?(?:\s?million|\s?M\+?|\s?k\+?)?)\s*(.*)$/i,
+    /^(<?[$£€]?\d[\d,.]*\s?(?:×|x|%|ms)?(?:\s?million|\s?M|\s?k)?\+?)\s*(.*)$/i,
   );
 
   if (!match) {
