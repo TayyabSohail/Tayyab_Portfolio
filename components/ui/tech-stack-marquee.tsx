@@ -11,11 +11,14 @@ import {
   SiFigma,
   SiFirebase,
   SiFlask,
+  SiGithubactions,
+  SiGo,
   SiGooglecloud,
   SiGrafana,
   SiJavascript,
   SiKubernetes,
   SiMongodb,
+  SiMysql,
   SiN8N,
   SiNextdotjs,
   SiNodedotjs,
@@ -37,6 +40,7 @@ import {
   SiVercel,
   SiZapier,
 } from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
 import {
   FaDatabase,
   FaMapMarkedAlt,
@@ -106,10 +110,12 @@ const techCategories: TechCategory[] = [
     items: [
       { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
       { name: "Express.js", icon: SiExpress, color: "#FFFFFF" },
+      { name: "Go", icon: SiGo, color: "#00ADD8" },
       { name: "Flask", icon: SiFlask, color: "#FFFFFF" },
       { name: "FastAPI", icon: SiFastapi, color: "#009688" },
       { name: "Python", icon: SiPython, color: "#3776AB" },
       { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
       { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
@@ -142,6 +148,8 @@ const techCategories: TechCategory[] = [
       { name: "Render", icon: SiRender, color: "#FFFFFF" },
       { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
       { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
+      { name: "Azure", icon: VscAzure, color: "#0078D4" },
+      { name: "GitHub Actions", icon: SiGithubactions, color: "#2088FF" },
     ],
   },
   {

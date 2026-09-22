@@ -23,12 +23,20 @@ import {
   SiFirebase,
   SiGithubactions,
   SiDocker,
+  SiKubernetes,
+  SiGo,
+  SiMysql,
+  SiGooglecloud,
   SiTwilio,
   SiPython,
   SiFastapi,
   SiAnthropic,
   SiLangchain,
+  SiVercel,
+  SiSanity,
+  SiFramer,
 } from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
 import {
   FaDhl,
   FaServer,
@@ -117,7 +125,17 @@ const TECH: Record<string, TechMeta> = {
   Automation: { icon: FaBolt, color: "#FBBF24" },
   "Vector Search": { icon: FaDatabase, color: "#60A5FA" },
   Docker: { icon: SiDocker, color: "#2496ED" },
+  Kubernetes: { icon: SiKubernetes, color: "#326CE5" },
+  Go: { icon: SiGo, color: "#00ADD8" },
+  Golang: { icon: SiGo, color: "#00ADD8" },
+  MySQL: { icon: SiMysql, color: "#4479A1" },
+  "GitHub Actions": { icon: SiGithubactions, color: "#2088FF" },
+  "Google Cloud": { icon: SiGooglecloud, color: "#4285F4" },
+  Azure: { icon: VscAzure, color: "#0078D4" },
   "next-safe-action": { icon: SiNextdotjs, color: "#FFFFFF" },
+  Vercel: { icon: SiVercel, color: "#FFFFFF" },
+  Sanity: { icon: SiSanity, color: "#F03E2F" },
+  "Framer Motion": { icon: SiFramer, color: "#0055FF" },
 };
 
 const FALLBACK: TechMeta = { icon: FaServer, color: "#A3A3A3" };
