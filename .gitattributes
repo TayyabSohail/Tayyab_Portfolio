@@ -1,0 +1,12 @@
+# Never let line-ending or encoding conversion touch binary assets.
+# The resume PDF was once committed re-encoded as text, which left the
+# served file with no readable content.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

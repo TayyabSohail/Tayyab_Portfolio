@@ -599,6 +599,87 @@ export const projects: Project[] = [
   },
 
   {
+    slug: "feinwerks",
+    title: "Feinwerks Software",
+    tagline: "Bilingual site for a product engineering studio",
+    summary:
+      "Marketing site for a product engineering studio, in English and German.",
+    description:
+      "The website for Feinwerks, a Germany- and Pakistan-based product engineering studio. It sells a fixed-scope, fixed-quote way of building products, in English and German, and ends every page at a proposal request.",
+    coverImage: "/images/feinwerks.png",
+    coverWidth: 1600,
+    coverHeight: 900,
+    // A 16:9 hero screenshot — cropping to 4:3 cut off the isometric system map.
+    coverFit: "contain",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "TailwindCSS",
+      "Framer Motion",
+      "Vercel",
+    ],
+    techStack: [
+      { category: "Frontend", tools: ["Next.js", "React", "TypeScript"] },
+      { category: "Styling & Motion", tools: ["TailwindCSS", "Framer Motion"] },
+      { category: "Deployment", tools: ["Vercel"] },
+    ],
+    category: "Website",
+    capabilities: ["Web"],
+    role: "Full Stack Developer",
+    timeline: "2026",
+    liveUrl: "https://feinwerks.software/",
+    featured: true,
+    problem:
+      "Feinwerks pitches to founders who cannot afford a second attempt: a written scope, a fixed or custom quote and a committed launch date before any code is written. That is an unusual promise for a studio, and the site had to make it credible to readers in two markets, Germany and Pakistan, without a sales call.",
+    approach:
+      "A static-first Next.js build ordered as an argument: the promise, the five service lines, a six-step process from quote to handover, client testimonials, then one call to action. English and German copy live side by side and switch in place, so both languages share one page, one layout and one set of components.",
+    outcomes: [
+      "2 languages, English and German, from one page and one set of components.",
+      "6-step delivery process explained on the page, so the fixed-quote promise is shown rather than claimed.",
+      "1 primary call to action, request a proposal, at the end of the argument.",
+    ],
+    design: [
+      {
+        title: "Show the system",
+        body: "The hero is an isometric map of a real product: web app, mobile app, API, database, cloud and AI model on one grid, so the 'one team, the whole system' claim is a picture, not a sentence.",
+      },
+      {
+        title: "Two languages, one page",
+        body: "German and English copy are authored together and toggled in place, so nothing drifts between locales and there is no second site to keep in sync.",
+      },
+      {
+        title: "Process before pricing",
+        body: "Each of the six steps is written from the founder's side, what they get and when, so the pricing page is read with the process already understood.",
+      },
+    ],
+    architecture:
+      "Next.js App Router deployed on Vercel. Routes are pre-rendered, fonts are self-hosted through next/font and preloaded, and the organisation schema is emitted as JSON-LD so search engines see both offices and contact points. Language switching is handled on the client over shared components rather than duplicated routes.",
+    keyFeatures: [
+      "English and German copy with an in-place language switch",
+      "Five service lines with concrete deliverables under each",
+      "Six-step process from written quote to handover",
+      "Client testimonials in both languages",
+      "Pricing, careers and contact pages with a request-a-proposal flow",
+      "Organisation JSON-LD, per-page metadata and preloaded fonts",
+    ],
+    challenges: [
+      {
+        challenge:
+          "Serving German and English without maintaining two sites that slowly drift apart.",
+        solution:
+          "Kept both languages in the same components and switched them in place, so a copy change is made once and both locales ship together.",
+      },
+      {
+        challenge:
+          "A fixed-quote promise reads as marketing unless the reader can see how the studio actually works.",
+        solution:
+          "Laid out the full six-step process, from the first call to ownership handover, ahead of the call to action and the pricing page, so the promise is backed by a visible method.",
+      },
+    ],
+  },
+
+  {
     slug: "new-web-order",
     title: "New Web Order",
     tagline: "Company website built for speed and SEO",
