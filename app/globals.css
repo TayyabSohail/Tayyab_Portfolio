@@ -763,3 +763,77 @@ html {
   }
 }
 
+
+/* Device plates for project screens: a dark surface tinted with the project
+   colour, with a faint grid, behind the CSS laptop and phone frames. The
+   accent comes from `--plate-accent`, set inline per project. */
+.nx-plate {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      70% 80% at 50% 110%,
+      var(--plate-accent, rgb(52 211 153 / 0.4)) 0%,
+      transparent 65%
+    ),
+    linear-gradient(180deg, #161616, #050807);
+}
+
+.nx-plate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
+}
+
+/* Phone drawn in CSS around a 390x844 screen. Radii, bezel and the camera
+   island are proportional so the frame looks right at any size. */
+.nx-phone {
+  border-radius: 14% / 6.5%;
+  padding: 2.6%;
+  background: #101015;
+  border: 1px solid rgb(0 0 0 / 0.3);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.08),
+    0 40px 70px -30px rgb(0 0 0 / 0.7);
+}
+
+.nx-phone-screen {
+  border-radius: 11.5% / 5.3%;
+}
+
+.nx-phone-island {
+  position: absolute;
+  left: 50%;
+  top: 4%;
+  width: 26%;
+  height: 2.9%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #101015;
+}
+
+.nx-phone-button {
+  position: absolute;
+  width: 1.2%;
+  border-radius: 2px;
+  background: #1c1c22;
+}
+
+.nx-phone-button-left {
+  left: -1.2%;
+  top: 22%;
+  height: 8%;
+  box-shadow: 0 12% 0 0 #1c1c22;
+}
+
+.nx-phone-button-right {
+  right: -1.2%;
+  top: 26%;
+  height: 12%;
+}
