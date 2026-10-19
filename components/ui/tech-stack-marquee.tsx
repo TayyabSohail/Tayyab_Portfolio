@@ -175,6 +175,25 @@ const techCategories: TechCategory[] = [
   },
 ];
 
+function TechChip({ tech }: { tech: TechItem }) {
+  const Icon = tech.icon;
+  return (
+    <li
+      className="inline-flex h-10 items-center gap-2.5 border border-white/[0.12] bg-white/[0.03] pl-1.5 pr-3.5 text-[13px] font-medium text-neutral-200 transition-colors duration-200 hover:border-white/25 hover:bg-white/[0.06]"
+      title={tech.name}
+    >
+      <span
+        aria-hidden="true"
+        className="flex h-7 w-7 shrink-0 items-center justify-center border border-white/[0.08]"
+        style={{ backgroundColor: `${tech.color}1f` }}
+      >
+        <Icon className="h-3.5 w-3.5" style={{ color: tech.color }} />
+      </span>
+      <span className="whitespace-nowrap">{tech.name}</span>
+    </li>
+  );
+}
+
 function CategoryPanel({
   category,
   index,
@@ -188,59 +207,33 @@ function CategoryPanel({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: index * 0.06 }}
       viewport={{ once: true, margin: "-60px" }}
-      className={`nx-panel relative p-6 ${
-        index === 1 || index === 2 || index === 4 ? "lg:col-span-2" : ""
-      }`}
+      className="relative flex flex-col bg-[#0f0f0f]/95 p-6 sm:p-7"
     >
-      <span
-        aria-hidden="true"
-        className="absolute -right-2 -top-7 font-mono text-8xl font-black text-white/[0.035]"
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
       <div
         aria-hidden="true"
-        className="nx-grid-surface absolute inset-0 opacity-25"
+        className="nx-grid-surface absolute inset-0 opacity-20"
       />
-      <span className="absolute left-0 top-7 h-12 w-px bg-emerald-400/70" />
 
-      <header className="relative flex items-start gap-5 border-b border-white/10 pb-5">
-        <span className="font-mono text-[10px] tracking-[0.2em] text-emerald-400/60">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <div>
-          <h3 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
+      <header className="relative">
+        <div className="flex items-baseline justify-between gap-4">
+          <h3 className="text-2xl font-bold tracking-[-0.03em] text-white">
             {category.title}
           </h3>
-          <p className="mt-2 max-w-md text-sm leading-relaxed text-neutral-300">
-            {category.description}
-          </p>
+          <span className="font-mono text-[11px] font-semibold tracking-[0.2em] text-emerald-400/80">
+            {String(index + 1).padStart(2, "0")}
+          </span>
         </div>
+        <p className="mt-3 min-h-[2.75rem] max-w-sm text-sm leading-relaxed text-neutral-400">
+          {category.description}
+        </p>
       </header>
 
-      <ul
-        className={`relative mt-5 grid grid-cols-1 gap-x-5 min-[420px]:grid-cols-2 ${
-          index === 1 || index === 2 || index === 4
-            ? "sm:grid-cols-3"
-            : ""
-        }`}
-      >
-        {category.items.map((tech) => {
-          const Icon = tech.icon;
-          return (
-            <li
-              key={tech.name}
-              className="flex min-h-12 items-center gap-3 border-b border-white/[0.12] py-3 text-sm text-neutral-300"
-            >
-              <Icon
-                aria-hidden="true"
-                className="h-5 w-5 shrink-0"
-                style={{ color: tech.color }}
-              />
-              <span>{tech.name}</span>
-            </li>
-          );
-        })}
+      <div className="relative mt-6 h-px w-full bg-white/10" />
+
+      <ul className="relative mt-6 flex flex-wrap gap-2">
+        {category.items.map((tech) => (
+          <TechChip key={tech.name} tech={tech} />
+        ))}
       </ul>
     </motion.article>
   );
@@ -263,7 +256,7 @@ export function TechStackSection() {
           </p>
         </div>
 
-        <div className="grid gap-px border border-white/10 bg-[#141414] lg:grid-cols-3">
+        <div className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-3">
           {techCategories.map((category, index) => (
             <CategoryPanel
               key={category.title}

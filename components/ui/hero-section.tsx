@@ -46,7 +46,7 @@ export function HeroSection() {
       <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
         {/* Contained portrait frame—the image supports the intro rather than
             becoming the entire hero. */}
-        <div className="nx-panel relative mx-auto h-[380px] w-full max-w-[340px] shadow-2xl shadow-black/50 sm:h-[430px] sm:max-w-[380px] lg:mx-0 lg:h-[480px]">
+        <div className="nx-panel relative order-2 mx-auto h-[380px] w-full max-w-[340px] shadow-2xl shadow-black/50 sm:h-[430px] sm:max-w-[380px] lg:order-1 lg:mx-0 lg:h-[480px]">
           <div
             aria-hidden="true"
             className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-emerald-400/70 to-transparent"
@@ -78,7 +78,7 @@ export function HeroSection() {
 
         {/* Main intro panel with a clearer hierarchy and the proficiency
             animation restored as a dedicated feature. */}
-        <div className="nx-panel relative shadow-2xl shadow-black/55 backdrop-blur-md">
+        <div className="nx-panel relative order-1 shadow-2xl shadow-black/55 backdrop-blur-md lg:order-2">
           <div className="absolute -left-px top-8 h-20 w-0.5 bg-emerald-400" />
           <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-emerald-400/70 via-emerald-400/15 to-transparent" />
 
