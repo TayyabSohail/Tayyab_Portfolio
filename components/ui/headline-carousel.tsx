@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  AnimatePresence,
+  animate,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useTransform,
+} from "framer-motion";
 import Link from "next/link";
 import { IconArrowLeft, IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
 import { ProjectMockup } from "@/components/mockups/project-mockup";
@@ -12,9 +19,60 @@ interface HeadlineCarouselProps {
 }
 
 /**
- * Auto-advancing carousel of headline results. Each slide shows the product
- * on devices beside its figure, so the number is always attached to the
- * thing that produced it. Pauses while hovered or focused.
+ * Splits a figure such as "1,000+" or "30 days" into the text around the
+ * number and the number itself, so the number can be counted up while the
+ * prefix and suffix stay put.
+ */
+function parseFigure(value: string) {
+  const match = value.match(/^([^\d]*)([\d,]*\.?\d+)(.*)$/);
+  if (!match) return null;
+  const [, prefix, digits, suffix] = match;
+  const decimals = digits.includes(".") ? digits.split(".")[1].length : 0;
+  return { prefix, target: Number(digits.replace(/,/g, "")), decimals, suffix };
+}
+
+/** A figure that counts up from zero when it appears. */
+function CountUp({ value }: { value: string }) {
+  const reduceMotion = useReducedMotion();
+  const figure = parseFigure(value);
+  const target = figure?.target ?? 0;
+  const decimals = figure?.decimals ?? 0;
+
+  const count = useMotionValue(reduceMotion ? target : 0);
+  const text = useTransform(count, (current) =>
+    current.toLocaleString("en-US", {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    }),
+  );
+
+  useEffect(() => {
+    if (reduceMotion) {
+      count.set(target);
+      return;
+    }
+    const controls = animate(count, target, {
+      duration: 1.4,
+      ease: [0.16, 1, 0.3, 1],
+    });
+    return () => controls.stop();
+  }, [count, target, reduceMotion]);
+
+  if (!figure) return <>{value}</>;
+
+  return (
+    <>
+      {figure.prefix}
+      <motion.span className="tabular-nums">{text}</motion.span>
+      {figure.suffix}
+    </>
+  );
+}
+
+/**
+ * Auto-advancing carousel of headline results. Each slide leads with the
+ * product on devices, full width, then the figure counting up beside why it
+ * mattered. Pauses while hovered or focused.
  */
 export function HeadlineCarousel({ outcomes }: HeadlineCarouselProps) {
   const [activeOutcome, setActiveOutcome] = useState(0);
@@ -27,7 +85,7 @@ export function HeadlineCarousel({ outcomes }: HeadlineCarouselProps) {
 
     const timer = window.setInterval(() => {
       setProgress((current) => {
-        const next = current + 100 / 60;
+        const next = current + 100 / 70;
 
         if (next >= 100) {
           setActiveOutcome((active) => (active + 1) % outcomes.length);
@@ -74,9 +132,8 @@ export function HeadlineCarousel({ outcomes }: HeadlineCarouselProps) {
             }}
           >
             <div aria-hidden="true" className="nx-grid-surface absolute inset-0 opacity-25" />
-            <span aria-hidden="true" className="absolute top-16 left-0 h-16 w-px bg-emerald-400/80" />
 
-            <div className="relative flex items-center border-b border-white/[0.08] bg-black/15 px-6 py-4 sm:px-7">
+            <div className="relative flex items-center justify-between gap-4 border-b border-white/[0.08] bg-black/15 px-6 py-4 sm:px-7">
               <div className="flex min-w-0 items-center gap-3.5">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-emerald-400/30 bg-emerald-400/[0.08]">
                   <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(110,231,183,0.8)]" />
@@ -90,11 +147,14 @@ export function HeadlineCarousel({ outcomes }: HeadlineCarouselProps) {
                   </h3>
                 </div>
               </div>
+              <span className="hidden shrink-0 font-mono text-[0.58rem] tracking-[0.16em] text-neutral-500 uppercase sm:block">
+                {String(activeOutcome + 1).padStart(2, "0")} / {String(outcomes.length).padStart(2, "0")}
+              </span>
             </div>
 
             {/* Old and new slides share one grid cell, so the panel keeps the
                 taller slide's height while they cross-fade. */}
-            <div className="relative grid px-6 py-6 sm:px-7">
+            <div className="relative grid">
               <AnimatePresence initial={false}>
                 <motion.div
                   key={outcome.project.slug}
@@ -109,51 +169,47 @@ export function HeadlineCarousel({ outcomes }: HeadlineCarouselProps) {
                     duration: reduceMotion ? 0.15 : 0.45,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="col-start-1 row-start-1 grid gap-5 [&:not(:last-child)]:pointer-events-none md:grid-cols-[1.1fr_0.9fr] md:gap-6"
+                  className="col-start-1 row-start-1 [&:not(:last-child)]:pointer-events-none"
                   aria-live="polite"
                 >
+                  {/* The product, full width: the picture is the point. */}
                   <Link
                     href={caseStudyHref}
                     aria-label={`${outcome.project.title} case study`}
                     tabIndex={-1}
-                    className="group/shot relative block overflow-hidden border border-white/10 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
+                    className="group/shot block overflow-hidden border-b border-white/[0.08] focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
                   >
                     <ProjectMockup
                       project={outcome.project}
-                      centered
-                      sizes="(min-width: 1024px) 34vw, (min-width: 768px) 45vw, 90vw"
-                      className="aspect-[16/11] transition-transform duration-500 group-hover/shot:scale-[1.02]"
+                      wide
+                      sizes="(min-width: 1024px) 60vw, 100vw"
+                      className="aspect-[16/9] transition-transform duration-700 group-hover/shot:scale-[1.015]"
                     />
-                    <span className="absolute left-3 top-3 inline-flex items-center gap-2 border border-white/10 bg-neutral-950/85 px-2.5 py-1 font-mono text-[0.55rem] tracking-[0.16em] text-neutral-300 uppercase backdrop-blur-md">
-                      <span aria-hidden="true" className="h-px w-3 bg-emerald-400" />
-                      Live product
-                    </span>
                   </Link>
 
-                  <div className="flex flex-col gap-4">
-                    <div className="relative overflow-hidden border border-emerald-400/20 bg-linear-to-br from-emerald-400/[0.13] via-emerald-400/[0.035] to-transparent px-5 py-4">
-                      <div aria-hidden="true" className="nx-grid-surface absolute inset-0 opacity-35" />
-                      <p className="relative font-mono text-[0.55rem] font-semibold tracking-[0.14em] text-emerald-300/75 uppercase">
+                  <div className="grid gap-6 px-6 py-6 sm:px-7 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-0">
+                    <div className="md:pr-8">
+                      <p className="font-mono text-[0.58rem] font-semibold tracking-[0.14em] text-emerald-300/75 uppercase">
                         Project outcome
                       </p>
-                      <p className="relative mt-3 text-4xl font-black leading-none tracking-[-0.075em] text-emerald-300 [text-shadow:0_0_28px_rgb(52_211_153/0.2)] sm:text-5xl">
-                        {outcome.value}
+                      <p className="mt-3 text-5xl font-black leading-none tracking-[-0.06em] text-emerald-300 [text-shadow:0_0_28px_rgb(52_211_153/0.2)] sm:text-6xl">
+                        <CountUp value={outcome.value} />
                       </p>
-                      <p className="relative mt-2 max-w-52 text-sm font-bold leading-tight text-white">
+                      <p className="mt-3 text-base font-bold leading-tight text-white">
                         {outcome.label}
                       </p>
                     </div>
 
-                    <div className="flex flex-1 flex-col">
+                    <div className="flex flex-col border-t border-white/[0.08] pt-5 md:border-t-0 md:border-l md:pt-0 md:pl-8">
                       <p className="font-mono text-[0.58rem] font-semibold tracking-[0.14em] text-neutral-500 uppercase">
                         Why it matters
                       </p>
-                      <p className="mt-2 text-sm leading-relaxed text-neutral-300">
+                      <p className="mt-3 text-[0.95rem] leading-relaxed text-neutral-300">
                         {outcome.description}
                       </p>
                       <Link
                         href={caseStudyHref}
-                        className="group mt-auto inline-flex w-fit items-center gap-2 border-b border-emerald-400/35 pt-4 pb-1 font-mono text-[0.62rem] font-semibold tracking-[0.11em] text-emerald-300 uppercase transition-colors hover:border-emerald-300 hover:text-emerald-200 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
+                        className="group mt-auto inline-flex w-fit items-center gap-2 border-b border-emerald-400/35 pt-5 pb-1 font-mono text-[0.62rem] font-semibold tracking-[0.11em] text-emerald-300 uppercase transition-colors hover:border-emerald-300 hover:text-emerald-200 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
                       >
                         View case study
                         <IconArrowUpRight aria-hidden="true" className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" stroke={1.7} />

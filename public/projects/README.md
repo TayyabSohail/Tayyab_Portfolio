@@ -13,4 +13,4 @@ A web project needs a desktop and a mobile capture of its home screen, plus
 one pair per gallery screen. An app project (`platform: "app"`) needs mobile
 captures only; `mobileAlt` is the second phone shown behind the first.
 
-A project with only a desktop capture (see Feinwerks) shows the laptop alone.
+A project with only a desktop capture (see Bullah Labs) shows the laptop alone.

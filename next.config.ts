@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
         destination: "/case-studies/curio-market",
         permanent: true,
       },
+      // Feinwerks Software was renamed Bullah Labs.
+      {
+        source: "/case-studies/feinwerks",
+        destination: "/case-studies/bullah-labs",
+        permanent: true,
+      },
     ];
   },
 };

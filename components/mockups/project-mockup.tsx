@@ -12,6 +12,11 @@ interface ProjectMockupProps {
   className?: string;
   /** Centre the devices vertically (hero plates that are taller). */
   centered?: boolean;
+  /**
+   * For wide plates such as 16:9: the laptop is narrower and the phone
+   * smaller, so both sit fully inside the shorter plate.
+   */
+  wide?: boolean;
 }
 
 /**
@@ -26,10 +31,11 @@ export function ProjectMockup({
   sizes = "(min-width: 1024px) 50vw, 100vw",
   className,
   centered,
+  wide,
 }: ProjectMockupProps) {
   const isApp = project.platform === "app";
   const hasPhone = Boolean(project.screens.mobile);
-  const laptopCentered = centered || !hasPhone;
+  const laptopCentered = !wide && (centered || !hasPhone);
 
   return (
     <div
@@ -58,9 +64,11 @@ export function ProjectMockup({
           <div
             className={cn(
               "absolute",
-              laptopCentered
-                ? "inset-x-[9%] top-1/2 -translate-y-1/2"
-                : "inset-x-[6%] top-[7%]",
+              wide
+                ? "inset-x-[11%] top-[5%]"
+                : laptopCentered
+                  ? "inset-x-[9%] top-1/2 -translate-y-1/2"
+                  : "inset-x-[6%] top-[7%]",
             )}
           >
             <LaptopFrame>
@@ -76,9 +84,11 @@ export function ProjectMockup({
             <div
               className={cn(
                 "absolute",
-                centered
-                  ? "right-[6%] top-1/2 w-[16%] translate-y-[-22%]"
-                  : "bottom-[6%] right-[5%] w-[18%]",
+                wide
+                  ? "bottom-[5%] right-[6%] w-[15%]"
+                  : centered
+                    ? "right-[6%] top-1/2 w-[16%] translate-y-[-22%]"
+                    : "bottom-[6%] right-[5%] w-[18%]",
               )}
             >
               <PhoneFrame className="shadow-[0_30px_60px_-20px_rgba(0,0,0,0.85)]">

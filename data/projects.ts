@@ -2110,21 +2110,21 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'feinwerks',
+    slug: 'bullah-labs',
     featured: 15,
-    title: 'Feinwerks Software',
-    client: 'Feinwerks Software',
+    title: 'Bullah Labs',
+    client: 'Bullah Labs',
     tagline: 'Bilingual site for a product engineering studio',
     summary:
       'Marketing site for a product engineering studio, in English and German.',
     description:
-      'The website for Feinwerks, a Germany- and Pakistan-based product engineering studio. It sells a fixed-scope, fixed-quote way of building products, in English and German, and ends every page at a proposal request.',
-    coverImage: '/images/feinwerks.png',
+      'The website for Bullah Labs, a Germany- and Pakistan-based product engineering studio. It sells a fixed-scope, fixed-quote way of building products, in English and German, and ends every page at a proposal request.',
+    coverImage: '/images/bullah-labs.png',
     coverWidth: 1600,
     coverHeight: 900,
     platform: 'web',
     // Only a desktop capture exists, so the card shows the laptop alone.
-    screens: { desktop: '/images/feinwerks.png' },
+    screens: { desktop: '/images/bullah-labs.png' },
     gallery: [],
     accent: '#f59e0b',
     tech: [
@@ -2144,10 +2144,10 @@ export const projects: Project[] = [
     capabilities: ['Web'],
     industry: 'Software studio',
     year: '2026',
-    liveUrl: 'https://feinwerks.software/',
+    liveUrl: 'https://bullahlabs.com/',
     headline: { value: '2', label: 'languages from one page' },
     problem:
-      'Feinwerks pitches to founders who cannot afford a second attempt: a written scope, a fixed or custom quote and a committed launch date before any code is written. That is an unusual promise for a studio, and the site had to make it credible to readers in two markets, Germany and Pakistan, without a sales call.',
+      'Bullah Labs pitches to founders who cannot afford a second attempt: a written scope, a fixed or custom quote and a committed launch date before any code is written. That is an unusual promise for a studio, and the site had to make it credible to readers in two markets, Germany and Pakistan, without a sales call.',
     approach:
       'A static-first Next.js build ordered as an argument: the promise, the five service lines, a six-step process from quote to handover, client testimonials, then one call to action. English and German copy live side by side and switch in place, so both languages share one page, one layout and one set of components.',
     results: [
