@@ -1,72 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  AnimatePresence,
-  animate,
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useTransform,
-} from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { IconArrowLeft, IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
 import { ProjectMockup } from "@/components/mockups/project-mockup";
+import { CountUp } from "@/components/motion/count-up";
 import type { HeadlineOutcome } from "@/components/ui/headline-section";
 
 interface HeadlineCarouselProps {
   outcomes: HeadlineOutcome[];
-}
-
-/**
- * Splits a figure such as "1,000+" or "30 days" into the text around the
- * number and the number itself, so the number can be counted up while the
- * prefix and suffix stay put.
- */
-function parseFigure(value: string) {
-  const match = value.match(/^([^\d]*)([\d,]*\.?\d+)(.*)$/);
-  if (!match) return null;
-  const [, prefix, digits, suffix] = match;
-  const decimals = digits.includes(".") ? digits.split(".")[1].length : 0;
-  return { prefix, target: Number(digits.replace(/,/g, "")), decimals, suffix };
-}
-
-/** A figure that counts up from zero when it appears. */
-function CountUp({ value }: { value: string }) {
-  const reduceMotion = useReducedMotion();
-  const figure = parseFigure(value);
-  const target = figure?.target ?? 0;
-  const decimals = figure?.decimals ?? 0;
-
-  const count = useMotionValue(reduceMotion ? target : 0);
-  const text = useTransform(count, (current) =>
-    current.toLocaleString("en-US", {
-      minimumFractionDigits: decimals,
-      maximumFractionDigits: decimals,
-    }),
-  );
-
-  useEffect(() => {
-    if (reduceMotion) {
-      count.set(target);
-      return;
-    }
-    const controls = animate(count, target, {
-      duration: 1.4,
-      ease: [0.16, 1, 0.3, 1],
-    });
-    return () => controls.stop();
-  }, [count, target, reduceMotion]);
-
-  if (!figure) return <>{value}</>;
-
-  return (
-    <>
-      {figure.prefix}
-      <motion.span className="tabular-nums">{text}</motion.span>
-      {figure.suffix}
-    </>
-  );
 }
 
 /**
@@ -193,7 +136,7 @@ export function HeadlineCarousel({ outcomes }: HeadlineCarouselProps) {
                         Project outcome
                       </p>
                       <p className="mt-3 text-5xl font-black leading-none tracking-[-0.06em] text-emerald-300 [text-shadow:0_0_28px_rgb(52_211_153/0.2)] sm:text-6xl">
-                        <CountUp value={outcome.value} />
+                        <CountUp value={outcome.value} duration={1.4} />
                       </p>
                       <p className="mt-3 text-base font-bold leading-tight text-white">
                         {outcome.label}
