@@ -115,7 +115,9 @@ export function HeadlineCarousel({ outcomes }: HeadlineCarouselProps) {
                   className="col-start-1 row-start-1 [&:not(:last-child)]:pointer-events-none"
                   aria-live="polite"
                 >
-                  {/* The product, full width: the picture is the point. */}
+                  {/* The product, full width: the picture is the point. The
+                      plate keeps the same 16:11 proportions as the project
+                      cards so the devices fill it on large screens. */}
                   <Link
                     href={caseStudyHref}
                     aria-label={`${outcome.project.title} case study`}
@@ -124,9 +126,8 @@ export function HeadlineCarousel({ outcomes }: HeadlineCarouselProps) {
                   >
                     <ProjectMockup
                       project={outcome.project}
-                      wide
                       sizes="(min-width: 1024px) 60vw, 100vw"
-                      className="aspect-[16/9] transition-transform duration-700 group-hover/shot:scale-[1.015]"
+                      className="transition-transform duration-700 group-hover/shot:scale-[1.015]"
                     />
                   </Link>
 
