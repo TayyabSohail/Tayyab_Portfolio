@@ -2,11 +2,11 @@ import type { CSSProperties } from "react";
 import { LaptopFrame } from "@/components/mockups/laptop-frame";
 import { PhoneFrame } from "@/components/mockups/phone-frame";
 import { ProjectScreen } from "@/components/mockups/project-screen";
-import type { Project } from "@/data/projects";
+import type { ProjectPreview } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
 interface ProjectMockupProps {
-  project: Project;
+  project: ProjectPreview;
   priority?: boolean;
   sizes?: string;
   className?: string;

@@ -179,12 +179,12 @@ function TechChip({ tech }: { tech: TechItem }) {
   const Icon = tech.icon;
   return (
     <li
-      className="inline-flex h-10 items-center gap-2.5 border border-white/[0.12] bg-white/[0.03] pl-1.5 pr-3.5 text-[13px] font-medium text-neutral-200 transition-colors duration-200 hover:border-white/25 hover:bg-white/[0.06]"
+      className="inline-flex h-10 items-center gap-2.5 rounded-full border border-white/[0.12] bg-white/[0.03] pl-1.5 pr-3.5 text-[13px] font-medium text-neutral-200 transition-colors duration-200 hover:border-emerald-400/40 hover:bg-emerald-400/[0.06]"
       title={tech.name}
     >
       <span
         aria-hidden="true"
-        className="flex h-7 w-7 shrink-0 items-center justify-center border border-white/[0.08]"
+        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
         style={{ backgroundColor: `${tech.color}1f` }}
       >
         <Icon className="h-3.5 w-3.5" style={{ color: tech.color }} />

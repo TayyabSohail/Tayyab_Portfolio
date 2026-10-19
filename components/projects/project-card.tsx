@@ -1,7 +1,7 @@
 import { IconArrowUpRight } from "@tabler/icons-react";
 import { ProjectMockup } from "@/components/mockups/project-mockup";
 import type { Project } from "@/data/projects";
-import { getTechMeta } from "@/lib/tech-icons";
+import { TechCapsule } from "@/components/projects/tech-capsule";
 import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
@@ -90,24 +90,11 @@ export function ProjectCard({
         </ul>
 
         <ul className="mt-5 flex flex-wrap items-center gap-1.5 border-t border-neutral-800 pt-5">
-          {visibleTech.map((tech) => {
-            const { icon: Icon, color } = getTechMeta(tech);
-            return (
-              <li
-                key={tech}
-                className="inline-flex items-center gap-1.5 border border-white/[0.12] bg-neutral-950/70 px-2 py-1 text-xs text-neutral-400 transition group-hover:text-neutral-200"
-              >
-                <Icon
-                  aria-hidden="true"
-                  className="h-3.5 w-3.5 shrink-0"
-                  style={{ color }}
-                />
-                {tech}
-              </li>
-            );
-          })}
+          {visibleTech.map((tech) => (
+            <TechCapsule key={tech} tool={tech} size="sm" />
+          ))}
           {overflowCount > 0 && (
-            <li className="inline-flex items-center border border-white/[0.12] bg-neutral-950/70 px-2 py-1 text-xs text-neutral-400">
+            <li className="inline-flex h-6 items-center rounded-full border border-white/[0.12] bg-white/[0.035] px-2.5 text-xs font-medium text-neutral-400">
               +{overflowCount}
             </li>
           )}

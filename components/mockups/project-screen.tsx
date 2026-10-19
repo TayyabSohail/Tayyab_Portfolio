@@ -1,8 +1,8 @@
 import Image from "next/image";
-import type { Project } from "@/data/projects";
+import type { ProjectPreview } from "@/data/projects";
 
 interface ProjectScreenProps {
-  project: Project;
+  project: ProjectPreview;
   /** Which capture to show. `phone-alt` falls back to the main phone screen. */
   variant: "laptop" | "phone" | "phone-alt";
   priority?: boolean;

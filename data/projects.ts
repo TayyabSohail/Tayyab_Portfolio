@@ -201,6 +201,15 @@ export interface Project {
   challenges: { challenge: string; solution: string }[];
 }
 
+/**
+ * The fields the device mockups need. Lets client components show a product
+ * on devices without carrying the whole case study across the boundary.
+ */
+export type ProjectPreview = Pick<
+  Project,
+  'slug' | 'title' | 'platform' | 'screens' | 'accent'
+>;
+
 export const projects: Project[] = [
   {
     slug: 'brickfold',
