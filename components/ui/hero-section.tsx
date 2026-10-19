@@ -7,7 +7,14 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { CountUp } from "@/components/motion/count-up";
+import { RoleCapsule } from "@/components/motion/role-capsule";
 import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
+
+const roles = [
+  "Full-Stack Developer",
+  "AI & Automation Engineer",
+  "Cloud Architect",
+];
 
 const impactStats = [
   { value: "100+", label: "Projects delivered" },
@@ -42,13 +49,13 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative isolate w-full overflow-hidden border-b border-emerald-500/10 px-5 pb-20 pt-28 sm:px-8 sm:pb-24 sm:pt-32 lg:px-10 lg:py-36"
+      className="relative isolate w-full overflow-hidden border-b border-emerald-500/10 px-5 pb-20 pt-24 sm:px-8 sm:pb-24 sm:pt-32 lg:px-10 lg:py-36"
     >
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-6 sm:gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
         {/* Contained portrait frame—the image supports the intro rather than
             becoming the entire hero. On phones it sits above the intro at a
-            height that keeps the face readable. */}
-        <div className="nx-panel relative h-80 w-full shadow-2xl shadow-black/50 sm:h-96 lg:h-[480px]">
+            height short enough that the impact stats land in the first viewport. */}
+        <div className="nx-panel relative h-72 w-full shadow-2xl shadow-black/50 sm:h-96 lg:h-[480px]">
           <div
             aria-hidden="true"
             className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-emerald-400/70 to-transparent"
@@ -62,14 +69,20 @@ export function HeroSection() {
             alt="Tayyab Sohail"
             fill
             sizes="(min-width: 1024px) 27rem, 100vw"
-            className="z-10 object-contain object-bottom px-3 pt-10 drop-shadow-[0_18px_30px_rgba(0,0,0,0.4)]"
+            className="z-10 object-contain object-bottom px-3 pt-5 drop-shadow-[0_18px_30px_rgba(0,0,0,0.4)] sm:pt-10"
             priority
           />
 
-          <div className="absolute inset-x-0 bottom-0 z-20 bg-linear-to-t from-[#030605] via-[#030605]/85 to-transparent px-6 pb-6 pt-20">
-            <p className="text-3xl font-black uppercase leading-none tracking-[-0.045em] text-white sm:text-4xl">
+          <div className="absolute inset-x-0 bottom-0 z-20 bg-linear-to-t from-[#030605] via-[#030605]/85 to-transparent px-5 pb-5 pt-16 text-center sm:px-6 sm:pb-6 sm:pt-24">
+            <p className="text-2xl font-black uppercase leading-none tracking-[-0.045em] text-white sm:text-4xl">
               Tayyab Sohail
             </p>
+            {/* One capsule under the name that cycles through the roles, so
+                there is never a stack of pills to balance. Centred under the
+                name at every width. */}
+            <div className="mt-3 flex justify-center">
+              <RoleCapsule roles={roles} />
+            </div>
           </div>
 
           <span className="absolute bottom-0 left-0 z-30 h-8 w-px bg-emerald-400" />
@@ -85,20 +98,15 @@ export function HeroSection() {
           <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-emerald-400/70 via-emerald-400/15 to-transparent" />
 
           <div className="p-6 sm:p-9 lg:p-10">
-            <p className="max-w-2xl font-mono text-xs font-semibold leading-relaxed uppercase tracking-[0.1em] text-emerald-300 sm:text-[13px]">
-              Full-Stack Developer <span className="text-white/30">·</span>{" "}
-              AI &amp; Automation Engineer{" "}
-              <span className="text-white/30">·</span> Cloud Architect
-            </p>
 
-            <h1 className="mt-5 max-w-2xl text-[2rem] font-bold leading-[1.06] tracking-[-0.04em] text-white sm:text-4xl lg:text-[2.85rem]">
+            <h1 className="mx-auto max-w-2xl text-center text-[2rem] font-bold leading-[1.06] tracking-[-0.04em] text-white sm:mx-0 sm:text-left sm:text-4xl lg:text-[2.85rem]">
               I build the products
               <span className="mt-1 block text-emerald-400">
                 that move businesses forward.
               </span>
             </h1>
 
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-neutral-200 sm:text-lg sm:text-neutral-300">
+            <p className="mx-auto mt-4 max-w-lg text-center text-base leading-relaxed text-neutral-200 sm:mx-0 sm:mt-5 sm:text-left sm:text-lg sm:text-neutral-300">
               Full-stack platforms and AI systems engineered to ship fast, scale
               cleanly, and deliver measurable results.
             </p>
