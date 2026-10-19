@@ -82,7 +82,7 @@ export function FilterableProjects({
       <div
         role="group"
         aria-label="Filter projects by product type"
-        className="mb-10 flex w-full max-w-full flex-nowrap justify-start gap-px overflow-x-auto border border-white/10 bg-[#141414] p-px [scrollbar-width:none] sm:w-fit sm:overflow-visible [&::-webkit-scrollbar]:hidden"
+        className="mb-10 flex max-w-full flex-wrap gap-2"
       >
         {filters.map((filter) => {
           const isActive = filter === active;
